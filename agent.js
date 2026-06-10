@@ -12,59 +12,51 @@ try {
   knowledgeBase = readFileSync(join(__dirname, "knowledge-base.md"), "utf-8");
   console.log("✅ Base de conocimiento cargada correctamente");
 } catch {
-  console.warn("⚠️  No se encontró knowledge-base.md, usando solo el prompt base");
+  console.warn("⚠️ No se encontró knowledge-base.md, usando solo el prompt base");
 }
 
 // Memoria de conversaciones por número de WhatsApp
-// Cada entrada guarda el historial de la sesión (se resetea tras 2hs de inactividad)
 const conversations = new Map();
 const SESSION_TIMEOUT_MS = 2 * 60 * 60 * 1000; // 2 horas
 
-const SYSTEM_PROMPT = `Sos Nico, el asistente virtual de MEGA Desarrollos Inmobiliarios, representando al asesor Germán Manzur en Santa Fe, Argentina.
+const SYSTEM_PROMPT = `Sos Nico, el asistente virtual de MEGA Inmobiliaria, representando al asesor Germán Manzur en Santa Fe, Argentina.
 
 IDENTIDAD:
 - Nombre: Nico — Asistente MEGA
 - Representás a Germán Manzur, asesor inmobiliario de alto nivel
-- Empresa: MEGA Desarrollos Inmobiliarios, Santa Fe, Argentina
+- Empresa: MEGA Inmobiliaria, Santa Fe, Argentina
 
 FORMATO OBLIGATORIO:
 Respondé SIEMPRE en máximo 3 líneas cortas. Sin listas. Sin numeración. Sin párrafos largos.
 Emojis: máximo 2 por mensaje. Nunca menciones que sos IA salvo pregunta directa.
 
-PROPIEDADES — SOLO CARTERA REAL (PROHIBIDO inventar otras):
-• Av. Corrientes / Arroyo Aguiar — Casa — USD 45.000
-• Corrientes-Noriega — Casa — USD 92.000
-• Garay Sur — Cochera — USD 15.000
-• Eva Perón 2973 — Casa — USD 270.000
-• Llerena 2840 — Casa — USD 165.000
-• Calle 5 e/10 y 12, Sauce Viejo — Terreno — USD 16.000
-• 12 de Septiembre 1622, Santo Tomé — Depto — USD 38.000
-• Lorenzo Tello / Villa CA — Quinta — USD 180.000
-• Alvear 4336 — Casa — USD 190.000
-• Pedro Vittori 3537 p5 — Depto — USD 135.000
-• O'Higgins 3515 — Casa — USD 35.000
+FLUJO DE CONVERSACIÓN:
+1. Si es el primer mensaje del lead y no mencionó su nombre: presentate brevemente y preguntá su nombre de forma natural al final.
+2. Lead frío (curiosidad vaga, sin zona ni tipo): una oración informativa, no presionar.
+3. Lead tibio (mencionó zona O tipo de propiedad): hacé UNA sola pregunta de calificación (presupuesto O plazo).
+4. Lead caliente (tiene monto + zona O urgencia clara): derivá inmediatamente a Germán.
+5. Si no tenés propiedad exacta: derivá a Germán.
 
-ALQUILERES: Santa Fe y Santo Tomé, hasta $500.000/mes. Deptos 1-2 dorm Candioti y Barrio Sur.
+PROPIEDADES — Usá SOLO la base de conocimiento adjunta. NUNCA inventes propiedades ni precios.
+
+ALQUILERES: Santa Fe y Santo Tomé. Deptos 1-2 dorm Candioti y Barrio Sur. Para rangos de precio actualizados consultá a Germán.
 
 CRÉDITOS 2026:
-Línea flexible (solo mensura): Banco Santa Fe, Macro, Credicoop, Municipal.
-Línea tradicional (plano de obra): BNA, Galicia, Santander, BBVA, Hipotecario, Supervielle, Patagonia, BICA, ICBC.
-Credicoop: hasta $300M | 20 años | TNA 8-9% | 1ra vivienda.
-NIDO 2026: hasta $100M | residencia SF previa al 30/06/2024.
+Crédito Nido: propiedades elegibles en Barrio Sur. Requisito: residencia SF previa al 30/06/2024.
+Crédito Santa Fe y otras líneas: Banco Santa Fe, Macro, Credicoop, BNA, Galicia, Santander, BBVA y más. Acompañamos todo el proceso.
+
+PERMUTAS: Se evalúan caso a caso. Siempre derivar a Germán para análisis.
 
 COMPORTAMIENTO:
-- Respondé SOLO sobre inmobiliario en Santa Fe
-- Lead frío (curiosidad vaga): una oración informativa, no presionar
-- Lead tibio (tiene zona o tipo): hacer UNA sola pregunta (presupuesto O plazo)
-- Si no tenés propiedad exacta para lo que pide: derivá a Germán
-- Cierre estándar: "Hablá con Germán directo 👉 https://wa.me/5493424287842"
+- Respondé SOLO sobre inmobiliario en Santa Fe y Entre Ríos
 - Español argentino. Nunca listas largas ni párrafos.
+- Cierre estándar cuando derivás: "Hablá con Germán directo 👉 https://wa.me/5493424287842"
 
---- BASE DE CONOCIMIENTO ACTUALIZADA ---
+--- BASE DE CONOCIMIENTO ---
 ${knowledgeBase}
 --- FIN BASE DE CONOCIMIENTO ---`;
 
-// ─── PRE-FILTRO DE CLASIFICACIÓN (código, no prompt) ─────────────────────────
+// ─── PATRONES DE CLASIFICACIÓN ──────────────────────────────────────────────
 
 const CALIENTE_MONTOS = [
   /\b(usd|u\$s|dólar|dolar|dólares|dolares)\b/i,
@@ -84,6 +76,12 @@ const CALIENTE_ZONAS = [
   /amarras/i,
   /santo\s*tom[eé]/i,
   /santa\s*fe/i,
+  /puerto/i,
+  /costanera/i,
+  /entre\s*r[íi]os/i,
+  /pedro\s*vittori/i,
+  /llerena/i,
+  /eva\s*per[oó]n/i,
 ];
 
 const CALIENTE_URGENCIA = [
@@ -100,6 +98,20 @@ const CALIENTE_URGENCIA = [
   /plazo\s*(de\s*)?\d/i,
 ];
 
+const TIPO_PROPIEDAD = [
+  /depto|departamento/i,
+  /casa/i,
+  /terreno/i,
+  /cochera/i,
+  /quinta/i,
+  /semipiso/i,
+  /alquil/i,
+  /compr[ao]/i,
+  /invert[ií]/i,
+  /flipping/i,
+  /permuta/i,
+];
+
 const SPAM_PATTERNS = [
   /^[a-záéíóúüñ]{1,6}[!.]*$/i,
   /^\d+$/,
@@ -108,19 +120,24 @@ const SPAM_PATTERNS = [
 
 function esCaliente(texto) {
   const tieneMonto = CALIENTE_MONTOS.some(r => r.test(texto));
-  const tieneZona  = CALIENTE_ZONAS.some(r => r.test(texto));
-  const tieneUrg   = CALIENTE_URGENCIA.some(r => r.test(texto));
+  const tieneZona = CALIENTE_ZONAS.some(r => r.test(texto));
+  const tieneUrg = CALIENTE_URGENCIA.some(r => r.test(texto));
   return tieneMonto && (tieneZona || tieneUrg);
+}
+
+function esTibio(texto) {
+  const tieneZona = CALIENTE_ZONAS.some(r => r.test(texto));
+  const tieneTipo = TIPO_PROPIEDAD.some(r => r.test(texto));
+  return tieneZona || tieneTipo;
 }
 
 function esSpam(texto) {
   return SPAM_PATTERNS.some(r => r.test(texto.trim()));
 }
 
-// ─── Obtener o crear sesión de conversación ───────────────────────────────────
+// ─── Obtener o crear sesión de conversación ──────────────────────────────────
 function getSession(phoneNumber) {
   const now = Date.now();
-
   if (conversations.has(phoneNumber)) {
     const session = conversations.get(phoneNumber);
     if (now - session.lastActivity > SESSION_TIMEOUT_MS) {
@@ -130,19 +147,28 @@ function getSession(phoneNumber) {
       return session;
     }
   }
-
-  const newSession = { messages: [], lastActivity: now, spamWarned: false };
+  const newSession = {
+    messages: [],
+    lastActivity: now,
+    spamWarned: false,
+    isFirstMessage: true,
+  };
   conversations.set(phoneNumber, newSession);
   return newSession;
 }
 
 // ─── Procesar mensaje entrante y generar respuesta ───────────────────────────
 export async function handleIncomingMessage(phoneNumber, userText) {
+  // Manejar mensajes sin texto (audio, imagen, sticker, etc.)
+  if (!userText || userText.trim() === "") {
+    return "Hola 👋 Solo puedo leer mensajes de texto por ahora. ¿En qué puedo ayudarte?";
+  }
+
   const session = getSession(phoneNumber);
 
   // ── FILTRO 1: CALIENTE → escalar a Germán sin pasar por OpenAI
   if (esCaliente(userText)) {
-    console.log(`🔥 Lead CALIENTE detectado: ${phoneNumber}`);
+    console.log(`🔥 Lead CALIENTE: ${phoneNumber}`);
     return "Perfecto, te conecto directo con Germán 👉 https://wa.me/5493424287842 🔥";
   }
 
@@ -153,42 +179,50 @@ export async function handleIncomingMessage(phoneNumber, userText) {
       return null;
     }
     session.spamWarned = true;
-    console.log(`⚠️ SPAM detectado: ${phoneNumber}`);
+    console.log(`⚠️ SPAM: ${phoneNumber}`);
     return "Hola, ¿en qué puedo ayudarte?";
   }
 
   session.spamWarned = false;
 
-  session.messages.push({ role: "user", content: userText });
+  const tibioFlag = esTibio(userText);
+  if (tibioFlag) console.log(`🌡️ Lead TIBIO: ${phoneNumber}`);
 
-  if (session.messages.length > 20) {
-    session.messages = session.messages.slice(-20);
+  session.messages.push({ role: "user", content: userText });
+  if (session.messages.length > 20) session.messages = session.messages.slice(-20);
+
+  // Construir system prompt con contexto situacional
+  let systemContent = SYSTEM_PROMPT;
+  if (session.isFirstMessage) {
+    systemContent += "\n\nCONTEXTO: Primer mensaje de este lead. Si no mencionó su nombre, preguntáselo naturalmente al final de tu respuesta.";
+    session.isFirstMessage = false;
+  }
+  if (tibioFlag) {
+    systemContent += "\n\nCONTEXTO: El lead mencionó zona o tipo de propiedad. Hacé UNA pregunta de calificación sobre presupuesto o plazo.";
   }
 
   try {
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
-      max_tokens: 120,
+      max_tokens: 150,
       temperature: 0.5,
       messages: [
-        { role: "system", content: SYSTEM_PROMPT },
-        ...session.messages
-      ]
+        { role: "system", content: systemContent },
+        ...session.messages,
+      ],
     });
 
     const reply = completion.choices[0].message.content;
-
     session.messages.push({ role: "assistant", content: reply });
-
     return reply;
 
   } catch (error) {
     console.error("❌ Error OpenAI:", error.message);
-    return "Hubo un inconveniente técnico. Contactate con Germán directamente al *+54 342 428-7842*.";
+    return "Hubo un inconveniente técnico. Contactate con Germán al *+54 342 428-7842*.";
   }
 }
 
-// ─── Resetear sesión de un número (usado por test-local.js) ──────────────────
+// ─── Resetear sesión de un número ────────────────────────────────────────────
 export function resetSession(phoneNumber) {
   conversations.delete(phoneNumber);
 }
