@@ -27,45 +27,11 @@ IDENTIDAD:
 - Representás a Germán Manzur, asesor inmobiliario de alto nivel
 - Empresa: MEGA Desarrollos Inmobiliarios, Santa Fe, Argentina
 
-═══════════════════════════════════════
-REGLA #1 — FORMATO OBLIGATORIO
-═══════════════════════════════════════
-SIEMPRE respondé en máximo 3 líneas cortas. Sin listas. Sin numeración. Sin párrafos largos.
-Ejemplo correcto:
-"Tenemos casas en Barrio Sur desde USD 35.000 aptas para crédito. ¿Cuál es tu presupuesto?"
-Ejemplo PROHIBIDO: respuestas con listas numeradas, bullets, o más de 3 líneas.
-Emojis: máximo 2 por mensaje.
-Nunca menciones que sos IA salvo pregunta directa.
+FORMATO OBLIGATORIO:
+Respondé SIEMPRE en máximo 3 líneas cortas. Sin listas. Sin numeración. Sin párrafos largos.
+Emojis: máximo 2 por mensaje. Nunca menciones que sos IA salvo pregunta directa.
 
-═══════════════════════════════════════
-REGLA #2 — CLASIFICACIÓN DE LEADS
-═══════════════════════════════════════
-
-SPAM: saludos sin contexto, números sueltos, mensajes sin sentido
-→ Respuesta EXACTA y única: "Hola, ¿en qué puedo ayudarte?"
-→ No agregues nada más. No sigas si no hay respuesta útil.
-
-FRÍO: curiosidad sin intención clara
-→ Una oración informativa. Sin presionar. Sin pedir datos.
-
-TIBIO: menciona zona o tipo de propiedad
-→ UNA sola pregunta: presupuesto O plazo. Nunca las dos juntas.
-
-CALIENTE — TRIGGER INMEDIATO si el usuario menciona:
-• Un monto en USD o pesos ("tengo 40.000", "USD 150k", "$50 millones", etc.)
-• Una zona específica ("Barrio Sur", "Candioti", "Sauce Viejo", etc.)
-• Urgencia o plazo ("este mes", "antes de fin de año", "para mudarnos ya", etc.)
-→ En cuanto aparezca CUALQUIERA de estos triggers, respondé SOLO esto:
-"Perfecto, te conecto directo con Germán 👉 https://wa.me/5493424287842 🔥"
-→ NO des más información. NO hagas preguntas. El cierre lo hace Germán.
-
-═══════════════════════════════════════
-REGLA #3 — PROPIEDADES: SOLO CARTERA REAL
-═══════════════════════════════════════
-PROHIBIDO inventar, suponer o mencionar propiedades que no estén en la lista de abajo.
-Si no tenés una propiedad exacta para lo que pide, derivá a Germán.
-
-CARTERA ACTIVA — 11 PROPIEDADES:
+PROPIEDADES — SOLO CARTERA REAL (PROHIBIDO inventar otras):
 • Av. Corrientes / Arroyo Aguiar — Casa — USD 45.000
 • Corrientes-Noriega — Casa — USD 92.000
 • Garay Sur — Cochera — USD 15.000
@@ -80,31 +46,77 @@ CARTERA ACTIVA — 11 PROPIEDADES:
 
 ALQUILERES: Santa Fe y Santo Tomé, hasta $500.000/mes. Deptos 1-2 dorm Candioti y Barrio Sur.
 
-═══════════════════════════════════════
-RADAR 360 — JERARQUÍA
-═══════════════════════════════════════
-Si la cartera activa no cubre lo que pide, mencioná que tenés acceso a más opciones vía Tokko Broker, Mercado Único SF y portales, y derivá a Germán para detalles.
-Segmentos: Amarras Center | Sargento Cabral/Constituyentes | Candioti N/S | Sauce Viejo/Fraga/Aeropuerto | Barrio Sur | Flipping ARV alto
-
-═══════════════════════════════════════
-CRÉDITOS HIPOTECARIOS 2026
-═══════════════════════════════════════
-Línea flexible (solo plano de mensura): Banco Santa Fe, Macro, Credicoop, Municipal.
-Línea tradicional (exigen plano de obra): BNA, Galicia, Santander, BBVA, Hipotecario, Supervielle, Patagonia, BICA, ICBC.
+CRÉDITOS 2026:
+Línea flexible (solo mensura): Banco Santa Fe, Macro, Credicoop, Municipal.
+Línea tradicional (plano de obra): BNA, Galicia, Santander, BBVA, Hipotecario, Supervielle, Patagonia, BICA, ICBC.
 Credicoop: hasta $300M | 20 años | TNA 8-9% | 1ra vivienda.
 NIDO 2026: hasta $100M | residencia SF previa al 30/06/2024.
 
-═══════════════════════════════════════
-COMPORTAMIENTO GENERAL
-═══════════════════════════════════════
+COMPORTAMIENTO:
 - Respondé SOLO sobre inmobiliario en Santa Fe
-- Español argentino, tuteo o usted según el cliente
+- Lead frío (curiosidad vaga): una oración informativa, no presionar
+- Lead tibio (tiene zona o tipo): hacer UNA sola pregunta (presupuesto O plazo)
+- Si no tenés propiedad exacta para lo que pide: derivá a Germán
 - Cierre estándar: "Hablá con Germán directo 👉 https://wa.me/5493424287842"
-- NUNCA: listas largas, párrafos, "no dude en contactarnos", horarios de oficina
+- Español argentino. Nunca listas largas ni párrafos.
 
 --- BASE DE CONOCIMIENTO ACTUALIZADA ---
 ${knowledgeBase}
 --- FIN BASE DE CONOCIMIENTO ---`;
+
+// ─── PRE-FILTRO DE CLASIFICACIÓN (código, no prompt) ─────────────────────────
+
+const CALIENTE_MONTOS = [
+  /\b(usd|u\$s|dólar|dolar|dólares|dolares)\b/i,
+  /\$\s*\d/,
+  /\d+\s*(k|mil|millón|millon|millones)\b/i,
+  /\b\d{4,}\b/,          // números de 4+ dígitos (precios)
+];
+
+const CALIENTE_ZONAS = [
+  /barrio\s*sur/i,
+  /candioti/i,
+  /sauce\s*viejo/i,
+  /fraga/i,
+  /aeropuerto/i,
+  /sargento\s*cabral/i,
+  /constituyentes/i,
+  /amarras/i,
+  /santo\s*tom[eé]/i,
+  /santa\s*fe/i,
+];
+
+const CALIENTE_URGENCIA = [
+  /este\s*mes/i,
+  /este\s*año/i,
+  /urgente/i,
+  /cuanto\s*antes/i,
+  /ya\s*mismo/i,
+  /para\s*mudarme/i,
+  /para\s*mudarnos/i,
+  /necesito\s*ya/i,
+  /antes\s*de\s*fin/i,
+  /en\s*los\s*pr[oó]ximos/i,
+  /plazo\s*(de\s*)?\d/i,
+];
+
+const SPAM_PATTERNS = [
+  /^[a-záéíóúüñ]{1,6}[!.]*$/i,   // una sola palabra corta (hola, buenas, ok, etc.)
+  /^\d+$/,                         // solo números
+  /^[^a-z0-9áéíóúüñ]*$/i,         // solo símbolos/espacios
+];
+
+function esCaliente(texto) {
+  const tieneMonto = CALIENTE_MONTOS.some(r => r.test(texto));
+  const tieneZona  = CALIENTE_ZONAS.some(r => r.test(texto));
+  const tieneUrg   = CALIENTE_URGENCIA.some(r => r.test(texto));
+  // caliente = monto + (zona o urgencia), o los tres
+  return tieneMonto && (tieneZona || tieneUrg);
+}
+
+function esSpam(texto) {
+  return SPAM_PATTERNS.some(r => r.test(texto.trim()));
+}
 
 // ─── Obtener o crear sesión de conversación ───────────────────────────────────
 function getSession(phoneNumber) {
@@ -112,7 +124,6 @@ function getSession(phoneNumber) {
 
   if (conversations.has(phoneNumber)) {
     const session = conversations.get(phoneNumber);
-    // Reset si superó el timeout de inactividad
     if (now - session.lastActivity > SESSION_TIMEOUT_MS) {
       conversations.delete(phoneNumber);
     } else {
@@ -121,7 +132,7 @@ function getSession(phoneNumber) {
     }
   }
 
-  const newSession = { messages: [], lastActivity: now };
+  const newSession = { messages: [], lastActivity: now, spamWarned: false };
   conversations.set(phoneNumber, newSession);
   return newSession;
 }
@@ -130,10 +141,30 @@ function getSession(phoneNumber) {
 export async function handleIncomingMessage(phoneNumber, userText) {
   const session = getSession(phoneNumber);
 
+  // ── FILTRO 1: CALIENTE → escalar a Germán sin pasar por OpenAI
+  if (esCaliente(userText)) {
+    console.log(`🔥 Lead CALIENTE detectado: ${phoneNumber}`);
+    return "Perfecto, te conecto directo con Germán 👉 https://wa.me/5493424287842 🔥";
+  }
+
+  // ── FILTRO 2: SPAM → responder una sola vez
+  if (esSpam(userText)) {
+    if (session.spamWarned) {
+      console.log(`🚫 SPAM repetido ignorado: ${phoneNumber}`);
+      return null; // no responder
+    }
+    session.spamWarned = true;
+    console.log(`⚠️ SPAM detectado: ${phoneNumber}`);
+    return "Hola, ¿en qué puedo ayudarte?";
+  }
+
+  // Si pasó filtros de spam, resetear flag
+  session.spamWarned = false;
+
   // Agregar mensaje del usuario al historial
   session.messages.push({ role: "user", content: userText });
 
-  // Limitar historial a los últimos 20 mensajes (10 turnos) para control de costos
+  // Limitar historial a los últimos 20 mensajes (10 turnos)
   if (session.messages.length > 20) {
     session.messages = session.messages.slice(-20);
   }
@@ -142,7 +173,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       max_tokens: 120,
-      temperature: 0.6,
+      temperature: 0.5,
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
         ...session.messages
@@ -151,14 +182,13 @@ export async function handleIncomingMessage(phoneNumber, userText) {
 
     const reply = completion.choices[0].message.content;
 
-    // Agregar respuesta al historial
     session.messages.push({ role: "assistant", content: reply });
 
     return reply;
 
   } catch (error) {
     console.error("❌ Error OpenAI:", error.message);
-    return "Hubo un inconveniente técnico. Por favor contactate con Germán directamente al *+54 342 428-7842*.";
+    return "Hubo un inconveniente técnico. Contactate con Germán directamente al *+54 342 428-7842*.";
   }
 }
 
