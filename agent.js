@@ -70,7 +70,7 @@ const CALIENTE_MONTOS = [
   /\b(usd|u\$s|dólar|dolar|dólares|dolares)\b/i,
   /\$\s*\d/,
   /\d+\s*(k|mil|millón|millon|millones)\b/i,
-  /\b\d{4,}\b/,          // números de 4+ dígitos (precios)
+  /\b\d{4,}\b/,
 ];
 
 const CALIENTE_ZONAS = [
@@ -101,16 +101,15 @@ const CALIENTE_URGENCIA = [
 ];
 
 const SPAM_PATTERNS = [
-  /^[a-záéíóúüñ]{1,6}[!.]*$/i,   // una sola palabra corta (hola, buenas, ok, etc.)
-  /^\d+$/,                         // solo números
-  /^[^a-z0-9áéíóúüñ]*$/i,         // solo símbolos/espacios
+  /^[a-záéíóúüñ]{1,6}[!.]*$/i,
+  /^\d+$/,
+  /^[^a-z0-9áéíóúüñ]*$/i,
 ];
 
 function esCaliente(texto) {
   const tieneMonto = CALIENTE_MONTOS.some(r => r.test(texto));
   const tieneZona  = CALIENTE_ZONAS.some(r => r.test(texto));
   const tieneUrg   = CALIENTE_URGENCIA.some(r => r.test(texto));
-  // caliente = monto + (zona o urgencia), o los tres
   return tieneMonto && (tieneZona || tieneUrg);
 }
 
@@ -151,20 +150,17 @@ export async function handleIncomingMessage(phoneNumber, userText) {
   if (esSpam(userText)) {
     if (session.spamWarned) {
       console.log(`🚫 SPAM repetido ignorado: ${phoneNumber}`);
-      return null; // no responder
+      return null;
     }
     session.spamWarned = true;
     console.log(`⚠️ SPAM detectado: ${phoneNumber}`);
     return "Hola, ¿en qué puedo ayudarte?";
   }
 
-  // Si pasó filtros de spam, resetear flag
   session.spamWarned = false;
 
-  // Agregar mensaje del usuario al historial
   session.messages.push({ role: "user", content: userText });
 
-  // Limitar historial a los últimos 20 mensajes (10 turnos)
   if (session.messages.length > 20) {
     session.messages = session.messages.slice(-20);
   }
