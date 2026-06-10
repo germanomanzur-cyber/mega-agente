@@ -1,88 +1,77 @@
 import express from "express";
 import axios from "axios";
 import dotenv from "dotenv";
+import { handleIncomingMessage } from "./agent.js";
 
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 
-const { 
-    WHATSAPP_ACCESS_TOKEN, 
-        WHATSAPP_PHONE_NUMBER_ID, 
-            VERIFY_TOKEN, 
-                OPENAI_API_KEY, 
-                    PORT 
-                    } = process.env;
+const {
+  WHATSAPP_ACCESS_TOKEN,
+  WHATSAPP_PHONE_NUMBER_ID,
+  VERIFY_TOKEN,
+  PORT
+} = process.env;
 
-                    // Webhook de verificación para Meta
-                    app.get("/webhook", (req, res) => {
-                        const mode = req.query["hub.mode"];
-                            const token = req.query["hub.verify_token"];
-                                const challenge = req.query["hub.challenge"];
+// Webhook de verificación para Meta
+app.get("/webhook", (req, res) => {
+  const mode = req.query["hub.mode"];
+  const token = req.query["hub.verify_token"];
+  const challenge = req.query["hub.challenge"];
 
-                                    if (mode === "subscribe" && token === VERIFY_TOKEN) {
-                                            res.status(200).send(challenge);
-                                                } else {
-                                                        res.sendStatus(403);
-                                                            }
-                                                            });
+  if (mode === "subscribe" && token === VERIFY_TOKEN) {
+    res.status(200).send(challenge);
+  } else {
+    res.sendStatus(403);
+  }
+});
 
-                                                            // Recepción de mensajes
-                                                            app.post("/webhook", async (req, res) => {
-                                                                const entry = req.body.entry?.[0];
-                                                                    const changes = entry?.changes?.[0];
-                                                                        const message = changes?.value?.messages?.[0];
+// Recepción de mensajes
+app.post("/webhook", async (req, res) => {
+  const entry = req.body.entry?.[0];
+  const changes = entry?.changes?.[0];
+  const message = changes?.value?.messages?.[0];
 
-                                                                            if (message) {
-                                                                                    const from = message.from; // Viene como 549342...
-                                                                                            const text = message.text?.body;
+  if (message) {
+    const from = message.from;
+    const text = message.text?.body;
 
-                                                                                                    // CORRECCIÓN LÍNEA 50: Log limpio sin errores de sintaxis
-                                                                                                            console.log(`Mensaje recibido de ${from}: ${text}`);
+    console.log(`Mensaje recibido de ${from}: ${text}`);
 
-                                                                                                                    // --- FIX ARGENTINA (Modo Desarrollo) ---
-                                                                                                                            // Si el número empieza con 549, le quitamos el 9 para que Meta no de error 131030
-                                                                                                                                    const to = from.startsWith("549") ? "54" + from.substring(3) : from;
-                                                                                                                                            // ---------------------------------------
+    // Normalizar número Argentina: quitar el 9 para Meta
+    const to = from.startsWith("549") ? "54" + from.substring(3) : from;
 
-                                                                                                                                                    try {
-                                                                                                                                                                // 1. Llamada a OpenAI (GPT-4o mini)
-                                                                                                                                                                            const aiResponse = await axios.post(
-                                                                                                                                                                                            "https://api.openai.com/v1/chat/completions",
-                                                                                                                                                                                                            {
-                                                                                                                                                                                                                                model: "gpt-4o-mini",
-                                                                                                                                                                                                                                                    messages: [
-                                                                                                                                                                                                                                                                            { role: "system", content: "Sos un asistente de MEGA Inmobiliaria, experto en el mercado premium de Santa Fe. Tono ejecutivo y persuasivo." },
-                                                                                                                                                                                                                                                                                                    { role: "user", content: text }
-                                                                                                                                                                                                                                                                                                                        ],
-                                                                                                                                                                                                                                                                                                                                        },
-                                                                                                                                                                                                                                                                                                                                                        { headers: { Authorization: `Bearer ${OPENAI_API_KEY}` } }
-                                                                                                                                                                                                                                                                                                                                                                    );
+    try {
+      // Procesar con agent.js (pre-filtros + OpenAI)
+      const responseText = await handleIncomingMessage(from, text);
 
-                                                                                                                                                                                                                                                                                                                                                                                const responseText = aiResponse.data.choices[0].message.content;
+      // Si es null (spam repetido) no responder
+      if (responseText === null) {
+        return res.sendStatus(200);
+      }
 
-                                                                                                                                                                                                                                                                                                                                                                                            // 2. Respuesta a WhatsApp
-                                                                                                                                                                                                                                                                                                                                                                                                        await axios.post(
-                                                                                                                                                                                                                                                                                                                                                                                                                        `https://graph.facebook.com/v21.0/${WHATSAPP_PHONE_NUMBER_ID}/messages`,
-                                                                                                                                                                                                                                                                                                                                                                                                                                        {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            messaging_product: "whatsapp",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                to: to, // Usamos el número normalizado sin el 9
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    type: "text",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        text: { body: responseText },
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        },
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        { headers: { Authorization: `Bearer ${WHATSAPP_ACCESS_TOKEN}` } }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    );
+      // Enviar respuesta a WhatsApp
+      await axios.post(
+        `https://graph.facebook.com/v21.0/${WHATSAPP_PHONE_NUMBER_ID}/messages`,
+        {
+          messaging_product: "whatsapp",
+          to: to,
+          type: "text",
+          text: { body: responseText },
+        },
+        { headers: { Authorization: `Bearer ${WHATSAPP_ACCESS_TOKEN}` } }
+      );
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            } catch (error) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        console.error("Error procesando el mensaje:", error.response?.data || error.message);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+    } catch (error) {
+      console.error("Error procesando el mensaje:", error.response?.data || error.message);
+    }
+  }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        res.sendStatus(200);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        });
+  res.sendStatus(200);
+});
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        app.listen(PORT || 3000, () => {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            console.log(`MEGA Agente activo en puerto ${PORT || 3000}`);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            });
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+app.listen(PORT || 3000, () => {
+  console.log(`MEGA Agente activo en puerto ${PORT || 3000}`);
+});
