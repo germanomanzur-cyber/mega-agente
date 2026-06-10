@@ -14,6 +14,10 @@ const {
   VERIFY_TOKEN,
   PORT
 } = process.env;
+// Health check para Railway
+app.get("/health", (req, res) => {
+    res.status(200).json({ status: "ok", service: "mega-agente" });
+});
 
 // Webhook de verificación para Meta
 app.get("/webhook", (req, res) => {
