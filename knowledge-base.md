@@ -207,3 +207,36 @@ Escribile directamente a Germán: https://wa.me/5493424287842
 
 **¿Hacen permutas?**
 Sí, caso a caso. Contactate con Germán para analizar la operación.
+
+
+## REQUISITOS DE PLANOS POR BANCO — CRÉDITOS UVA 2026
+
+### BANCOS FLEXIBLES (solo plano de mensura)
+
+**BANCO SANTA FE**
+- Acepta la propiedad como apta solo con plano de mensura.
+
+**BANCO MACRO**
+- Solo con plano de mensura ya es apta para el crédito.
+
+**BANCO CREDICOOP**
+- Acepta planos de mensura para aprobar el trámite.
+- Ventaja: Permite calificar para "Primera Vivienda" a dueños de terrenos vacíos y a poseedores de departamentos en el Puerto (sin escritura tradicional).
+
+**CRÉDITO NIDO (Programa Provincial)**
+- Solicita plano de mensura de base (casas y PH).
+- No exige final de obra riguroso para casas.
+
+---
+
+### BANCOS TRADICIONALES (exigen plano de construcción aprobado)
+
+**BANCO GALICIA** — Pide planos de construcción obligatoriamente.
+
+**SANTANDER RÍO** — Pide planos de construcción.
+
+**BBVA (FRANCÉS)** — Exige planos de construcción.
+
+**BANCO NACIÓN** — Pide planos de construcción para dar el apto de tasación.
+
+> Si la propiedad no tiene planos de obra aprobados y actualizados, la carpeta puede frenarse o rechazarse en estos bancos. Siempre consultar con Germán para evaluar viabilidad: https://wa.me/5493424287842
