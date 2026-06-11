@@ -14,6 +14,13 @@ const knowledgeBase = readFileSync(
   "utf-8"
 );
 
+// Mapa código Tokko -> descripción corta (del inventario en el knowledge base)
+const INVENTARIO = new Map();
+for (const line of knowledgeBase.split("\n")) {
+  const m = line.match(/^- ([A-Z]{3}\d{7}) \| ([^|]+) \| ([^|]+) \|/);
+  if (m) INVENTARIO.set(m[1], `${m[3].trim()} (${m[2].trim()})`);
+}
+
 // ─── Lead storage (persiste en Railway) ──────────────────────────────────────
 const LEADS_FILE = path.join(__dirname, "leads.json");
 
@@ -78,6 +85,7 @@ function getSession(phoneNumber) {
     tier: "frio",
     qualifyStep: 0,
     handoffSent: false,
+    propsOfrecidas: new Set(),
   };
   conversations.set(phoneNumber, newSession);
   return newSession;
@@ -231,6 +239,12 @@ function buildLeadSummary(phone, session) {
     p.presupuesto ? `💰 Presupuesto: ${p.presupuesto}` : null,
     p.timing ? `⏱ Timing: ${p.timing}` : null,
     p.interesEn ? `🏠 Interés en: ${p.interesEn}` : null,
+    session.propsOfrecidas && session.propsOfrecidas.size
+      ? `🏠 Ofrecidas por Nico (buscar código en Tokko):\n` +
+        [...session.propsOfrecidas]
+          .map((r) => `   • ${INVENTARIO.get(r) || "ver knowledge base"} — ${r}`)
+          .join("\n")
+      : null,
     ``,
     `_Primer contacto: ${p.firstContact ? new Date(p.firstContact).toLocaleString("es-AR") : "—"}_`,
   ];
@@ -288,7 +302,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
       const q = nextQualifyQuestion(session);
       session.qualifyStep++;
       const systemPrompt = buildSystemPrompt(session);
-      const aiResp = await callOpenAI(session.messages, systemPrompt);
+      const aiResp = await callOpenAI(session.messages, systemPrompt, session);
       session.messages.push({ role: "assistant", content: aiResp });
       saveLead({ phone: phoneNumber, ...session.profile, tier: "tibio", lastMessage: userText });
       if (q) return `${aiResp}\n\n${q}`;
@@ -315,7 +329,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
   if (session.tier === "tibio" && session.qualifyStep < 2) {
     session.messages.push({ role: "user", content: userText });
     const systemPrompt = buildSystemPrompt(session);
-    const aiResp = await callOpenAI(session.messages, systemPrompt);
+    const aiResp = await callOpenAI(session.messages, systemPrompt, session);
     session.messages.push({ role: "assistant", content: aiResp });
     const q = nextQualifyQuestion(session);
     session.qualifyStep++;
@@ -335,7 +349,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
 
   session.messages.push({ role: "user", content: userText });
   const systemPrompt = buildSystemPrompt(session);
-  const aiResp = await callOpenAI(session.messages, systemPrompt);
+  const aiResp = await callOpenAI(session.messages, systemPrompt, session);
   session.messages.push({ role: "assistant", content: aiResp });
 
   if (session.messages.length > 20) {
@@ -377,13 +391,14 @@ REGLAS:
 - Nunca inventar propiedades que no están en la base de conocimiento.
 - LINKS: los links de ficha (ficha.info) pertenecen ÚNICAMENTE a las propiedades de PRIORIDAD 1 que los tienen escritos al lado. Las propiedades del INVENTARIO COMPLETO no tienen ficha online: NUNCA les agregues un link, ni reutilices el link de otra propiedad. Si el cliente quiere fotos o ficha de una propiedad del inventario, decí que Germán se la manda por WhatsApp.
 - Si no tenés la info, decí que Germán la tiene y derivá al WA.
-- Respuestas cortas. Si el lead es caliente, derivar a Germán INMEDIATAMENTE.${leadContext}
+- Respuestas cortas. Si el lead es caliente, derivar a Germán INMEDIATAMENTE.
+- ETIQUETA INTERNA OBLIGATORIA: si mencionaste una o más propiedades del INVENTARIO COMPLETO en tu respuesta, terminá el mensaje con [REF: código1, código2] usando el código de referencia que figura al inicio de cada línea del inventario (ej. [REF: MAP7986153]). El cliente no la verá; es para uso interno. Si no mencionaste propiedades del inventario, no agregues la etiqueta.${leadContext}
 
 BASE DE CONOCIMIENTO:
 ${knowledgeBase}`;
 }
 
-async function callOpenAI(messages, systemPrompt) {
+async function callOpenAI(messages, systemPrompt, session) {
   try {
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
@@ -391,10 +406,21 @@ async function callOpenAI(messages, systemPrompt) {
         { role: "system", content: systemPrompt },
         ...messages.slice(-12),
       ],
-      max_tokens: 160,
+      max_tokens: 220,
       temperature: 0.4,
     });
-    return response.choices[0].message.content.trim();
+    let text = response.choices[0].message.content.trim();
+    // Extraer etiqueta interna [REF: MAPxxxxxxx, ...] y quitarla del mensaje al cliente
+    const refMatch = text.match(/\[REF:([^\]]*)\]/i);
+    if (refMatch) {
+      if (session) {
+        for (const code of refMatch[1].match(/[A-Z]{3}\d{7}/g) || []) {
+          session.propsOfrecidas.add(code);
+        }
+      }
+      text = text.replace(/\s*\[REF:[^\]]*\]\s*/gi, " ").replace(/  +/g, " ").trim();
+    }
+    return text;
   } catch (error) {
     console.error("OpenAI error:", error.message);
     return "En este momento no puedo responder. Escribile directamente a Germán: https://wa.me/5493424287842";
