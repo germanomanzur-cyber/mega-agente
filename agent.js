@@ -103,12 +103,21 @@ const ZONAS = [
   "sauce viejo", "fraga", "aeropuerto", "barrio sur", "puerto",
   "centro", "norte", "sur", "este", "oeste", "nueva cordoba",
   "rosario", "santa fe", "sf",
+  "parana", "paraná", "oro verde", "santo tome", "santo tomé",
+  "colonia avellaneda", "sauce montrull", "villa urquiza",
+  "colastine", "colastiné", "guadalupe", "recreo", "arroyo aguiar",
+  "san benito", "la picada", "diamante", "la capital", "mayoraz",
+  "arroyo leyes", "monte vera", "rincon", "rincón",
 ];
 
 const TIPOS_OPERACION = [
   "comprar", "compra", "vender", "venta", "alquilar", "alquiler",
   "invertir", "inversión", "inversion", "flipping", "crédito", "credito",
   "nido", "uva", "financiamiento",
+  "casa", "departamento", "depto", "dpto", "monoambiente",
+  "terreno", "lote", "quinta", "cochera", "local", "galpon", "galpón",
+  "oficina", "duplex", "dúplex", "ph",
+  "tasar", "tasacion", "tasación", "permuta", "permutar",
 ];
 
 function esCaliente(texto) {
@@ -141,15 +150,23 @@ function esSpam(texto) {
 }
 
 // ─── Extracción de datos del perfil ──────────────────────────────────────────
+const NAME_STOPWORDS = new Set([
+  "busco", "buscamos", "buscando", "quiero", "necesito", "tengo", "hola",
+  "buenas", "buenos", "consulta", "pregunta", "vendo", "alquilo", "compro",
+  "casa", "casas", "departamento", "depto", "terreno", "quinta", "cochera",
+  "local", "info", "informacion", "información", "precio", "cuanto", "cuánto",
+  "donde", "dónde", "que", "qué", "como", "cómo", "estoy", "somos", "gracias",
+]);
+
 function extractName(text) {
   const patterns = [
     /(?:me llamo|soy|mi nombre es|mi nombre:?)\s+([A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,}(?:\s+[A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,})?)/i,
     /hola[,!.]?\s+(?:soy\s+)?([A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,})/i,
-    /^([A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,})[\s,!.]/,
+    /^([A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,})[\s,!.]?$/,
   ];
   for (const p of patterns) {
     const m = text.match(p);
-    if (m) return m[1].trim();
+    if (m && !NAME_STOPWORDS.has(m[1].trim().toLowerCase())) return m[1].trim();
   }
   return null;
 }
@@ -223,7 +240,7 @@ function buildLeadSummary(phone, session) {
 function nextQualifyQuestion(session) {
   const p = session.profile;
   const step = session.qualifyStep;
-  if (step === 0 && !p.zona) return "¿En qué zona de Santa Fe estás buscando?";
+  if (step === 0 && !p.zona) return "¿En qué zona estás buscando? (Santa Fe, Paraná u otra localidad)";
   if (step === 0 && p.zona && !p.tipo) return "¿Estás buscando para comprar, alquilar o invertir?";
   if (!p.presupuesto) return "¿Tenés pensado un presupuesto o rango de precio?";
   if (!p.timing) return "¿Estás buscando para ya o todavía explorando opciones?";
@@ -284,7 +301,9 @@ export async function handleIncomingMessage(phoneNumber, userText) {
   }
 
   if (!session.profile.name && session.messages.length <= 2) {
-    const name = extractName(userText) || (userText.trim().split(" ")[0].length > 2 ? userText.trim().split(" ")[0] : null);
+    const first = userText.trim().split(" ")[0];
+    const name = extractName(userText) ||
+      (first.length > 2 && !NAME_STOPWORDS.has(first.toLowerCase()) ? first : null);
     if (name) session.profile.name = name;
   }
 
