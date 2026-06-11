@@ -2,6 +2,7 @@ import express from "express";
 import axios from "axios";
 import dotenv from "dotenv";
 import { handleIncomingMessage, getLeads, getAndClearPendingHandoff } from "./agent.js";
+import { logMessage, getChats } from "./chatlog.js";
 
 dotenv.config();
 
@@ -126,10 +127,12 @@ app.post("/webhook", async (req, res) => {
 
       console.log(`[NICO/WA] Mensaje de ${from}: ${userText}`);
 
-      const responseText = await handleIncomingMessage(from, userText);
+            logMessage("wa", from, "user", userText);
+const responseText = await handleIncomingMessage(from, userText);
       if (responseText === null) return;
 
       await sendWhatsApp(from, responseText);
+      logMessage("wa", from, "nico", responseText);
 
       const handoffMsg = getAndClearPendingHandoff(from);
       if (handoffMsg) {
@@ -149,9 +152,11 @@ app.post("/webhook", async (req, res) => {
 
           console.log(`[NICO/FB-DM] Mensaje de ${senderId}: ${texto}`);
 
-          if (esConsultaInmobiliaria(texto)) {
+                    logMessage("fb", senderId, "user", texto);
+if (esConsultaInmobiliaria(texto)) {
             await responderFBMessenger(senderId, RESPUESTA_SOCIAL);
-            await sendWhatsApp(GERMAN_WA,
+                        logMessage("fb", senderId, "nico", RESPUESTA_SOCIAL);
+await sendWhatsApp(GERMAN_WA,
               `📘 FB Messenger — consulta nueva:\n"${texto}"\nUserID: ${senderId}`
             );
             console.log(`[NICO/FB-DM] Respondido y alerta enviada a Germán`);
@@ -269,4 +274,54 @@ app.listen(PORT || 3000, () => {
 // --- Politica de privacidad (requerida para publicar la app Meta) ---
 app.get("/privacy", (req, res) => {
   res.send('<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Politica de Privacidad - MEGA Agente</title><style>body{font-family:Arial,Helvetica,sans-serif;max-width:760px;margin:40px auto;padding:0 20px;color:#222;line-height:1.6}h1{color:#0a7d54}h2{margin-top:28px}</style></head><body><h1>Politica de Privacidad — MEGA Agente (Nico)</h1><p>Ultima actualizacion: junio 2026</p><p>MEGA Agente ("Nico") es un asistente virtual inmobiliario operado por German Manzur, asesor de MEGA Inmobiliaria, Santa Fe, Argentina.</p><h2>Datos que recopilamos</h2><p>Al conversar con Nico por WhatsApp, Facebook Messenger o Instagram recopilamos: nombre, numero de telefono o identificador de la plataforma, el contenido de los mensajes enviados y sus preferencias de busqueda inmobiliaria.</p><h2>Uso de los datos</h2><p>Usamos estos datos exclusivamente para responder consultas, recomendar propiedades y dar seguimiento comercial. No vendemos ni compartimos sus datos con terceros, salvo los proveedores tecnologicos necesarios para operar el servicio (Meta Platforms, OpenAI y Railway).</p><h2>Conservacion</h2><p>Los datos se conservan mientras exista una relacion comercial activa o hasta que usted solicite su eliminacion.</p><h2>Eliminacion de datos</h2><p>Puede solicitar la eliminacion de sus datos escribiendo ELIMINAR MIS DATOS en el chat, o contactando a germanomanzur@gmail.com o al WhatsApp +54 9 342 428-7842. Procesamos las solicitudes dentro de los 30 dias.</p><h2>Contacto</h2><p>German Manzur — germanomanzur@gmail.com — WhatsApp +54 9 342 428-7842 — Santa Fe, Argentina.</p></body></html>');
+});
+
+// --- Panel de conversaciones (protegido con ?token=VERIFY_TOKEN) ---
+app.get("/chats.json", (req, res) => {
+  if (req.query.token !== VERIFY_TOKEN) return res.status(401).json({ error: "No autorizado" });
+  res.json(getChats());
+});
+
+app.get("/chats", (req, res) => {
+  if (req.query.token !== VERIFY_TOKEN) return res.status(401).send("No autorizado");
+  res.send(`<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nico - Conversaciones</title><style>
+*{box-sizing:border-box;margin:0}body{font-family:Arial,Helvetica,sans-serif;height:100vh;display:flex;flex-direction:column;background:#ece5dd}
+header{background:#075e54;color:#fff;padding:12px 18px;font-size:17px;font-weight:bold}
+#wrap{flex:1;display:flex;min-height:0}
+#side{width:320px;background:#fff;border-right:1px solid #ddd;overflow-y:auto}
+.conv{padding:12px 14px;border-bottom:1px solid #eee;cursor:pointer}
+.conv:hover{background:#f5f5f5}.conv.sel{background:#e8f5e9}
+.conv .who{font-weight:bold;font-size:14px}.conv .prev{color:#666;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conv .meta{color:#999;font-size:11px;margin-top:2px}
+#main{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:6px}
+.msg{max-width:70%;padding:8px 12px;border-radius:8px;font-size:14px;line-height:1.4;white-space:pre-wrap;word-break:break-word}
+.msg .at{display:block;font-size:10px;color:#777;margin-top:4px;text-align:right}
+.user{background:#fff;align-self:flex-start}
+.nico{background:#dcf8c6;align-self:flex-end}
+#empty{color:#888;margin:auto}
+</style></head><body>
+<header>Nico &mdash; Conversaciones</header>
+<div id="wrap"><div id="side"></div><div id="main"><div id="empty">Cargando...</div></div></div>
+<script>
+var DATA={},SEL=null;
+var TOKEN=new URLSearchParams(location.search).get("token");
+function fmt(s){var d=new Date(s);return d.toLocaleDateString("es-AR")+" "+d.toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit"});}
+function load(){fetch("/chats.json?token="+TOKEN).then(function(r){return r.json()}).then(function(d){DATA=d;render();});}
+function render(){
+var side=document.getElementById("side");side.innerHTML="";
+var keys=Object.keys(DATA).sort(function(a,b){var ma=DATA[a].messages,mb=DATA[b].messages;return new Date(mb[mb.length-1].at)-new Date(ma[ma.length-1].at);});
+keys.forEach(function(k){var c=DATA[k];var last=c.messages[c.messages.length-1];
+var div=document.createElement("div");div.className="conv"+(k===SEL?" sel":"");
+var who=document.createElement("div");who.className="who";who.textContent=(c.channel==="wa"?"WhatsApp ":"Messenger ")+c.userId;
+var prev=document.createElement("div");prev.className="prev";prev.textContent=last.text;
+var meta=document.createElement("div");meta.className="meta";meta.textContent=c.messages.length+" mensajes - "+fmt(last.at);
+div.appendChild(who);div.appendChild(prev);div.appendChild(meta);
+div.onclick=function(){SEL=k;render();};side.appendChild(div);});
+var main=document.getElementById("main");main.innerHTML="";
+if(!SEL||!DATA[SEL]){var e=document.createElement("div");e.id="empty";e.textContent=keys.length?"Selecciona una conversacion":"Sin conversaciones todavia";main.appendChild(e);return;}
+DATA[SEL].messages.forEach(function(m){var d=document.createElement("div");d.className="msg "+(m.role==="nico"?"nico":"user");d.textContent=m.text;
+var at=document.createElement("span");at.className="at";at.textContent=(m.role==="nico"?"Nico - ":"")+fmt(m.at);d.appendChild(at);main.appendChild(d);});
+main.scrollTop=main.scrollHeight;}
+load();setInterval(load,8000);
+</script></body></html>`);
 });
