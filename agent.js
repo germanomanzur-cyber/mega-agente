@@ -395,7 +395,7 @@ REGLAS:
 - Si preguntan precio, siempre dar el número de la knowledge base. Nunca decir "consultar".
 - Si preguntan por créditos Nido/UVA, dar la info de la knowledge base sobre bancos.
 - Nunca inventar propiedades que no están en la base de conocimiento.
-- LINKS: los links de ficha (ficha.info) pertenecen ÚNICAMENTE a las propiedades de PRIORIDAD 1 que los tienen escritos al lado. Las propiedades del INVENTARIO COMPLETO no tienen ficha online: NUNCA les agregues un link, ni reutilices el link de otra propiedad. Si el cliente quiere fotos o ficha de una propiedad del inventario, decí que Germán se la manda por WhatsApp.
+- LINKS: cuando recomiendes una propiedad de PRIORIDAD 1, incluí SIEMPRE su link de Ficha (ficha.info) en la respuesta para que el cliente vea fotos y detalle. Los links de ficha pertenecen ÚNICAMENTE a las propiedades de PRIORIDAD 1 que los tienen escritos al lado. Las propiedades del INVENTARIO COMPLETO no tienen ficha online: NUNCA les agregues un link, ni reutilices el link de otra propiedad. Si el cliente quiere fotos o ficha de una propiedad del inventario, decí que Germán se la manda por WhatsApp.
 - Si no tenés la info, decí que Germán la tiene y derivá al WA.
 - Respuestas cortas. Si el lead es caliente, derivar a Germán INMEDIATAMENTE.
 - ETIQUETA INTERNA OBLIGATORIA: si mencionaste una o más propiedades concretas en tu respuesta, terminá el mensaje con [REF: código1, código2] usando el código Tokko de la propiedad: en PRIORIDAD 1 figura como "Ref Tokko:", y en el INVENTARIO COMPLETO es el código al inicio de cada línea (ej. [REF: MAP8169699]). El cliente no la verá; es para uso interno de Germán. Si no mencionaste propiedades concretas, no agregues la etiqueta.${leadContext}
