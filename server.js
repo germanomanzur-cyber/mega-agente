@@ -174,9 +174,11 @@ await sendWhatsApp(GERMAN_WA,
           const autor = val.from?.name || "Alguien";
 
           console.log(`[NICO/FB-COMMENT] ${autor} comentó: ${texto}`);
+          logMessage("fb", commentId, "user", texto);
 
           if (esConsultaInmobiliaria(texto)) {
             await responderFBComment(commentId, RESPUESTA_SOCIAL);
+            logMessage("fb", commentId, "nico", RESPUESTA_SOCIAL);
             await sendWhatsApp(GERMAN_WA,
               `📘 FB Comentario — ${autor}:\n"${texto}"`
             );
@@ -196,9 +198,11 @@ await sendWhatsApp(GERMAN_WA,
           if (!senderId || !texto) continue;
 
           console.log(`[NICO/IG-DM] Mensaje de ${senderId}: ${texto}`);
+          logMessage("ig", senderId, "user", texto);
 
           if (esConsultaInmobiliaria(texto)) {
             await responderIGMessenger(senderId, RESPUESTA_SOCIAL);
+            logMessage("ig", senderId, "nico", RESPUESTA_SOCIAL);
             await sendWhatsApp(GERMAN_WA,
               `📸 IG Mensaje — consulta nueva:\n"${texto}"\nIGSID: ${senderId}`
             );
