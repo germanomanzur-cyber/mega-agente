@@ -18,6 +18,7 @@
 ### VENTAS
 
 **1. Casa en Llerena 2840**
+- Ref Tokko: MHO7720758
 - 2 dormitorios amplios y luminosos
 - 1 baño completo
 - Living acogedor
@@ -29,6 +30,7 @@
 - Ficha: https://ficha.info/p/8532694cadff41feb0362be36c4277f7
 
 **2. Cochera microcentro / Barrio Sur**
+- Ref Tokko: MGA7512407
 - Espacio para vehículo estándar
 - Seguridad y control de acceso automatizado
 - Ubicación privilegiada en microcentro / Barrio Sur, Santa Fe Capital
@@ -36,6 +38,7 @@
 - Ficha: https://ficha.info/p/35fbad51f45c419d906fe727bd1568cf
 
 **3. Casa Arroyo Aguiar (chica)**
+- Ref Tokko: MHO7570698
 - 2 dormitorios amplios
 - 1 baño completo
 - Living-comedor integrado
@@ -46,6 +49,7 @@
 - Ficha: https://ficha.info/p/b6cb372b5d884897b01846b9a2434ddb
 
 **4. Casa Arroyo Aguiar (grande)**
+- Ref Tokko: MHO7570528
 - 4 dormitorios cómodos
 - 1 baño completo
 - Living comedor amplio
@@ -58,6 +62,7 @@
 - Ficha: https://ficha.info/p/608e3ed2cf3943f7bcf110a3ac7313ca
 
 **5. Terreno Sauce Viejo**
+- Ref Tokko: MLA7721049
 - 600 m² totales (15m x 40m)
 - Calle con mejorado
 - A metros de la plaza principal y del Club Atlético Franck
@@ -66,6 +71,7 @@
 - Ficha: https://ficha.info/p/b1116f41aa8f4dc19d6df226be1affff
 
 **6. Departamento Santo Tomé**
+- Ref Tokko: MAP7817698
 - 77,31 m² totales (55,54 m² cubiertos)
 - 3 dormitorios amplios
 - 1 baño completo
@@ -78,6 +84,7 @@
 - Ficha: https://ficha.info/p/c5e52f184d7f4e18a953f3a5e0d3ba5e
 
 **7. Quinta Villa California**
+- Ref Tokko: MWE7821693
 - 950 m² de terreno / 180 m² cubiertos
 - 4 dormitorios amplios
 - 2 baños completos
@@ -92,6 +99,7 @@
 - Ficha: https://ficha.info/p/cb4ddcfa97434b849eda118c9643a68b
 
 **8. Departamento PILAY — Pedro Vittori 3537 Piso 5**
+- Ref Tokko: MAP7878020
 - 70 m² totales (60 m² cubiertos)
 - 2 dormitorios cómodos y luminosos
 - 1 baño completo
@@ -106,6 +114,7 @@
 - Ficha: https://ficha.info/p/948c20a95eed4ecca62222c89f3b937d
 
 **9. Casa centro Santa Fe — Eva Perón (con local comercial)**
+- Ref Tokko: MHO7564719
 - 256 m² construidos totales
 - 4 dormitorios espaciosos
 - 2 baños completos
@@ -118,6 +127,7 @@
 - Ficha: https://ficha.info/p/1f7eba9aaca445ab896c513c9bade14f
 
 **10. Proyecto Flipping — O'Higgins 3515, Barrio Centenario**
+- Ref Tokko: MHO8010408
 - 113 m² totales (planta baja + planta alta)
 - 6 dormitorios (máximo potencial de distribución)
 - Baño funcional para remodelar
@@ -129,6 +139,7 @@
 - Ficha: https://ficha.info/p/c29fcc4c569241ada0deaf8fadb491da
 
 **11. Amarras Center Torre III — Piso 16, Puerto de Santa Fe**
+- Ref Tokko: MAP8169699
 - 49 m² cubiertos (diseño moderno y eficiente)
 - 1 dormitorio amplio con excelente luminosidad
 - 1 baño completo con terminaciones de categoría
@@ -139,6 +150,7 @@
 - Apto mascotas y habilitado para uso profesional
 - Ubicación: Sara Pinasco de Julierac, Puerto de Santa Fe
 - Precio: USD 150.000 (sin cochera)
+- Ficha: https://ficha.info/p/adb592acb56b4863962f540e8f1dd9f3
 
 ---
 
