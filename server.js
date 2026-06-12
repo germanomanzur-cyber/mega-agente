@@ -49,6 +49,7 @@ async function sendWhatsApp(to, body) {
     { messaging_product: "whatsapp", to: recipient, type: "text", text: { body } },
     { headers: { Authorization: `Bearer ${WHATSAPP_ACCESS_TOKEN}` } }
   );
+  if (to === GERMAN_WA) logMessage("wa", GERMAN_WA, "nico", body);
 }
 
 // ─── Facebook Messenger: responder DM ────────────────────────────────────────
