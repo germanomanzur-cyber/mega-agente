@@ -41,6 +41,27 @@ function esConsultaInmobiliaria(texto) {
   return matches.length >= 2;
 }
 
+// ─── Notificar lead caliente a n8n ──────────────────────────────────────────
+const N8N_LEAD_WEBHOOK = "https://german33.app.n8n.cloud/webhook/lead-nico";
+
+async function notificarLeadN8n(lead) {
+  try {
+    await axios.post(N8N_LEAD_WEBHOOK, {
+      nombre: lead.nombre || "",
+      numero: lead.numero || "",
+      plataforma: lead.plataforma || "whatsapp",
+      busqueda: lead.busqueda || "",
+      zona: lead.zona || "",
+      presupuesto: lead.presupuesto || "",
+      nivel: lead.nivel || "",
+      refs: lead.refs || "",
+    });
+    console.log("[NICO] Lead caliente notificado a n8n");
+  } catch (e) {
+    console.error("[NICO] Error notificando lead a n8n:", e.message);
+  }
+}
+
 // ─── WhatsApp: enviar mensaje ─────────────────────────────────────────────────
 async function sendWhatsApp(to, body) {
   const recipient = to.startsWith("549") ? "54" + to.substring(3) : to;
@@ -139,6 +160,19 @@ const responseText = await handleIncomingMessage(from, userText);
       if (handoffMsg) {
         console.log(`[NICO/WA] Handoff a Germán: ${GERMAN_WA}`);
         await sendWhatsApp(GERMAN_WA, handoffMsg);
+        const lead = getLeads().find((l) => l.phone === from);
+        if (lead?.tier === "caliente") {
+          await notificarLeadN8n({
+            nombre: lead.name || "",
+            numero: from,
+            plataforma: "whatsapp",
+            busqueda: lead.lastMessage || "",
+            zona: lead.zona || "",
+            presupuesto: lead.presupuesto || "",
+            nivel: lead.tier,
+            refs: lead.interesEn || "",
+          });
+        }
       }
     }
 
