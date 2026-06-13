@@ -162,7 +162,7 @@ Si el cliente busca algo que no está en la cartera directa de Germán, menciona
 - Barrio Sur (propiedades aptas para crédito hipotecario)
 - Sauce Viejo / Curva de Fraga / Aeropuerto (quintas y casas)
 
-→ El detalle completo está en la sección INVENTARIO COMPLETO MEGA/TOKKO al final de este documento.
+→ El detalle completo está en la sección INVENTARIO COMPLETO MEGA WEB al final de este documento.
 → Derivar siempre a Germán para consultar disponibilidad actualizada: https://wa.me/5493424287842
 
 ---
