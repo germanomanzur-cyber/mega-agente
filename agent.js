@@ -52,6 +52,37 @@ export function getLeads() {
   return loadLeads();
 }
 
+export function saveLeadWaName(phone, waName) {
+  if (!waName) return;
+  try {
+    const leads = loadLeads();
+    const idx = leads.findIndex((l) => l.phone === phone);
+    if (idx >= 0) {
+      if (!leads[idx].waName) {
+        leads[idx].waName = waName;
+        writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
+      }
+    } else {
+      leads.push({ phone, waName, tier: "frio", createdAt: new Date().toISOString() });
+      writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
+    }
+  } catch (e) {
+    console.error("Error guardando waName:", e.message);
+  }
+}
+
+export function searchLeadByName(query) {
+  const leads = loadLeads();
+  const q = (query || "").toLowerCase().trim();
+  if (!q) return [];
+  const words = q.split(/\s+/).filter((w) => w.length > 2);
+  return leads.filter((lead) => {
+    const haystack = `${(lead.name || "").toLowerCase()} ${(lead.waName || "").toLowerCase()}`.trim();
+    if (haystack.includes(q)) return true;
+    return words.length > 0 && words.every((w) => haystack.includes(w));
+  });
+}
+
 // ─── Sesiones en memoria ───────────────────────────────────────────────────────
 const conversations = new Map();
 const SESSION_TIMEOUT_MS = 2 * 60 * 60 * 1000; // 2 horas
