@@ -1,7 +1,7 @@
 import express from "express";
 import axios from "axios";
 import dotenv from "dotenv";
-import { handleIncomingMessage, getLeads, getAndClearPendingHandoff, saveLeadWaName, searchLeadByName } from "./agent.js";
+import { handleIncomingMessage, getLeads, getAndClearPendingHandoff, saveLeadWaName, searchLeadByName, saveAgente, searchAgenteByName, getAgentes, extractAgentesFromText } from "./agent.js";
 import { logMessage, getChats } from "./chatlog.js";
 
 dotenv.config();
@@ -33,7 +33,7 @@ function handleModoGerman(cmd, leads, searchFn) {
   const c = (cmd || "").trim().toLowerCase();
 
   if (c === "//ayuda") {
-    return "Comandos disponibles:\n//tel <nombre> — número de lead\n//leads — últimos 10\n//calientes — calientes\n//ayuda — esta lista";
+    return "Comandos disponibles:\n//tel <nombre> — busca lead o agente\n//agentes — agentes guardados\n//leads — últimos 10 leads\n//calientes — calientes\n//ayuda — esta lista";
   }
   if (c === "//leads") {
     const lista = leads.slice(-10).reverse();
@@ -49,17 +49,39 @@ function handleModoGerman(cmd, leads, searchFn) {
       (l.waName || l.name || "?") + " — wa.me/" + l.phone + " — " + (l.zona || "-") + " — " + (l.presupuesto || "-")
     ).join("\n");
   }
+  if (c === "//agentes") {
+    const ag = getAgentes().slice(-10).reverse();
+    if (!ag.length) return "Sin agentes registrados aún.";
+    return ag.map(a =>
+      (a.nombre || "?") + (a.inmobiliaria ? " (" + a.inmobiliaria + ")" : "") +
+      " — wa.me/" + a.phone +
+      (a.propiedades && a.propiedades.length ? " — " + a.propiedades.length + " prop." : "")
+    ).join("\n");
+  }
   const m = cmd.match(/^\/\/(tele?|num|numero|n[úu]mero|contacto|buscar)\s+(.+)/i);
   if (m) {
     const nombre = m[2].trim();
-    const res = searchFn(nombre);
-    if (!res.length) return "Sin resultados para \"" + nombre + "\". Probá nombre parcial (ej: //tel Dana)";
-    if (res.length === 1) {
-      const l = res[0];
-      return (l.waName || l.name || "Sin nombre") + "\nwa.me/" + l.phone + "\n" + (l.tier || "-") + " · " + (l.zona || "-") + " · " + (l.presupuesto || "-");
+    const resLeads = searchFn(nombre);
+    const resAgentes = searchAgenteByName(nombre);
+    const todos = [...resLeads, ...resAgentes];
+    if (!todos.length) return "Sin resultados para \"" + nombre + "\". Probá nombre parcial (ej: //tel Dana)";
+    if (todos.length === 1) {
+      const r = todos[0];
+      if (r.inmobiliaria !== undefined) {
+        let txt = (r.nombre || "Sin nombre") + "\nwa.me/" + r.phone;
+        if (r.inmobiliaria) txt += "\n" + r.inmobiliaria;
+        if (r.zona) txt += " · " + r.zona;
+        if (r.propiedades && r.propiedades.length) {
+          txt += "\n📋 " + r.propiedades.length + " propiedad(es) compartida(s):";
+          txt += "\n" + r.propiedades.slice(-3).map(p => "  • " + (p.titulo || p.link || "sin título")).join("\n");
+        }
+        return txt;
+      }
+      return (r.waName || r.name || "Sin nombre") + "\nwa.me/" + r.phone + "\n" + (r.tier || "-") + " · " + (r.zona || "-") + " · " + (r.presupuesto || "-");
     }
-    return res.length + " resultados:\n" + res.slice(0, 5).map(l =>
-      "• " + (l.waName || l.name || "?") + " → wa.me/" + l.phone
+    return todos.length + " resultados:\n" + todos.slice(0, 5).map(r =>
+      "• " + (r.nombre || r.waName || r.name || "?") + " → wa.me/" + r.phone +
+      (r.inmobiliaria ? " (" + r.inmobiliaria + ")" : "")
     ).join("\n");
   }
   return "Comando no reconocido. Escribí //ayuda";
@@ -286,12 +308,21 @@ app.get("/leads", (req, res) => {
 });
 
 app.post("/report", async (req, res) => {
-  const { token, message } = req.body || {};
+  const { token, message, agente, phone: agentePhone, inmobiliaria, zona, propiedad } = req.body || {};
   if (!token || token !== REPORT_TOKEN) return res.status(401).json({ error: "No autorizado" });
   if (!message) return res.status(400).json({ error: "message requerido" });
+  // Guardar agente si viene estructurado
+  if (agente || agentePhone) {
+    saveAgente({ nombre: agente, phone: agentePhone, inmobiliaria, zona, fuente: "reporte", propiedad });
+  }
+  // Auto-extraer agentes del texto del mensaje
+  const agentesEncontrados = extractAgentesFromText(message);
+  for (const ag of agentesEncontrados) {
+    if (ag.phone || ag.nombre) saveAgente({ ...ag, propiedad: propiedad || null });
+  }
   try {
     await sendWhatsApp(GERMAN_WA, message);
-    res.json({ ok: true });
+    res.json({ ok: true, agentesGuardados: agentesEncontrados.length });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
