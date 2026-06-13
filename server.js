@@ -49,7 +49,7 @@ function handleModoGerman(cmd, leads, searchFn) {
       (l.waName || l.name || "?") + " — wa.me/" + l.phone + " — " + (l.zona || "-") + " — " + (l.presupuesto || "-")
     ).join("\n");
   }
-  const m = cmd.match(/^\/\/(tel|num|numero|n[úu]mero|contacto)\s+(.+)/i);
+  const m = cmd.match(/^\/\/(tele?|num|numero|n[úu]mero|contacto|buscar)\s+(.+)/i);
   if (m) {
     const nombre = m[2].trim();
     const res = searchFn(nombre);
