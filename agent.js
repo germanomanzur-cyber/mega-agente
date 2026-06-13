@@ -82,6 +82,101 @@ export function searchLeadByName(query) {
     return words.length > 0 && words.every((w) => haystack.includes(w));
   });
 }
+// ─── Agentes storage (de grupos WA / reportes radar) ─────────────────────────
+const AGENTES_FILE = path.join(__dirname, "agentes.json");
+
+function loadAgentes() {
+  try {
+    if (existsSync(AGENTES_FILE)) return JSON.parse(readFileSync(AGENTES_FILE, "utf-8"));
+  } catch (_) {}
+  return [];
+}
+
+export function saveAgente({ nombre, phone, inmobiliaria, zona, fuente, propiedad }) {
+  if (!phone && !nombre) return;
+  try {
+    const agentes = loadAgentes();
+    const norm = (s) => (s || "").toLowerCase().trim();
+    const idx = agentes.findIndex(
+      (a) => (phone && a.phone === phone) || (nombre && norm(a.nombre) === norm(nombre))
+    );
+    const entry = {
+      nombre: nombre || "",
+      phone: phone || "",
+      inmobiliaria: inmobiliaria || "",
+      zona: zona || "",
+      fuente: fuente || "reporte",
+      updatedAt: new Date().toISOString(),
+    };
+    if (idx >= 0) {
+      agentes[idx] = { ...agentes[idx], ...entry };
+      // Agregar propiedad si viene y no está duplicada
+      if (propiedad) {
+        if (!agentes[idx].propiedades) agentes[idx].propiedades = [];
+        const yaExiste = agentes[idx].propiedades.some(
+          (p) => p.link === propiedad.link || p.titulo === propiedad.titulo
+        );
+        if (!yaExiste) agentes[idx].propiedades.push({ ...propiedad, guardadaAt: new Date().toISOString() });
+      }
+    } else {
+      const nuevo = { ...entry, createdAt: new Date().toISOString(), propiedades: [] };
+      if (propiedad) nuevo.propiedades.push({ ...propiedad, guardadaAt: new Date().toISOString() });
+      agentes.push(nuevo);
+    }
+    writeFileSync(AGENTES_FILE, JSON.stringify(agentes, null, 2), "utf-8");
+    console.log(`[NICO] Agente guardado: ${nombre || phone}${propiedad ? " + propiedad: " + (propiedad.titulo || propiedad.link) : ""}`);
+  } catch (e) {
+    console.error("Error guardando agente:", e.message);
+  }
+}
+
+export function searchAgenteByName(query) {
+  const agentes = loadAgentes();
+  const q = (query || "").toLowerCase().trim();
+  if (!q) return [];
+  const words = q.split(/\s+/).filter((w) => w.length > 1);
+  return agentes.filter((a) => {
+    const haystack = `${(a.nombre || "").toLowerCase()} ${(a.inmobiliaria || "").toLowerCase()}`.trim();
+    if (haystack.includes(q)) return true;
+    return words.length > 0 && words.every((w) => haystack.includes(w));
+  });
+}
+
+export function getAgentes() {
+  return loadAgentes();
+}
+
+// Extrae agentes de un texto de reporte (nombre + teléfono)
+export function extractAgentesFromText(text) {
+  if (!text) return [];
+  const found = [];
+  // Detectar patrones: "Agente: Nombre - 3421234567" / "Contacto: ..." / número suelto con nombre cerca
+  const phoneRe = /(?:\+?54\s*9?\s*)?(?:0?\d{2,4}[\s\-]?)?\d{6,8}/g;
+  const agenteLabelRe = /(?:agente|asesor|contacto|tel[eé]fono|cel|whatsapp)[:\s]+([^\n\-–—]+?)(?:[\s\-–—]+([\d\s+\-\.]{8,}))?(?:\n|$|\.|,)/gi;
+
+  let m;
+  while ((m = agenteLabelRe.exec(text)) !== null) {
+    const nombre = (m[1] || "").replace(/[\*_]/g, "").trim();
+    const rawPhone = (m[2] || "").replace(/[\s\-\.]/g, "").trim();
+    const phone = rawPhone.replace(/^(?:\+?54)?9?/, "549").replace(/^5490/, "549");
+    if (nombre.length > 2) {
+      found.push({ nombre, phone: rawPhone.length >= 8 ? phone : "", fuente: "reporte" });
+    }
+  }
+
+  // Si no encontró etiquetas, buscar cualquier número de 10 dígitos en el texto
+  if (found.length === 0) {
+    const nums = text.match(phoneRe) || [];
+    for (const n of nums) {
+      const clean = n.replace(/[\s\-\.]/g, "");
+      if (clean.length >= 10) {
+        found.push({ nombre: "", phone: "549" + clean.slice(-10), fuente: "reporte" });
+      }
+    }
+  }
+  return found;
+}
+
 
 // ─── Sesiones en memoria ───────────────────────────────────────────────────────
 const conversations = new Map();
