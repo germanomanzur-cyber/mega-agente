@@ -1,7 +1,7 @@
 import express from "express";
 import axios from "axios";
 import dotenv from "dotenv";
-import { handleIncomingMessage, getLeads, getAndClearPendingHandoff } from "./agent.js";
+import { handleIncomingMessage, getLeads, getAndClearPendingHandoff, saveLeadWaName, searchLeadByName } from "./agent.js";
 import { logMessage, getChats } from "./chatlog.js";
 
 dotenv.config();
@@ -22,6 +22,20 @@ const {
 
 const GERMAN_WA = GERMAN_PHONE || "5493424287842";
 const REPORT_TOKEN = REPORT_TOKEN_ENV || VERIFY_TOKEN;
+
+// ─── Comandos privados de Germán (solo su número) ────────────────────────────
+const LOOKUP_RE = /(?:pasame|dame|mandame|buscame)?\s*(?:n[úu]mero|tel(?:[eé]fono)?|contacto|wsp|num)\s+(?:de\s+)?(.+)/i;
+const LOOKUP_RE2 = /(?:qui[eé]n es|datos de|info de)\s+(.+)/i;
+
+function parsearComandoGerman(texto) {
+  if (!texto) return null;
+  const t = texto.trim();
+  const m1 = t.match(LOOKUP_RE);
+  if (m1) return { tipo: "lookup", nombre: m1[1].trim().replace(/\?$/, "") };
+  const m2 = t.match(LOOKUP_RE2);
+  if (m2) return { tipo: "lookup", nombre: m2[1].trim().replace(/\?$/, "") };
+  return null;
+}
 
 // ─── Respuesta automática para redes sociales ─────────────────────────────────
 const RESPUESTA_SOCIAL = `¡Hola! Soy Germán Manzur de MEGA Inmobiliaria Santa Fe 🏠 Vi tu consulta y tengo propiedades disponibles en esa zona. Escribime por WhatsApp y te mando los detalles: https://wa.me/5493424287842`;
@@ -146,6 +160,35 @@ app.post("/webhook", async (req, res) => {
       let userText = message.text?.body || null;
       if (message.type === "audio") userText = "__AUDIO__";
       if (message.type === "image") userText = "__IMAGE__";
+
+        // ─ Guardar nombre WA del perfil (solo leads, no Germán)
+        const waProfileName = changes?.value?.contacts?.[0]?.profile?.name;
+        if (waProfileName && from !== GERMAN_WA) saveLeadWaName(from, waProfileName);
+
+        // ─ Interceptar mensajes de Germán — comandos privados
+        if (from === GERMAN_WA) {
+          const cmd = parsearComandoGerman(userText);
+          if (cmd?.tipo === "lookup") {
+            const resultados = searchLeadByName(cmd.nombre);
+            let reply;
+            if (resultados.length === 0) {
+              reply = "No encontre leads con ese nombre. Proba nombre parcial o revisa /leads";
+            } else if (resultados.length === 1) {
+              const l = resultados[0];
+              const nombre = l.waName || l.name || "Sin nombre";
+              reply = "*" + nombre + "*\n" + "wa.me/" + l.phone + "\n" + (l.tier || "-") + " · " + (l.zona || "-") + " · " + (l.presupuesto || "-");
+            } else {
+              const lista = resultados.slice(0, 5).map((l) => {
+                const n = l.waName || l.name || "Sin nombre";
+                return "• *" + n + "* -> wa.me/" + l.phone + " (" + (l.tier || "-") + ")";
+              }).join("\n");
+              reply = resultados.length + " resultados para '" + cmd.nombre + "':\n" + lista;
+            }
+            await sendWhatsApp(GERMAN_WA, reply);
+            logMessage("wa", GERMAN_WA, "nico", reply);
+          }
+          return; // Germán no pasa por el agente AI
+        }
 
       console.log(`[NICO/WA] Mensaje de ${from}: ${userText}`);
 
