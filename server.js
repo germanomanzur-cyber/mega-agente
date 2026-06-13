@@ -187,7 +187,7 @@ app.post("/webhook", async (req, res) => {
             await sendWhatsApp(GERMAN_WA, reply);
             logMessage("wa", GERMAN_WA, "nico", reply);
           }
-          return; // Germán no pasa por el agente AI
+          // si no es comando de lookup, continuar con el agente normalmente
         }
 
       console.log(`[NICO/WA] Mensaje de ${from}: ${userText}`);
