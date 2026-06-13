@@ -1,6 +1,6 @@
 # BASE DE CONOCIMIENTO — MEGA Inmobiliaria
 # Asesor: Germán Manzur | WhatsApp: +54 342 428-7842
-# Actualizado: Junio 2026
+# Actualizado: 13 de junio de 2026
 
 ## ASESOR
 
@@ -290,410 +290,437 @@ Reglas: ubicar la propiedad del cliente en la banda P25-P75 según estado y ubic
 
 ---
 
-## INVENTARIO COMPLETO MEGA/TOKKO — 276 PROPIEDADES (foto al 11/06/2026)
+## INVENTARIO COMPLETO MEGA WEB — 294 PROPIEDADES (sincronizado 13/06/2026)
 
 Instrucciones:
 - Cuando pregunten por zona, presupuesto o dormitorios, buscar acá y ofrecer máximo 3 opciones con precio y datos clave. Cerrar derivando a Germán: https://wa.me/5493424287842
-- El código (ej. MAP8169699) es referencia interna; darlo solo si el cliente lo pide.
+- La referencia es el LINK de la ficha: compartirlo con el cliente si pide fotos o más información.
+- Orden de prioridad al ofrecer: 1° cartera directa de Germán (Prioridad 1), 2° este inventario web de MEGA, 3° Tokko / Mercado Único (Prioridad 3).
 - Si no hay match exacto, ofrecer lo más cercano (zona vecina o rango superior/inferior).
-- Disponibilidad sujeta a confirmación de Germán (la cartera se actualiza a diario).
+- Disponibilidad sujeta a confirmación de Germán. Inventario sincronizado automáticamente todos los días 09:00 desde inmobiliariamega.com.ar (Santa Fe + Entre Ríos).
 
-Formato: Referencia | Tipo | Dirección/título | Operación y precio | Dorm/Baños | Superficie
+Formato: Tipo | Título | Operación y precio | Dorm/Baños | Superficie | Link ficha
+
+<!-- MEGA_WEB_MANIFEST_START
+1ero-de-mayo-2754-departamento-monoambiente-con-cochera,25-de-junio-439-alquiler-departamento-amoblado,25-de-junio-al-400-departamento-en-venta-1-dormitorio,25-de-mayo-613-dpto-a-estrenar-con-patio-y-cochera,25-de-mayo-y-palma-cochera-en-venta,8-cocheras-techadas-en-venta-ideal-inversion-zona-escuela-hogar-calle-jose-ramos-al-1600,alejandro-carbo-casa,alem-al-800-departamento-en-venta-2-dormitorios,alem-al-800-local-comercial-en-venta,almirante-brown-y-blas-parera-galpon-alquiler,alquiler-monoambiente-amoblado,amplia-casa-en-venta-2,amplia-casa-en-venta-en-barrio-las-colinas-2,amplio-lote-sobre-av-circunvalacion-esq-cabeza-de-vaca-2500,andres-pazos-n128-alquiler-de-cochera-techada-en-planta-baja-zona-centro-parana,av-almafuerte-al-5300-gran-terreno-en-venta,av-de-las-americas-5717-galpon-mas-casa-en-venta,av-freyre-3100-portal-avenida-cam-88-departamento-en-venta-en-santa-fe-2,av-los-laureles-y-blvd-los-nandues-terreno-en-venta-en-oro-verde,av-ramirez-2030-departamento-temporal-por-dia-semanames,av-ramirez-2525-gran-galpon-sobre-avenida,av-uranga-al-1100-importante-propiedad-en-venta,av-zanni-n979-departamento-en-alquiler-2-dormitorios-con-espectacular-terraza,bajada-views-manuel-estrada-3885,bazan-y-bustos-936-excelente-lote-zona-circunvalacion,calle-san-luis-casa-en-venta-2,casa-a-estrenar-con-entrega-y-financiacion,casa-a-terminar-zona-tortuguitas-rondeau-3419,casa-amoblada-con-pileta-temporal-zona-la-toma-2,casa-barrio-mercantil-mar-del-plata-1789,casa-centrica-con-gran-fondo-apta-credito,casa-con-pileta-y-quincho-en-sauce-viejo,casa-en-altos-del-sauce,casa-en-arroyo-aguiar,casa-en-arroyo-aguiar-2,casa-en-candioti-norte,casa-en-centro,casa-en-guadalupe,casa-en-guadalupe-este,casa-en-la-capital,casa-en-la-picada-venta,casa-en-mayoraz,casa-en-parana-3,casa-en-santa-fe,casa-en-santa-fe-2,casa-en-santa-fe-3,casa-en-sargento-cabral,casa-en-sauce-viejo,casa-en-sauce-viejo-2,casa-en-sur,casa-en-venta-colastine,casa-en-venta-en-zona-bajada-grande-con-salida-al-rio-2,casa-en-venta-ubicada-en-calle-cataluna-esquina-el-quijote,casa-mas-depto-independiente,casa-monte-vera,casa-oficina,casa-para-refaccionar-en-parana,casa-parana,casa-parana-10,casa-parana-11,casa-parana-2,casa-parana-3,casa-parana-4,casa-parana-6,casa-parana-7,casa-parana-8,casa-quinta-en-la-picada,casa-quinta-en-venta-zona-paracao-calle-espejo-al-3500-2,casa-santa-fe,casa-santa-fe-2,castellanos-y-pedro-vittori-departamento-en-venta,catamarca-385-casa-zona-parque,catamarca-459-gran-casa-zona-parque,cervantes-217-se-alquila-departamento-dos-dormitorios-centrico,cochera-disponible,cochera-en-eva-peron-y-rivadavia,cochera-en-sur,cochera-en-venta-en-calle-dias-colodrero-457-2,cochera-parana,cochera-parana-2,colon-y-corrientes-departamento-de-1-dormitorio-en-venta,corrientes-265-cocheras-cubo,del-loro-y-del-boyero-piedras-blancas-terreno-venta,departamento-de-dos-dormitorios,departamento-dos-dormis-con-cochera-frente-a-hospital-san-martin,departamento-dos-dormitorios-av-zanni-y-facundo-arce,departamento-dos-dormitorios-con-amenities-en-complejo-cerrado-av-uranga-580,departamento-en-candioti-norte,departamento-en-candioti-sur,departamento-en-capital-federal-jujuy-al-100,departamento-en-la-capital,departamento-en-la-capital-2,departamento-en-la-capital-3,departamento-en-mariano-comas,departamento-en-parana,departamento-en-parana-2,departamento-en-parana-4,departamento-en-parana-5,departamento-en-santa-fe,departamento-en-santa-fe-2,departamento-en-santa-fe-3,departamento-en-santa-fe-4,departamento-en-santa-fe-5,departamento-en-santa-fe-6,departamento-en-sur,departamento-en-torre,departamento-en-venta,departamento-en-venta-de-3-dormitorios-12-de-septiembre-al-1600,departamento-en-venta-malvinas-400,departamento-en-venta-zona-centro-echague-550,departamento-interno,departamento-moderno-en-venta-en-asuncion-paraguay,departamento-parana,departamento-parana-2,departamento-parana-3,departamento-parana-5,departamento-parana-6,departamento-parana-9,departamento-pilay-sin-adjudicar,departamento-premium-en-venta-en-zona-parque-2,departamento-santa-fe,departamento-santa-fe-2,departamento-santa-fe-3,departamentos-en-venta-ecuador-15-edificio-providencia,diaz-velez-1135-casa-en-esquina-sobre-avenida,don-bosco-y-morath-se-vende-lote-36-y-37,dr-enrique-bonflis-esquina-verdier-casa-en-venta-toma-vieja,duplex-en-complejo-diamante-322,echague-al-500-departamento-en-venta-zona-centro,echeverria-2010-casa-alquiler,echeverria-2010-casa-zona-norte,en-venta-excelente-stand-comercial,espana-567-casona-centrica-ideal-emprendimiento,excelente-local-en-venta-plena-peatonal-san-martin-esquina-la-paz,excelente-lote-en-tierra-alta-i,excelete-lote-en-puerto-barrancas,federacion-6009-casa-en-venta-la-paz-entre-rios,ferre-114-loft-alquiler-amoblado-con-cochera,fidel-sagastume-919-excelente-lote-en-plena-ciudad,formosa-al-400-galpon-en-alquiler,galpon-en-parana,galpon-en-parana-2,galpon-parana,galpones-punto-norte-zona-acceso-norte-2,geronimo-ojeda-y-maradona-terreno-en-sauce-pueblo,gobernador-parera-1356-casa-en-venta,gral-j-j-de-urquiza-1269-oportunidad-cochera-centrica,gral-j-j-de-urquiza-al-700-gran-casa-en-planta-baja,gran-casa-quinta-en-oro-verde,gran-esquina-en-venta-plena-avenida-las-americas,gran-quinta-en-venta-en-villa-urquiza,gran-semipiso-en-venta-pleno-parque-tucuman-y-mitre,gran-terreno-en-esquina-a-metros-de-acceso-norte,guatemala-799-casa-en-esquina-a-reciclar,guido-mariza-terreno-en-villa-hernandarias-2,hermosa-casa-tipo-de-campo-zona-la-toma-el-ibapoy-3919,hermoso-lote-con-quincho-a-orillas-del-rio,ilia-al-300-departamento-alquiler,importante-casa-en-venta-en-puerto-urquiza,importante-propiedad-ubicada-en-calle-san-martin-285-en-un-lugar-estrategico-de-la-ciudad-de-parana,increible-casa-quinta,italia-18-casa-en-venta,italia-al-100-amplio-local-en-alquiler-en-parana,juan-baez-al-100-casa-en-venta,la-rioja-459-cochera-centrica-cubierta,las-azaleas-4558-casa-en-venta-las-acacias,lisandro-de-la-torre-2900-planta-alta-2-dorm,local-avenida-ejercito-parana,local-comercial-centrico-dos-ambientes-ideal-inversion,local-en-la-capital,local-en-parana,local-en-parana-2,local-en-parana-3,lopez-jordan-darwin-y-acceso-norte-urbanizacion-distrito-norte,los-zorsales-en-venta-departamentos-en-oro-verde,lote-a-metros-del-acceso-norte,lote-disponible-en-loma-hermosa,lote-en-condominio-jardines-don-bosco-parana-e-r,lote-en-zona-norte-loteo-terrazas,lote-en-zona-tilcara-sauce-montrull,loteo-chacras-de-larralde-entrega-y-financiacion,lotes-diponibles-en-villa-urquiza-opcion-financiado,lotes-disponibles-en-sauce-pueblo,lotes-disponibles-en-vistas-del-seminario,lotes-disponibles-jardin-del-hipodromo-oro-verde,lotes-en-strobel-diamante-opcion-financiado,lotes-en-venta-loteo-solares-de-villa-urquiza,maipu-2371-departamento-2-dorm-venta-paseo-de-los-molinos-pilay-cancelado-edificio-san-jeronimo-83,malvinas-276-hermoso-loft-zona-parque-con-amenities,malvinas-452-oficinas-en-venta-zona-parque,malvinas-al-100-departamento-de-3-dormitorios-en-venta,malvinas-inn-importante-piso-en-venta,mexico-376-7a-semipiso-zona-parque,mitre-413-departamento-venta,monte-caseros-318-casa-centrica-a-reciclar,moreno-70-oficina-de-2-ambientes,moreno-y-francisco-laprida-casa-en-venta-en-villa-libertador-san-martin,nuevo-loteo-colonia-ensayo-loteo-las-colinas-2,oficina-parana,oportunidad-de-inversion-apto-loteo-san-benito,oportunidad-de-inversion-en-buenos-aires-montevideo-al-400,oportunidad-lote-en-tierra-alta-ii-financiado,pasaje-baucis-429-casona-centrica,pellegrini-379-casa-en-venta-a-refaccionar,peron-70-departamento-1-dormitorio-alquiler,ph-en-venta-con-patio-gualeguaychu-263-2,ph-parana,ph-parana-2,ph-parana-3,piedrabuena-57-departamento-2-dormitorios-en-venta,piedrabuena-57-departamento-en-venta-de-2-dormitorios,pilay-no-adjudicado-dos-dormitorios,pintor-nux-puerto-barrancas-etapa-1-se-vende-gran-lote-mas-proyecto,pintor-nux-y-lopez-jordan-excelente-lote-en-esquina-puerto-barrncas,plan-pilay-departamento-en-venta,puerto-barrancas-etapa-ii-financiado-entrega-minima,quinta-colon,quinta-en-la-guardia,quinta-en-sauce-viejo-2,quinta-en-venta,quinta-en-villa-california,quinta-ubicada-en-colonia-avellaneda,regis-martinez-1773-galpon-en-venta,republica-de-eslovenia-al-2200-departamento-en-venta-bajada-grande-2,rosario-del-tala-430-casa-en-alquiler-interna,rosario-del-tala-al-500-amplia-casa-en-venta,ruiz-moreno-1082-se-venden-dos-unidades-funcionales-ideal-inversion,ruta-12-colonia-avellaneda-gran-lote-en-venta,salta-279-casa-centrica-con-patio-apta-credito,salta-524-dpto-un-dormitorio-centrico,san-luis-y-la-paz-fideicomiso-torre-ambar-100-financiado-2,san-martin-118,san-martin-329-importante-semipiso-en-venta-dos-dormitorios,sarmiento-700-casa-en-venta,se-alquila-departamento-dos-dormitorios-andres-pazos-360,se-alquila-dpto-temporal-zona-parque-malvinas-440,se-vende-casa-quinta-amoblada-sauce-montrull,se-vende-hermoso-departamento-reciclado-a-nuevo-zona-centro,se-vende-local-con-amplio-terreno-calle-francia-y-circunvalacion,semipiso-con-vista-al-rio,terreno-cayasta,terreno-centrico-en-venta,terreno-colonia-avellaneda,terreno-colonia-avellaneda-2,terreno-en-aldea-brasilera,terreno-en-club-de-campo-las-colinas-manzana-3-lote-9-2,terreno-en-colonia-avellaneda,terreno-en-esquina-zona-norte,terreno-en-feliciano,terreno-en-general-alvear,terreno-en-los-lapachos-3,terreno-en-maria-grande,terreno-en-oro-verde,terreno-en-parana-2,terreno-en-parana-3,terreno-en-parana-4,terreno-en-parana-5,terreno-en-parana-6,terreno-en-parana-7,terreno-en-parana-8,terreno-en-puerto-barrancas-etapa-ii,terreno-en-puerto-urquiza,terreno-en-san-benito,terreno-en-santo-tome,terreno-en-santo-tome-2,terreno-en-sauce-viejo,terreno-en-terrazas-al-norte-oro-verde,terreno-en-zona-norte-a-un-valor-impresionante,terreno-mas-quincho-abierto-en-alvear,terreno-monte-vera,terreno-parana,terreno-parana-10,terreno-parana-2,terreno-parana-3,terreno-parana-4,terreno-parana-5,terreno-parana-7,terreno-parana-8,terreno-parana-9,terreno-sauce-viejo,terreno-sauce-viejo-2,terreno-viale,terrenos,toscanini-255-terreno-con-todos-los-servicios,triplez-centrico-con-cochera-apto-credito,unidad-disponible-en-edificio-malvinas-inn,unidad-disponible-premium-edificio-malvinas-140,urquiza-1530-departamento-en-venta,urquiza-al-1500-departamento-1-dormitorio-en-venta,venta-de-casa-departamento-a-remodelar-o-demoler,venta-luminoso-departamento-de-1-dorm,vicegobernador-luis-chaile-al-1800-casa-en-venta,victorio-camerano-1826-casa-a-remodelar-apta-credito,victorio-camerano-1826-oportunidad-casa-a-remodelar
+MEGA_WEB_MANIFEST_END -->
+
 ### Aldea Brasilera
 
-- MLA7226257 | Terreno | Lote Disponible en Loma Hermosa | Venta USD 11.000 | - | -
-- MLA6187160 | Terreno | Lotes Disponibles Cerca Del Rio. Terrazas De La Aldea | Venta USD 12.000 | - | -
+- Terreno | Lote Disponible en Loma Hermosa | Venta USD 11.000 | 0D/0B | 450 m2 | https://inmobiliariamega.com.ar/propiedades/lote-disponible-en-loma-hermosa/
+- Terreno | Terreno en Aldea Brasilera | Venta USD 12.000 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/terreno-en-aldea-brasilera/
 
 ### Almafuerte
 
-- MLO8059351 | Local | Almafuerte y zanni 3000. ALQUILER. LOCAL COMERCIAL | Alquiler USD 1.395 | 0D/8B | 300 m2
+- Local/Oficina | Almafuerte y zanni al 3000. ALQUILER. LOCAL COMERCIAL | Alquiler ARS 2.000.000 | 0D/8B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/local-avenida-ejercito-parana/
 
 ### Altos del Sauce
 
-- MHO8034159 | Casa | Suecia S/N 0 | Venta USD 165.000 | 2D/1B | -
+- Casa | Casa en Altos del Sauce | Venta USD 189.000 | 2D/1B | 280 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-altos-del-sauce/
+
+### Altos del Valle
+
+- Terreno | Terrenos | Venta USD 25.000 | 0D/0B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/terrenos/
 
 ### Arroyo Aguiar
 
-- MHO7570528 | Casa | Corrientes Y Noriega | Venta USD 92.000 | 4D/1B | 173 m2
-- MHO7570698 | Casa | Avenida Corrientes | Venta USD 45.000 | 2D/1B | -
+- Casa | Casa en Arroyo Aguiar | Venta USD 92.000 | 4D/1B | 1,218 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-arroyo-aguiar-2/
+- Casa | Casa en Arroyo Aguiar | Venta USD 45.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/casa-en-arroyo-aguiar/
 
 ### Bajada Grande
 
-- MHO7394028 | Casa | Av. Estrada 3318. Gran Casa Con Bajada al Rio | Venta USD 300.000 | 4D/2B | 191 m2
+- Casa | Av. Estrada N°3318. Casa en venta con excelente vista al rio. Zona Bajada Grande! | Venta USD 300.000 | 4D/2B | 230 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-venta-en-zona-bajada-grande-con-salida-al-rio-2/
 
 ### Balvanera
 
-- MAP7826799 | Departamento | Jujuy 100 | Venta USD 55.800 | 1D/1B | 27 m2
-- MAP7819723 | Departamento | Montevideo 454 | Venta USD 90.000 | 0D/1B | 39 m2
+- Departamento | Departamento en Capital Federal. Jujuy al 100 | Venta USD 55.800 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-capital-federal-jujuy-al-100/
+- Departamento | Oportunidad de Inversión en Buenos aires. Montevideo al 400 | Venta USD 90.000 | 0D/1B | 40 m2 | https://inmobiliariamega.com.ar/propiedades/oportunidad-de-inversion-en-buenos-aires-montevideo-al-400/
 
 ### Candioti Norte
 
-- MAP7986153 | Departamento | Guemes 3846 | Venta USD 160.000 | 2D/2B | 66 m2
+- Casa | Casa en Candioti Norte | Venta USD 93.000 | 2D/1B | 99 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-candioti-norte/
+- Departamento | Departamento en Candioti Norte | Venta USD 160.000 | 2D/2B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-candioti-norte/
 
 ### Candioti Sur
 
-- MAP7988359 | Departamento | Avellaneda 3273 Piso 1 | Venta USD 87.500 | 0D/1B | 40 m2
+- Departamento | Departamento en Candioti Sur | Venta USD 87.500 | 0D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-candioti-sur/
+
+### Cayastá
+
+- Terreno | Terreno &#8211; Cayasta | Venta USD 38.000 | 0D/0B | 1,250 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-cayasta/
 
 ### Centro
 
-- MHO7564719 | Casa | Eva Peron 2973 | Venta USD 270.000 | 4D/2B | 256 m2
-- MAP8090591 | Departamento | Lisando de La Torre 2915 Piso 1 | Venta USD 65.000 | 2D/1B | 172 m2
+- Casa | Casa en Centro | Venta USD 270.000 | 4D/2B | - | https://inmobiliariamega.com.ar/propiedades/casa-en-centro/
+- Departamento | Lisandro de La Torre 2900, planta alta 2 dorm | Venta USD 65.000 | 2D/1B | 107 m2 | https://inmobiliariamega.com.ar/propiedades/lisandro-de-la-torre-2900-planta-alta-2-dorm/
 
 ### Colastiné
 
-- MHO8002374 | Casa | Los Mandarinos 5349 | Venta USD 175.000 | 3D/2B | 90 m2
-
-### Colonia Avellaneda
-
-- MLO8161027 | Local | Juan Manuel de Rosas 3020 | Venta USD 250.000 Alquiler USD 1.700 | 0D/3B | 322 m2
-- MWE7919493 | Quinta | Ciudad de Federal | Venta USD 100.000 | 2D/3B | 201 m2
-- MLA7957840 | Terreno | Ruta 12. Colonia Avellaneda. Gran Lote En Venta | Venta USD 60.000 | - | -
-- MLA6076440 | Terreno | Colonia Avellaneda Ruta 18. OPORTUNIDAD UNICO LOTE SANTA TERESA | Venta USD 8.500 | - | -
-- TLA3413258 | Terreno | Córdoba (Mitre y Victoria - a 200mts Ruta 12) - Colonia Avellaneda - | Venta USD 80.000 | - | 6500 m2
-- MLA2505150 | Terreno | Convencion Constituyente 2008 - Colonia Avellaneda - 1,5 Has para Urbanizacion | Venta USD 60.000 | - | -
-
-### Colonia Ensayo
-
-- MLA7034166 | Terreno | Oportunidad Lote en Tierra Alta II FINANCIADO | Venta USD 10.000 | - | -
-- MLA6744219 | Terreno | Excelente Lote en Tierra Alta I | Venta USD 9.000 | - | -
+- Casa | CASA EN VENTA &#8211; COLASTINE | Venta USD 175.000 | 3D/2B | 812 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-venta-colastine/
 
 ### Colón
 
-- TWE4162295 | Quinta | Ruta 135, Km 5.5 | Venta USD 199.000 | 6D/0B | 300 m2
+- Quinta | Quinta &#8211; Colon | Venta USD 199.000 | 6D/0B | 1,751 m2 | https://inmobiliariamega.com.ar/propiedades/quinta-colon/
 
-### Constituyentes
+### Colonia Avellaneda
 
-- MAP6579753 | Departamento | JUNIN 3246 | Venta USD 90.000 | 1D/1B | 45 m2
+- Quinta | Quinta ubicada en Colonia Avellaneda | Venta USD 100.000 | 2D/3B | 1,000 m2 | https://inmobiliariamega.com.ar/propiedades/quinta-ubicada-en-colonia-avellaneda/
+- Terreno | Ruta 12. Colonia Avellaneda. Gran Lote En Venta | Venta USD 60.000 | 0D/0B | 1,386 m2 | https://inmobiliariamega.com.ar/propiedades/ruta-12-colonia-avellaneda-gran-lote-en-venta/
+- Terreno | Terreno &#8211; Colonia Avellaneda | Venta USD 80.000 | 0D/0B | 6,500 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-colonia-avellaneda-2/
+- Terreno | Terreno &#8211; Colonia Avellaneda | Venta USD 60.000 | 0D/0B | 15,000 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-colonia-avellaneda/
+- Terreno | Terreno en Colonia Avellaneda | Venta USD 8.500 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/terreno-en-colonia-avellaneda/
+
+### Colonia Ensayo
+
+- Terreno | Excelente Lote en Tierra Alta I | Venta USD 9.000 | 0D/0B | 450 m2 | https://inmobiliariamega.com.ar/propiedades/excelente-lote-en-tierra-alta-i/
+- Terreno | Oportunidad Lote en Tierra Alta II FINANCIADO | Venta USD 10.000 | 0D/0B | 588 m2 | https://inmobiliariamega.com.ar/propiedades/oportunidad-lote-en-tierra-alta-ii-financiado/
 
 ### Diamante
 
-- MHO8057306 | Casa | Sarmiento 700 | Venta USD 260.000 | 3D/1B | 340 m2
+- Casa | Sarmiento 700 &#8211; CASA EN VENTA | Venta USD 260.000 | 3D/1B | 587 m2 | https://inmobiliariamega.com.ar/propiedades/sarmiento-700-casa-en-venta/
 
 ### Feliciano
 
-- MLA6499085 | Terreno | 110has En Alquiler En Feliciano | s/precio | - | -
+- Terreno | Terreno en Feliciano | Alquiler ARS 10 | 0D/0B | 1,100,000 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-feliciano/
 
 ### General Alvear
 
-- MLA7508835 | Casa | Terreno en Gral. Alvear, Entre Ríos | Venta USD 125.000 | 1D/1B | 50 m2
-- MLA7793787 | Terreno | Lotes en venta en General Alvear | Venta USD 11.000 | - | 450 m2
-- MLA7509112 | Terreno | Publica | Venta USD 45.000 | - | 300 m2
+- Casa | Hermoso Lote con quincho a orillas del Rio | Venta USD 125.000 | 1D/1B | 3,000 m2 | https://inmobiliariamega.com.ar/propiedades/hermoso-lote-con-quincho-a-orillas-del-rio/
+- Terreno | Terreno en General Alvear | Venta USD 11.000 | 0D/0B | 450 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-general-alvear/
+- Terreno | Terreno mas Quincho abierto en Alvear! | Venta USD 45.000 | 0D/0B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-mas-quincho-abierto-en-alvear/
 
 ### Guadalupe
 
-- MHO7986132 | Casa | Pedro de Vega 850 | Venta USD 240.000 | 3D/2B | -
+- Casa | Pedro de Vega 800. Casa en venta | Venta USD 240.000 | 3D/2B | 470 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-guadalupe/
 
 ### La Capital
 
-- MGA7183990 | Cochera | Eva Peron y Rivadavia 3 | Venta USD 6.500 | - | -
-- MAP8030986 | Departamento | Pilay 0 | Venta USD 48.000 | - | -
-- MAP8030667 | Departamento | Castellanos y Pedro Vittori | Venta USD 105.000 | 1D/1B | 90 m2
-- MAP7180134 | Departamento | San Lorenzo 2347 | Venta USD 79.000 | 2D/1B | 70 m2
-- MLO7810106 | Local | LOCAL COMERCIAL Francia 1799 | Venta USD 93.000 Alquiler USD 837 | 0D/1B | 41 m2
+- Departamento | Departamento en La Capital | Alquiler ARS 450.000 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-la-capital-2/
+- Casa | Casa en La Capital | Venta USD 90.000 | 3D/2B | 217 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-la-capital/
+- Departamento | Castellanos y Pedro Vittori. Departamento en venta | Venta USD 105.000 | 1D/1B | 90 m2 | https://inmobiliariamega.com.ar/propiedades/castellanos-y-pedro-vittori-departamento-en-venta/
+- Galpón/Cochera | Cochera en Eva Peron y Rivadavia | Venta USD 6.500 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/cochera-en-eva-peron-y-rivadavia/
+- Departamento | Departamento de dos dormitorios | Venta USD 79.000 | 2D/1B | 115 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-de-dos-dormitorios/
+- Departamento | Departamento en La Capital | Venta USD 48.000 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-la-capital-3/
+- Departamento | Departamento en La Capital | Venta USD 43.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-la-capital/
+- Local/Oficina | Francia 1700. Local comercial | Venta USD 93.000 | 0D/1B | - | https://inmobiliariamega.com.ar/propiedades/local-en-la-capital/
+
+### La Guardia
+
+- Quinta | Quinta en La Guardia | Venta USD 127.000 | 2D/1B | 1,000 m2 | https://inmobiliariamega.com.ar/propiedades/quinta-en-la-guardia/
 
 ### La Paz
 
-- MHO8076960 | Casa | Federacion 6009 | Venta USD 153.000 | 4D/3B | 260 m2
+- Casa | Federacion 6009. Casa en venta. La paz Entre Rios | Venta USD 153.000 | 4D/3B | 336 m2 | https://inmobiliariamega.com.ar/propiedades/federacion-6009-casa-en-venta-la-paz-entre-rios/
 
 ### La Picada
 
-- MHO7639182 | Casa | Ruta Nacional 12 Km 26 esquina Ruta Provincial 10 | Venta USD 175.000 | 3D/3B | 192 m2
-- MWE7752456 | Quinta | Casa Quinta en la Picada. Ubicación estratégica: A solo 100 metros de la Ruta 12. | Venta USD 125.000 | 0D/1B | 50 m2
+- Casa | CASA EN LA PICADA &#8211; VENTA | Venta USD 175.000 | 3D/3B | 741 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-la-picada-venta/
+- Quinta | Casa Quinta en La Picada | Venta USD 125.000 | 0D/1B | 25,000 m2 | https://inmobiliariamega.com.ar/propiedades/casa-quinta-en-la-picada/
 
 ### Maria Grande
 
-- MLA7668302 | Terreno | Constitución y Sarmiento | Venta USD 120.000 | - | -
+- Terreno | Terreno en Maria Grande | Venta USD 120.000 | 0D/0B | 3,000 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-maria-grande/
 
 ### Mariano Comas
 
-- MAP8027689 | Departamento | San Martín 3600 Piso 12 | Venta USD 125.000 | 1D/1B | 50 m2
+- Departamento | Departamento en Mariano Comas | Venta USD 125.000 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-mariano-comas/
 
 ### Mayoraz
 
-- MHO7720758 | Casa | Llerena 2840 | Venta USD 165.000 | 2D/1B | 142 m2
+- Casa | Casa en Mayoraz | Venta USD 165.000 | 2D/1B | 399 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-mayoraz/
+
+### Monte Vera
+
+- Casa | Casa &#8211; Monte Vera | Venta USD 60.000 | 2D/1B | 584 m2 | https://inmobiliariamega.com.ar/propiedades/casa-monte-vera/
+- Terreno | Terreno &#8211; Monte Vera | Venta USD 110.000 | 0D/0B | 86,000 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-monte-vera/
 
 ### Oro Verde
 
-- MAP8102566 | Departamento | LOS ZORSALES 261. ORO VERDE. DEPARTAMENTOS EN VENTA | Venta USD 35.000 | 1D/1B | 60 m2
-- MWE7256647 | Quinta | Gran Casa Quinta En Oro Verde | Venta USD 178.000 | - | 148 m2
-- MLA8061368 | Terreno | Av. Los Laureles y Blvd. Los Ñandúes. Terreno en venta en Oro Verde! | Venta USD 18.000 | - | 942 m2
-- MLA7348397 | Terreno | Lotes Disponibles Jardin del Hipodromo Oro Verde | Venta USD 1.050 | - | -
-- MLA6890291 | Terreno | Terreno en Terrazas al Sur Oro Verde | Venta USD 13.000 | - | -
-- MLA6717866 | Terreno | Nuevo Loteo Colonia Ensayo - Loteo Las Colinas | Venta USD 8.500 | - | -
-- MLA4929976 | Terreno | Loma Alta | Venta USD 10.000 | - | -
+- Terreno | Av. Los Laureles y Blvd. Los Ñandúes. Terreno en venta en Oro Verde! | Venta USD 18.000 | 0D/0B | 942 m2 | https://inmobiliariamega.com.ar/propiedades/av-los-laureles-y-blvd-los-nandues-terreno-en-venta-en-oro-verde/
+- Quinta | Gran Casa Quinta En Oro Verde | Venta USD 178.000 | 0D/0B | 1,000 m2 | https://inmobiliariamega.com.ar/propiedades/gran-casa-quinta-en-oro-verde/
+- Departamento | LOS ZORSALES. EN VENTA. Departamentos en Oro Verde | Venta USD 35.000 | 1D/1B | 60 m2 | https://inmobiliariamega.com.ar/propiedades/los-zorsales-en-venta-departamentos-en-oro-verde/
+- Terreno | Lotes Disponibles Jardin del Hipodromo Oro Verde | Venta USD 1.050 | 0D/0B | 625 m2 | https://inmobiliariamega.com.ar/propiedades/lotes-disponibles-jardin-del-hipodromo-oro-verde/
+- Terreno | Nuevo Loteo Colonia Ensayo &#8211; Loteo Las Colinas | Venta USD 8.500 | 0D/0B | 360 m2 | https://inmobiliariamega.com.ar/propiedades/nuevo-loteo-colonia-ensayo-loteo-las-colinas-2/
+- Terreno | Terreno en Oro Verde | Venta USD 10.000 | 0D/0B | 450 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-oro-verde/
+- Terreno | Terreno en Terrazas al Norte Oro Verde | Venta USD 13.000 | 0D/0B | 350 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-terrazas-al-norte-oro-verde/
 
-### Parana
+### Paraná
 
-- MHO8167746 | Casa | Carlos Darwin 2703 | Venta USD 95.000 | 2D/1B | 55 m2
-- MHO8155010 | Casa | Victorio Camerano 1826. Casa A Remodelar APTA CREDITO | Venta USD 50.000 | 3D/2B | 201 m2
-- MHO8154543 | Casa | Miranda 126. CASA EN ALQUILER. USO COMERCIAL | Alquiler USD 837 | 3D/3B | 120 m2
-- MHO8153119 | Casa | Guatemala 799. Casa en esquina a reciclar | Venta USD 45.000 | 3D/1B | 138 m2
-- MHO8095858 | Casa | italia 18 | Venta USD 330.000 | 7D/3B | -
-- MHO8092920 | Casa | Rosario del tala 430. Casa en alquiler. Interna | Alquiler USD 488 | 3D/2B | 140 m2
-- MHO8078304 | Casa | Diaz Velez 1135. Casa Sobre Avenida | Venta USD 70.000 | 2D/1B | 130 m2
-- MHO8070203 | Casa | Blas Parera 3726 | Venta USD 127.000 | 1D/1B | -
-- MHO8067124 | Casa | Buenos aires 400 | Venta USD 111 | 4D/4B | 475 m2
-- MHO8061061 | Casa | Las Azaleas 4558. Casa en Venta en Las Acacias. | Venta USD 110.000 | 3D/2B | 160 m2
-- MHO8056644 | Casa | Gobernador Parera 1356 | Venta USD 190.000 | 5D/4B | 330 m2
-- MHO8050240 | Casa | Enrique Carbo 968 | Venta USD 206.000 Alquiler USD 1.116 | 5D/2B | 200 m2
-- MHO8040334 | Casa | Pellegrini 379 | Venta USD 130.000 | 3D/1B | 197 m2
-- MHO7995826 | Casa | Echeverría 2010. Casa. Alquiler | Alquiler USD 523 | 2D/2B | 80 m2
-- MHO7985231 | Casa | Don Bosco y Morath. Casa en venta . 2 dormitorios | Venta USD 70.000 | 2D/1B | 50 m2
-- MHO7954117 | Casa | Juan Baez 138 | Venta USD 290.000 | 3D/4B | 324 m2
-- MHO7906767 | Casa | Rosario del Tala 511 | Venta USD 115.000 | 2D/2B | 113 m2
-- MHO7882797 | Casa | Estrada 3200. CASA EN ALQUILER VISTA AL RIO | Alquiler USD 1.255 | 3D/2B | 300 m2
-- MHO7802056 | Casa | Valentín Peralta Esquina Roberto Gonzáles | Venta USD 120.000 | 2D/2B | 65 m2
-- MHO7785751 | Casa | Belgrano 620 | Venta USD 165.000 | 3D/2B | 225 m2
-- MHO7718313 | Casa | Don Quijote 830 esquina Cataluña | Venta USD 95.000 | 2D/2B | 146 m2
-- MHO7717569 | Casa | Intendente Blanda 1264 | Venta USD 55.000 | 2D/2B | 60 m2
-- MHO7666303 | Casa | San Luis 340 | Venta USD 550.000 | 3D/1B | 460 m2
-- MHO7661461 | Casa | San Martin 285 | Venta USD 400.000 | 3D/3B | 2372 m2
-- MHO7630254 | Casa | Dr Enrique Bonflis esquina verdier Toma Vieja! | Venta USD 220.000 | 3D/2B | 150 m2
-- MHO7607139 | Casa | Av de las Americas 5817 | Venta USD 155.000 | 2D/3B | 558 m2
-- MHO7594349 | Casa | Av. José Manuel Estrada 2011 | Venta USD 650.000 | 3D/3B | 389 m2
-- MHO7529171 | Casa | Juan Pascual Pringles 207 | Venta USD 30.000 | 0D/1B | -
-- MHO7427468 | Casa | Barrio Las Colinas | Venta USD 250.000 | 4D/4B | 250 m2
-- MHO7346055 | Casa | Casa Barrio Mercantil. Mar Del Plata 1789 | Venta USD 69.000 | 4D/1B | -
-- MHO7067146 | Casa | Catamarca 459. Gran Casa Zona Parque | Venta USD 215.000 | 2D/2B | 130 m2
-- MHO6962551 | Casa | Gran Esquina en Venta Plena Avenida Las Americas | Venta USD 170.000 | 2D/3B | 310 m2
-- MHO6836898 | Casa | Echeverria 2010. Excelente PH Zona Norte | Venta USD 80.000 | 2D/2B | 80 m2
-- MHO6805609 | Casa | España 567. Casona Centrica Ideal Proyecto | Venta USD 160.000 | 4D/2B | 195 m2
-- MHO6779632 | Casa | Jaime Baucis 429. Casa en Venta | Venta USD 120.000 | 3D/2B | 170 m2
-- MHO6709753 | Casa | Casa Amoblada con Pileta Temporal. Zona La Toma | Alquiler USD 600 | 0D/2B | 90 m2
-- MHO6139198 | Casa | Misiones 175. Casa centrica con patio | Venta USD 120.000 | 2D/1B | 110 m2
-- MHO6116078 | Casa | Monte Caseros 318. Amplia Propiedad Centrica | Venta USD 125.000 | 2D/1B | 190 m2
-- MHO5864029 | Casa | Casa mas Lote Construccion Con Entrega y Financiacion, Sistema Llave en Mano | Venta USD 75.000 | 2D/1B | 50 m2
-- MHO5140003 | Casa | Catamarca 330 | Venta USD 350.000 | 4D/4B | 342 m2
-- MHO5009818 | Casa | Triplex Centrico Apto Credito | Venta USD 150.000 | 3D/4B | 116 m2
-- MHO4806786 | Casa | Salta 279 (entre Uruguay y Rosario Del Tala) | Venta USD 160.000 | 3D/2B | 200 m2
-- THO4539846 | Casa | Hermosa Casa Zona Parque. Santiago del Estero 468 | Venta USD 250.000 | 5D/3B | 250 m2
-- THO4205428 | Casa | El Guayacan y Blas Parera | Venta USD 400.000 | 4D/3B | 316 m2
-- THO4078182 | Casa | Ruta 18 KM. 17.3 | Venta USD 150.000 | 3D/2B | 140 m2
-- THO3853693 | Casa | Catamarca 485. Casa Zona parque tres dormitorios | Venta USD 210.000 | 5D/3B | 222 m2
-- THO3527201 | Casa | De la torre y Vera 927. Esq Bv Moreno | Venta USD 300.000 | 3D/2B | 202 m2
-- MHO2838185 | Casa | Diamante y Bavio | Venta USD 60.000 | 2D/1B | 65 m2
-- MHO2489432 | Casa | Casa A Terminar Zona Tortuguitas. Rondeau 3419 | Venta USD 120.000 | 3D/2B | 211 m2
-- MHO2442968 | Casa | Panamá 734 | Venta USD 150.000 | 2D/1B | -
-- MHO2436728 | Casa | Provincias Unidas 1442 | Venta USD 150.000 | 7D/3B | 670 m2
-- MGA8146954 | Cochera | Andres Pazos 128 | Alquiler USD 55 | - | 1 m2
-- MGA8103592 | Cochera | 25 de Mayo y Palma | Venta USD 18.000 | - | -
-- MGA8010120 | Cochera | La Rioja 459. Cochera Centrica Cubierta | Venta USD 10.000 | - | 12 m2
-- MGA7669225 | Cochera | Bavio 136, COCHERA | Venta USD 12.500 | - | 15 m2
-- MGA7360546 | Cochera | Cochera en Venta en calle Días Colodrero 457! | Venta USD 13.000 | - | 10 m2
-- MGA7170647 | Cochera | Gral J J de Urquiza 1269. OPORTUNIDAD! Cochera centrica | Venta USD 11.000 | - | -
-- MGA6883020 | Cochera | Corrientes 265. Cocheras Cubo | Venta USD 15.000 | - | -
-- TGA3967481 | Cochera | Hipólito Irigoyen 129 | Venta USD 16.000 | - | 10 m2
-- MAP8164832 | Departamento | PATAGONIA 326 Piso 1 Departamento B | Alquiler USD 244 | 1D/1B | 35 m2
-- MAP8160858 | Departamento | Mexico 376. Departamento un Dormitorio en Alquiler | Alquiler USD 369 | 1D/1B | 50 m2
-- MAP8155009 | Departamento | PATAGONIA 326 Piso 1 Departamento A | Venta USD 100.000 | 1D/1B | 35 m2
-- MAP8102437 | Departamento | PERON 70. DEPARTAMENTO EN ALQUILER | Alquiler USD 313 | 1D/1B | 50 m2
-- MAP8099820 | Departamento | Av. Zanni 979 Piso 1 Departamento A | Alquiler USD 383 | 2D/1B | 1 m2
-- MAP8097629 | Departamento | Ferre 114. Loft . Alquiler Amoblado con Cochera | Alquiler USD 488 | 1D/1B | 50 m2
-- MAP8066747 | Departamento | Alem 866 Piso 6 | Venta USD 140.000 | 2D/2B | 95 m2
-- MAP8065980 | Departamento | Se Alquila Departamento Dos Dormitorios. Av Zanni y Facundo Arce | Alquiler USD 453 | 2D/1B | 70 m2
-- MAP8060899 | Departamento | Ilia 357 Pb. Departamento. alquiler | Alquiler USD 376 | 1D/1B | 50 m2
-- MAP8057588 | Departamento | 25 de Junio 439 Departamento D | s/precio | 1D/1B | 40 m2
-- MAP8050699 | Departamento | Mitre 413 Piso 10 Departamento b | Venta USD 290.000 | 3D/4B | 150 m2
-- MAP8043814 | Departamento | La RIoja 358 Piso 3 Departamento 16 | Alquiler USD 244 | 1D/1B | -
-- MAP8009434 | Departamento | Av. Ramirez 2030. Departamento Temporal Por dia, semana,mes. | Alquiler USD 41 | 1D/1B | 45 m2
-- MAP8000782 | Departamento | Piedrabuena 57 Piso 4 Departamento D | Venta USD 95.000 | - | 65 m2
-- MAP7984567 | Departamento | Urquiza 1530 Piso 11 | Venta USD 70.000 | 1D/1B | 34 m2
-- MAP7977743 | Departamento | Malvinas 140 Piso 7 Departamento B | Venta USD 385.000 | 3D/2B | 85 m2
-- MPH7948534 | Departamento | Villaguay 56. Duplex en alquiler Un Dormitorio | Alquiler USD 341 | 1D/1B | 50 m2
-- MAP7917329 | Departamento | Se Alquila Departamento Dos Dormitorios. Andres Pazos 360 | Alquiler USD 474 | 2D/1B | 70 m2
-- MAP7914125 | Departamento | Echague 550 Piso 5 Departamento D | Venta USD 75.000 | 0D/1B | 43 m2
-- MAP7884383 | Departamento | Basavilbaso 1435 0 | Alquiler USD 195 | 1D/1B | 35 m2
-- MAP7863522 | Departamento | Republica de Eslovenia 2242 | Venta USD 200.000 | 2D/2B | 82 m2
-- MAP7851992 | Departamento | Departamento Dos Dormitorios Con Amenities en Complejo Cerrado. Av Uranga 580 | Venta USD 65.000 | 2D/1B | 65 m2
-- MAP7814191 | Departamento | Ingeniero Alberto Chabrillon 3300 Piso 1 Departamento 11 | Venta USD 30.000 | 1D/1B | 40 m2
-- MAP7804380 | Departamento | Malvinas 452 Piso 2 Departamento A | Venta USD 75.000 | 1D/1B | 38 m2
-- MAP7681724 | Departamento | Ecuador 15 Piso 10 | Venta USD 80.000 | 1D/1B | 45 m2
-- MAP7665217 | Departamento | colon 111 Piso 8 Departamento A | Venta USD 75.000 | 1D/1B | 50 m2
-- MAP7612422 | Departamento | Echague 550 Piso 4 Departamento c | Venta USD 75.000 | 1D/1B | 40 m2
-- MAP7445145 | Departamento | Garay y Cordoba Piso 7 Departamento A | Venta USD 210.000 | 4D/2B | 98 m2
-- MAP7403528 | Departamento | Pascual Palma y Urquiza. Planta Alta En Venta Centrico. | Venta USD 90.000 | 2D/1B | 70 m2
-- MAP7387477 | Departamento | Malvinas 276. Hermoso Loft zona parque con amenities | Venta USD 75.000 | 0D/1B | 35 m2
-- MAP7328299 | Departamento | Departamento Premium en Venta en Zona Parque! | Venta USD 365.000 | 3D/2B | 75 m2
-- MAP7131556 | Departamento | Malvinas INN. Importante piso en venta | Venta USD 370.000 | 3D/2B | 153 m2
-- MAP7131327 | Departamento | Gran Departamento En Venta Pleno Parque. Tucuman Y Mitre | Venta USD 189.000 | 2D/2B | 70 m2
-- MAP6948032 | Departamento | Salta 524. Departamento en Venta 1 dormitorio | Venta USD 95.000 | 1D/1B | 61 m2
-- MAP6890460 | Departamento | Bajada Views. Manuel Estrada 3885 | Venta USD 200.000 | 2D/1B | 95 m2
-- MAP6885558 | Departamento | Unidad Disponible Premium Edificio Malvinas 140 | Venta USD 250.000 | 2D/2B | 85 m2
-- MAP6882977 | Departamento | Malvinas y Córdoba. Departamento de 3 dormitorios en Venta. | Venta USD 350.000 | 3D/2B | 160 m2
-- MAP6707571 | Departamento | Se Alquila Dpto Temporal Zona Parque. Malvinas 440 | Alquiler USD 907 | 2D/1B | 69 m2
-- MAP6542926 | Departamento | Ferre 114. Loft Con Amenities y Cochera | Venta USD 75.000 | 1D/1B | 50 m2
-- MAP6475692 | Departamento | 25 De Mayo 613. Dpto a estrenar con patio y cochera | Venta USD 100.000 | 1D/1B | 50 m2
-- MAP6464214 | Departamento | San Luis Y La Paz . Fideicomiso Torre Ambar. 100% Financiado | Venta USD 12.960 | 1D/1B | 47 m2
-- MAP6287303 | Departamento | Pascual Palma 41. Torre Zurich | Venta USD 48.500 | - | -
-- MAP6058312 | Departamento | 25 De Mayo 613 7C. Semipiso Con Vista Al Rio | Venta USD 180.000 | 2D/2B | 100 m2
-- MAP5947199 | Departamento | Mexico 376 7A. Semipiso Zona Parque | Venta USD 140.000 | 2D/2B | 118 m2
-- TAP4443800 | Departamento | San Martin 118 - Piso 11 - Edif. Torreon (casi Mitre) | Venta USD 200.000 | 2D/1B | 70 m2
-- TAP3976902 | Departamento | San Martín 329 Piso 10 (Garay y Victoria) | Venta USD 280.000 | 3D/2B | 150 m2
-- TAP3911628 | Departamento | San Juan 705. 5C- Edif. ARCADIA (Esq. Nogoyá) | Venta USD 100.000 | 1D/1B | 51 m2
-- TAP3417707 | Departamento | Moreno 169 Planta Baja (Gregoria Matorra y De la Torre y Vera) | Venta USD 120.000 | 3D/2B | 65 m2
-- MAP2657503 | Departamento | Pablo Lorentz 3165 | Venta USD 75.000 | 3D/1B | 94 m2
-- MAP2518185 | Departamento | Presidente Perón al 400. Departamento en Venta de 2 dormitorios | Venta USD 65.000 | 2D/1B | 65 m2
-- MAP2419828 | Departamento | Buenos Aires 587 Piso 6to (Malvinas) | Venta USD 430.000 | 3D/2B | 170 m2
-- MGL8146291 | Galpón | Formosa 466 | Alquiler USD 1.744 | 0D/1B | 644 m2
-- MGL8076169 | Galpón | Regis martinez 1773. Galpon en venta | Venta USD 60.000 | 0D/1B | 150 m2
-- MGL8072744 | Galpón | Soler y dupuy 200. Galpón en alquiler | Alquiler USD 453 | 0D/1B | 110 m2
-- MGL7424386 | Galpón | Av Ramirez 2525. Gran Galpon Sobre Avenida | Venta USD 550.000 | 0D/1B | 641 m2
-- MGL7417321 | Galpón | Oportunidad de inversion! Se vende galpon con 20 unidades de cochera en calle Alem al 200 | Venta USD 139 | 0D/1B | -
-- MGL6885727 | Galpón | Galpones Punto Norte. Zona Acceso Norte | Venta USD 250.000 | - | 394 m2
-- MGL6080241 | Galpón | Zuviria 1553. DOS GALPONES IDEAL EMPRENDIMIENTO | Venta USD 170.000 | - | 400 m2
-- MLO8146563 | Local | Alem 844 | Venta USD 450.000 | 0D/4B | 332 m2
-- MLO8060908 | Local | Almirante Brown y Blas Parera | Alquiler USD 1.395 | 0D/1B | 200 m2
-- MLO7946390 | Local | LOCAL COMERCIAL CENTRICO - DOS AMBIENTES IDEAL INVERSION | Venta USD 38.000 | 0D/1B | 42 m2
-- MHO7870885 | Local | Av Uranga 1145 | Venta USD 270.000 | - | 379 m2
-- MLO7859419 | Local | Italia 100 | Alquiler USD 1 | 0D/3B | 430 m2
-- MLO7756503 | Local | Excelente Local en Venta Plena Peatonal San Martin. Esquina La Paz | Venta USD 300.000 | 0D/2B | 132 m2
-- MLO7419286 | Local | Av. Almafuerte 377 | Venta USD 300.000 Alquiler USD 1.046 | 0D/1B | 330 m2
-- MLO7027137 | Local | Se vende Local Con amplio terreno Calle Francia y Circunvalacion | Venta USD 45.000 | 0D/1B | 40 m2
-- MLO6744495 | Local | En Venta Excelente Stand Comercial | Venta USD 10.000 | - | -
-- MLO6197746 | Local | Av. Almafuerte 487. Salon Comercial En Importante Avenida | Venta USD 250.000 | 0D/2B | 149 m2
-- MOF7847742 | Oficina | santiago del Estero 215 Piso 0 Departamento 0 | Alquiler USD 27 | 0D/2B | -
-- MOF6385218 | Oficina | Malvinas 452. Oficinas Pleno Parque en Venta | Venta USD 320.000 | 0D/2B | 160 m2
-- TOF3924879 | Oficina | Córdoba 538. Edificio Camara Argentina de Construccion | Venta USD 95.000 | 0D/1B | 50 m2
-- MPH8149472 | PH | Ruiz Moreno 1082. Se venden dos Unidades Funcionales. Ideal Inversion! | Venta USD 75.000 | 0D/2B | 68 m2
-- MPH7995784 | PH | Mihura 1111 . Alquiler duplex. 2 dormitorios | Alquiler USD 237 | 2D/1B | 50 m2
-- MPH7424428 | PH | Ph En Venta Con Patio. Gualeguaychu 263 | Venta USD 115.000 | 3D/2B | 135 m2
-- MPH7393410 | PH | Gral J J de Urquiza 750 | Venta USD 280.000 | 0D/2B | 150 m2
-- MPH7207665 | PH | Diamante 322 . Duplex en Venta 2 dormitorios | Venta USD 60.000 | 2D/1B | 74 m2
-- MLA8050703 | Terreno | Del loro y Del boyero | Venta USD 17.000 | - | -
-- MLA8026054 | Terreno | Puerto Barrancas. Etapa 1 | Venta USD 72.000 | - | 1200 m2
-- MLA8005825 | Terreno | Don bosco y Morath | Venta USD 12.000 | - | 165 m2
-- MLA7876012 | Terreno | Amplio Lote Sobre Av Circunvalacion. Esquina Cabeza de Vaca 2500 | Venta USD 45.000 | - | -
-- MLA7624052 | Terreno | Terreno en Club de Campo Las Colinas, Manzana 3, Lote 9 | Venta USD 25.000 | - | -
-- MLA7561712 | Terreno | Lebenshon y Baez. Terreno en Lapachos III | Venta USD 18.000 | - | 360 m2
-- MLA7561376 | Terreno | Av. José Manuel Estrada 2011 | Venta USD 70.000 | - | -
-- MLA7502006 | Terreno | Terreno En Alvear | Venta USD 15.000 | - | 250 m2
-- MLA7424374 | Terreno | Lotes en desarrollo Distrito Norte. Lopez Jordan y Darwin (Acceso Norte) | Venta USD 24 | - | -
-- MLA7404383 | Terreno | Venta de Lote en Condominio JDB, calle Juan Morath Lote 18 | Venta USD 6.279 | - | -
-- MLA7170712 | Terreno | Gran Terreno En Esquina A Metros De Acceso Norte | Venta USD 46.000 | - | -
-- MLA7170634 | Terreno | LOTES DISPONIBLES EN VISTAS DEL SEMINARIO . OPCION 100% FINANCIADO | Venta USD 20.000 | - | -
-- MLA6973165 | Terreno | Lote en Terrazas. ¡Entrega y Financiacion! | Venta USD 36.000 | - | -
-- MLA6972626 | Terreno | Av. Almafuerte al 5300. Gran Terreno en Venta | Venta USD 138.000 | - | -
-- MLA6963208 | Terreno | Loteo Chacras De Larralde . Entrega Y Financiacion | Venta USD 13.000 | - | -
-- MLA6881575 | Terreno | Terreno en Puerto Barrancas Etapa II | Venta USD 34.000 | - | -
-- MLA6810381 | Terreno | Bazan y Bustos 936. Excelente Lote Zona Circunvalacion | Venta USD 22.000 | - | -
-- MLA6796158 | Terreno | Fidel Sagastume 919. Excelente Lote en plena ciudad | Venta USD 35.000 | - | -
-- MLA6472282 | Terreno | Av. Circunvalacion Y Churruarin. Excelente Lote | Venta USD 75.000 | - | -
-- MLA6345154 | Terreno | López Jordan y Los Robles. Lotes Zona Norte | Venta USD 35.000 | - | -
-- MLA6245840 | Terreno | Jorge Luis Borges al 900. Entre Churruarin y Guillermo Brown | Venta USD 100.000 | - | -
-- MLA6159883 | Terreno | Lopez Jordan y Calle Publica - Rincones Del Norte | Venta USD 35.000 | - | -
-- MLA6157800 | Terreno | Pintor Nux Y Lopez Jordan . Excelente Lote En Esquina Puerto Barrncas | Venta USD 65.000 | - | -
-- MLA6104843 | Terreno | Gobernador Maya Y Antonio Crespo. Importante Has en Venta | Venta USD 50.000 | - | -
-- MLA6080353 | Terreno | Arturo Toscanini 255. Lote Con Todos Los Servicios | Venta USD 36.000 | - | -
-- MLA5864292 | Terreno | Carlos Darwin 2944. Lote en esquina Zona La Toma | Venta USD 40.000 | - | -
-- MLA5864267 | Terreno | Bvd. Racedo 297. Lote centrico en esquina | Venta USD 125.000 | - | -
-- MLA5851060 | Terreno | Jorge Luis Borges 2179 | Venta USD 55.000 | - | -
-- MLA5730066 | Terreno | Puerto Barrancas. Etapa II | Venta USD 35.000 | - | -
-- MLA5405866 | Terreno | Carlos Darwin N° 2944. Lote Centrico zona Norte | Venta USD 31.000 | - | -
-- TLA4136699 | Terreno | Ricardo Balbin 962 - 978 | Venta USD 15.000 | - | -
-- TLA4041537 | Terreno | Lopez Jordán (Darwin y Acceso Norte) - Urbanizacion Distrito Norte | Venta USD 45.000 | - | -
-- TLA4039303 | Terreno | Los Robles y Lopez Jordan - 750m2 | Venta USD 50.000 | - | -
-- TLA3969660 | Terreno | Pintor augusto Nux y Lopez Jordán. Lote 3 | Venta USD 175.500 | - | -
-- TLA3966709 | Terreno | Av. Jose Manuel Estrada - PUERTO URQUIZA | Venta USD 120.000 | - | 700 m2
-- TLA3839675 | Terreno | Chacras al Río, Strobel. Av. San Martin - Etapa 2 | Venta USD 2.000 | - | 400 m2
-- TLA3718526 | Terreno | Av. Ejercito (Juan Baez y Padre Uva) - Lote 228 dentro Altos Paracao I | Venta USD 18.000 | - | 300 m2
-- TLA3718284 | Terreno | Av. Ejercito (Juan Baez y Padre Uva) - Lotes 42-131 y 182 dentro Altos Paracao I | Venta USD 15.500 | - | 300 m2
-- TLA3262980 | Terreno | Jorge Luis Borges y Darwin - 4.500m2 | Venta USD 157.500 | - | 4500 m2
-- TLA3213249 | Terreno | Darwin y Lopez Jordan - Loteo Villa Elsa - (Calle paralela Fte Plaza) 15 x 33 de 500mts | Venta USD 33.000 | - | 500 m2
-- MLA2505821 | Terreno | Puerto Barrancas Etapa II. Financiado - Entrega Minima | Venta USD 45.000 | - | -
-- MLA2505810 | Terreno | Sauce Montrull km 20 y 1/2. Lotes Financiados | Venta USD 3.000 | - | -
-
-### Punta del Este
-
-- MAP8152403 | Departamento | Rambla Lorenzo Battle Pacheco, Playa Brava, Punta del Este, Maldonado | Venta USD 220.000 | 2D/2B | 75 m2
-- MAP5206133 | Departamento | Av. Chiverta 9 (Esq. Barranca Abajo) Punta del Este | Venta USD 250.000 | 2D/2B | 65 m2
+- Departamento | 25 de Junio 439 &#8211; ALQUILER DEPARTAMENTO AMOBLADO | Alquiler ARS 550 | 1D/1B | 40 m2 | https://inmobiliariamega.com.ar/propiedades/25-de-junio-439-alquiler-departamento-amoblado/
+- Local/Oficina | Almirante Brown y Blas Parera.Galpon.Alquiler | Alquiler ARS 2.000.000 | 0D/1B | 200 m2 | https://inmobiliariamega.com.ar/propiedades/almirante-brown-y-blas-parera-galpon-alquiler/
+- Departamento | ALQUILER MONOAMBIENTE AMOBLADO | Alquiler ARS 350.000 | 1D/1B | 30 m2 | https://inmobiliariamega.com.ar/propiedades/alquiler-monoambiente-amoblado/
+- Galpón/Cochera | Andres Pazos N°128. Alquiler de Cochera Techada en Planta Baja &#8211; Zona Centro, Paraná | Alquiler ARS 80.000 | 0D/0B | 1 m2 | https://inmobiliariamega.com.ar/propiedades/andres-pazos-n128-alquiler-de-cochera-techada-en-planta-baja-zona-centro-parana/
+- Departamento | Av. Ramirez 2030. Departamento Temporal Por dia, semana,mes. | Alquiler ARS 60.000 | 1D/1B | 45 m2 | https://inmobiliariamega.com.ar/propiedades/av-ramirez-2030-departamento-temporal-por-dia-semanames/
+- Departamento | Av. Zanni N°979 | Departamento en Alquiler &#8211; 2 Dormitorios con Espectacular Terraza! | Alquiler ARS 550.000 | 2D/1B | 1 m2 | https://inmobiliariamega.com.ar/propiedades/av-zanni-n979-departamento-en-alquiler-2-dormitorios-con-espectacular-terraza/
+- Departamento | BASAVILBASO 1400. EN ALQUILER DEPARTAMENTO TIPO DUPLEX | Alquiler ARS 280.000 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-parana-6/
+- Local/Oficina | Casa oficina | Alquiler ARS 40.000 | 0D/2B | 200 m2 | https://inmobiliariamega.com.ar/propiedades/casa-oficina/
+- Departamento | Cervantes 217. Se Alquila Departamento Dos Dormitorios Centrico | Alquiler ARS 500.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/cervantes-217-se-alquila-departamento-dos-dormitorios-centrico/
+- Departamento | Departamento &#8211; Parana | Alquiler ARS 535.000 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-parana-5/
+- Departamento | Departamento Dos Dormitorios. Av Zanni y Facundo Arce | Alquiler ARS 650.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-dos-dormitorios-av-zanni-y-facundo-arce/
+- Departamento | Departamento en Parana | Alquiler ARS 1.300.000 | 2D/2B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-parana-5/
+- Casa | Echeverria 2010. CASA EN ALQUILER | Alquiler ARS 750.000 | 2D/2B | 285 m2 | https://inmobiliariamega.com.ar/propiedades/echeverria-2010-casa-alquiler/
+- Casa | Estrada 3200. CASA EN ALQUILER VISTA AL RIO | Alquiler ARS 1.800.000 | 3D/2B | - | https://inmobiliariamega.com.ar/propiedades/casa-parana-10/
+- Departamento | Ferre 114. Loft . Alquiler Amoblado con Cochera | Alquiler ARS 700.000 | 1D/1B | 50 m2 | https://inmobiliariamega.com.ar/propiedades/ferre-114-loft-alquiler-amoblado-con-cochera/
+- Galpón/Cochera | Formosa al 400. Galpón en Alquiler! | Alquiler ARS 2.500.000 | 0D/1B | 1,171 m2 | https://inmobiliariamega.com.ar/propiedades/formosa-al-400-galpon-en-alquiler/
+- Galpón/Cochera | Galpón &#8211; Parana | Alquiler ARS 650.000 | 0D/1B | 110 m2 | https://inmobiliariamega.com.ar/propiedades/galpon-parana/
+- Departamento | Ilia al 300. Departamento. Alquiler | Alquiler ARS 540.000 | 1D/1B | 50 m2 | https://inmobiliariamega.com.ar/propiedades/ilia-al-300-departamento-alquiler/
+- Local/Oficina | Italia al 100. Amplio Local en alquiler en Parana | Alquiler USD 1 | 0D/3B | 430 m2 | https://inmobiliariamega.com.ar/propiedades/italia-al-100-amplio-local-en-alquiler-en-parana/
+- Local/Oficina | Local en Parana | Alquiler ARS 1.111 | 0D/4B | 350 m2 | https://inmobiliariamega.com.ar/propiedades/local-en-parana-3/
+- PH | MIHURA 1111. DUPLEX EN ALQUILER. 1 DORMITORIO | Alquiler ARS 300.000 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/ph-parana-2/
+- PH | MIHURA 1111. DUPLEX EN ALQUILER. DOS DORMITORIOS | Alquiler ARS 340.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/ph-parana-3/
+- Departamento | PERON 70. DEPARTAMENTO 1 DORMITORIO.ALQUILER | Alquiler ARS 450.000 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/peron-70-departamento-1-dormitorio-alquiler/
+- Casa | Rosario del tala 430. Casa en alquiler. Interna | Alquiler ARS 700.000 | 3D/2B | 200 m2 | https://inmobiliariamega.com.ar/propiedades/rosario-del-tala-430-casa-en-alquiler-interna/
+- Departamento | Se Alquila Departamento Dos Dormitorios. Andres Pazos 360 | Alquiler ARS 680.000 | 2D/1B | 70 m2 | https://inmobiliariamega.com.ar/propiedades/se-alquila-departamento-dos-dormitorios-andres-pazos-360/
+- Departamento | Se Alquila Dpto Temporal Zona Parque. Malvinas 440 | Alquiler ARS 1.300.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/se-alquila-dpto-temporal-zona-parque-malvinas-440/
+- Departamento | Villaguay 54. Duplex en alquiler Un Dormitorio | Alquiler ARS 490.000 | 1D/1B | 50 m2 | https://inmobiliariamega.com.ar/propiedades/ph-parana/
+- Casa | Zona La Toma. Casa Amoblada con Pileta Temporal. | Alquiler USD 600 | 0D/2B | 150 m2 | https://inmobiliariamega.com.ar/propiedades/casa-amoblada-con-pileta-temporal-zona-la-toma-2/
+- Departamento | 25 de junio al 400. Departamento en venta 1 dormitorio. | Venta USD 73.000 | 1D/1B | 40 m2 | https://inmobiliariamega.com.ar/propiedades/25-de-junio-al-400-departamento-en-venta-1-dormitorio/
+- Departamento | 25 De Mayo 613. Dpto a estrenar con patio y cochera | Venta USD 100.000 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/25-de-mayo-613-dpto-a-estrenar-con-patio-y-cochera/
+- Galpón/Cochera | 25 de Mayo y Palma . Cochera en Venta! | Venta USD 18.000 | 0D/0B | 12 m2 | https://inmobiliariamega.com.ar/propiedades/25-de-mayo-y-palma-cochera-en-venta/
+- Casa | Alejandro Carbo .Casa | Venta USD 206.000 | 5D/2B | 200 m2 | https://inmobiliariamega.com.ar/propiedades/alejandro-carbo-casa/
+- Local/Oficina | Alem al 800. Local Comercial en Venta | Venta USD 450.000 | 0D/4B | 332 m2 | https://inmobiliariamega.com.ar/propiedades/alem-al-800-local-comercial-en-venta/
+- Departamento | Alem al 800. Departamento en venta 2 dormitorios | Venta USD 140.000 | 2D/2B | 95 m2 | https://inmobiliariamega.com.ar/propiedades/alem-al-800-departamento-en-venta-2-dormitorios/
+- Casa | Amplia Casa en Venta | Venta USD 120.000 | 2D/2B | 96 m2 | https://inmobiliariamega.com.ar/propiedades/amplia-casa-en-venta-2/
+- Terreno | Amplio Lote Sobre Av Circunvalacion. Esq Cabeza de Vaca 2500 | Venta USD 45.000 | 0D/0B | 640 m2 | https://inmobiliariamega.com.ar/propiedades/amplio-lote-sobre-av-circunvalacion-esq-cabeza-de-vaca-2500/
+- Casa | Av de las americas 5717. Galpon mas casa en venta! | Venta USD 155.000 | 2D/3B | 763 m2 | https://inmobiliariamega.com.ar/propiedades/av-de-las-americas-5717-galpon-mas-casa-en-venta/
+- Galpón/Cochera | Av Ramirez 2525. Gran Galpon Sobre Avenida | Venta USD 550.000 | 0D/1B | 1,050 m2 | https://inmobiliariamega.com.ar/propiedades/av-ramirez-2525-gran-galpon-sobre-avenida/
+- Local/Oficina | Av Uranga al 1100. Importante Propiedad en venta. | Venta USD 270.000 | 0D/0B | 718 m2 | https://inmobiliariamega.com.ar/propiedades/av-uranga-al-1100-importante-propiedad-en-venta/
+- Terreno | Av. Almafuerte al 5300. Gran Terreno en Venta | Venta USD 138.000 | 0D/0B | 5,300 m2 | https://inmobiliariamega.com.ar/propiedades/av-almafuerte-al-5300-gran-terreno-en-venta/
+- Local/Oficina | Av. Almafuerte N°377. Local en Venta y Alquiler. Zona Hipodromo! | Venta USD 300.000 | 0D/1B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/local-en-parana-2/
+- Casa | Av. José Manuel Estrada 2011. Importante Casa en venta en Puerto Urquiza! | Venta USD 650.000 | 3D/3B | 709 m2 | https://inmobiliariamega.com.ar/propiedades/importante-casa-en-venta-en-puerto-urquiza/
+- Departamento | Bajada Views. Manuel Estrada 3885 | Venta USD 200.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/bajada-views-manuel-estrada-3885/
+- Casa | Barrio Las Colinas. Casa en Venta! | Venta USD 250.000 | 4D/4B | 2,786 m2 | https://inmobiliariamega.com.ar/propiedades/amplia-casa-en-venta-en-barrio-las-colinas-2/
+- Terreno | Bazan y Bustos 936. Excelente Lote Zona Circunvalacion | Venta USD 22.000 | 0D/0B | 400 m2 | https://inmobiliariamega.com.ar/propiedades/bazan-y-bustos-936-excelente-lote-zona-circunvalacion/
+- Casa | Calle Espejo al 3500 | Casa Quinta en Venta – Zona Paracao | Venta USD 69.000 | 1D/1B | 660 m2 | https://inmobiliariamega.com.ar/propiedades/casa-quinta-en-venta-zona-paracao-calle-espejo-al-3500-2/
+- Galpón/Cochera | Calle Jose Ramos y Don Bosco. Vendemos galpon con cocheras ideal inversion! | Venta USD 40.000 | 0D/0B | 158 m2 | https://inmobiliariamega.com.ar/propiedades/8-cocheras-techadas-en-venta-ideal-inversion-zona-escuela-hogar-calle-jose-ramos-al-1600/
+- Casa | Calle San Luis CASA EN VENTA | Venta USD 550.000 | 3D/1B | 1,463 m2 | https://inmobiliariamega.com.ar/propiedades/calle-san-luis-casa-en-venta-2/
+- Casa | Casa &#8211; Parana | Venta USD 127.000 | 1D/1B | 1,020 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana-11/
+- Casa | Casa &#8211; Parana | Venta USD 160.000 | 3D/2B | 230 m2 | https://inmobiliariamega.com.ar/propiedades/salta-279-casa-centrica-con-patio-apta-credito/
+- Casa | Casa &#8211; Parana | Venta USD 250.000 | 5D/3B | 220 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana-8/
+- Casa | Casa &#8211; Parana | Venta USD 150.000 | 3D/2B | 900 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana-6/
+- Casa | Casa &#8211; Parana | Venta USD 210.000 | 5D/3B | 216 m2 | https://inmobiliariamega.com.ar/propiedades/catamarca-385-casa-zona-parque/
+- Casa | Casa &#8211; Parana | Venta USD 300.000 | 3D/2B | 202 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana-3/
+- Casa | Casa &#8211; Parana | Venta USD 150.000 | 2D/1B | 280 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana-2/
+- Casa | Casa &#8211; Parana | Venta USD 150.000 | 7D/3B | 835 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana/
+- Casa | Casa a estrenar con entrega y financiacion | Venta USD 75.000 | 2D/1B | 256 m2 | https://inmobiliariamega.com.ar/propiedades/casa-a-estrenar-con-entrega-y-financiacion/
+- Casa | Casa A Terminar Zona Tortuguitas. Rondeau 3419 | Venta USD 120.000 | 3D/2B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/casa-a-terminar-zona-tortuguitas-rondeau-3419/
+- Casa | Casa Barrio Mercantil. Mar Del Plata 1789 | Venta USD 69.000 | 4D/1B | - | https://inmobiliariamega.com.ar/propiedades/casa-barrio-mercantil-mar-del-plata-1789/
+- Casa | Casa en Parana | Venta USD 165.000 | 3D/2B | 275 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-parana-3/
+- Casa | Casa en Parana | Venta USD 150.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/casa-centrica-con-gran-fondo-apta-credito/
+- Casa | Casa en Parana | Venta USD 125.000 | 2D/1B | 460 m2 | https://inmobiliariamega.com.ar/propiedades/monte-caseros-318-casa-centrica-a-reciclar/
+- Casa | Casa en Venta Ubicada en calle Cataluña esquina El Quijote | Venta USD 95.000 | 2D/2B | 266 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-venta-ubicada-en-calle-cataluna-esquina-el-quijote/
+- Casa | Casa mas depto independiente | Venta USD 90.000 | 3D/2B | 400 m2 | https://inmobiliariamega.com.ar/propiedades/casa-mas-depto-independiente/
+- Casa | Casa para Refaccionar en Parana! | Venta USD 30.000 | 0D/1B | 76 m2 | https://inmobiliariamega.com.ar/propiedades/casa-para-refaccionar-en-parana/
+- Casa | Catamarca 459. Gran Casa Zona Parque | Venta USD 215.000 | 2D/2B | 190 m2 | https://inmobiliariamega.com.ar/propiedades/catamarca-459-gran-casa-zona-parque/
+- Galpón/Cochera | Cochera &#8211; Parana | Venta USD 16.000 | 0D/0B | 10 m2 | https://inmobiliariamega.com.ar/propiedades/cochera-parana/
+- Galpón/Cochera | Cochera &#8211; Parana | Venta USD 40.000 | 0D/0B | 500 m2 | https://inmobiliariamega.com.ar/propiedades/cochera-parana-2/
+- Galpón/Cochera | Cochera Disponible | Venta USD 12.500 | 0D/0B | 15 m2 | https://inmobiliariamega.com.ar/propiedades/cochera-disponible/
+- Galpón/Cochera | Cochera en Venta en calle Días Colodrero 457! | Venta USD 13.000 | 0D/0B | 10 m2 | https://inmobiliariamega.com.ar/propiedades/cochera-en-venta-en-calle-dias-colodrero-457-2/
+- Departamento | Colon y corrientes. Departamento de 1 dormitorio en Venta! | Venta USD 75.000 | 1D/1B | 50 m2 | https://inmobiliariamega.com.ar/propiedades/colon-y-corrientes-departamento-de-1-dormitorio-en-venta/
+- Galpón/Cochera | Corrientes 265. Cocheras Cubo | Venta USD 15.000 | 0D/0B | 15 m2 | https://inmobiliariamega.com.ar/propiedades/corrientes-265-cocheras-cubo/
+- Terreno | Del loro y Del boyero Piedras Blancas . Terreno. Venta | Venta USD 17.000 | 0D/0B | 440 m2 | https://inmobiliariamega.com.ar/propiedades/del-loro-y-del-boyero-piedras-blancas-terreno-venta/
+- Departamento | Departamento &#8211; Parana | Venta USD 75.000 | 3D/1B | 100 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana-2/
+- Departamento | Departamento &#8211; Parana | Venta USD 100.000 | 1D/1B | 51 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana-9/
+- Departamento | Departamento &#8211; Parana | Venta USD 120.000 | 3D/2B | 65 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana-3/
+- Departamento | Departamento &#8211; Parana | Venta USD 430.000 | 3D/2B | 170 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana/
+- Departamento | Departamento Dos Dormitorios Con Amenities en Complejo Cerrado. Av Uranga 580 | Venta USD 65.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-dos-dormitorios-con-amenities-en-complejo-cerrado-av-uranga-580/
+- Departamento | Departamento en Parana | Venta USD 75.000 | 1D/1B | 50 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-en-parana-2/
+- Departamento | Departamento en Parana | Venta USD 48.500 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-parana/
+- Departamento | Departamento en Venta, Malvinas 400. | Venta USD 75.000 | 1D/1B | 38 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-en-venta-malvinas-400/
+- Departamento | Departamento Premium en Venta en Zona Parque! | Venta USD 365.000 | 3D/2B | 130 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-premium-en-venta-en-zona-parque-2/
+- Departamento | Departamentos en venta! Ecuador 15. Edificio Providencia! | Venta USD 80.000 | 1D/1B | 45 m2 | https://inmobiliariamega.com.ar/propiedades/departamentos-en-venta-ecuador-15-edificio-providencia/
+- Casa | Diaz Velez 1135. Casa en esquina Sobre Avenida | Venta USD 70.000 | 2D/1B | 370 m2 | https://inmobiliariamega.com.ar/propiedades/diaz-velez-1135-casa-en-esquina-sobre-avenida/
+- Casa | DON BOSCO Y MORATH. CASA EN ALQUILER. 2 DORMITORIOS | Venta USD 70.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/casa-parana-4/
+- Terreno | Don Bosco y Morath. Se vende Lote 36 y 37. | Venta USD 12.000 | 0D/0B | 166 m2 | https://inmobiliariamega.com.ar/propiedades/don-bosco-y-morath-se-vende-lote-36-y-37/
+- Casa | Dr Enrique Bonflis esquina verdier. Casa en Venta Toma Vieja! | Venta USD 160.000 | 3D/2B | 225 m2 | https://inmobiliariamega.com.ar/propiedades/dr-enrique-bonflis-esquina-verdier-casa-en-venta-toma-vieja/
+- PH | Duplex en complejo Diamante 322 | Venta USD 60.000 | 2D/1B | 80 m2 | https://inmobiliariamega.com.ar/propiedades/duplex-en-complejo-diamante-322/
+- Departamento | Echague al 500. Departamento en Venta Zona Centro! | Venta USD 75.000 | 0D/1B | 45 m2 | https://inmobiliariamega.com.ar/propiedades/echague-al-500-departamento-en-venta-zona-centro/
+- Departamento | Echague 550. Departamento en Venta. | Venta USD 75.000 | 1D/1B | 1 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-en-venta-zona-centro-echague-550/
+- Casa | Echeverria 2010. Casa Zona Norte | Venta USD 80.000 | 2D/2B | 285 m2 | https://inmobiliariamega.com.ar/propiedades/echeverria-2010-casa-zona-norte/
+- Casa | El Guayacan y Blas Parera. Casa en Venta en La Toma. | Venta USD 400.000 | 4D/3B | 987 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana-7/
+- Local/Oficina | En Venta Excelente Stand Comercial | Venta USD 10.000 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/en-venta-excelente-stand-comercial/
+- Casa | España 567. Casona Centrica Ideal Emprendimiento | Venta USD 160.000 | 4D/2B | 380 m2 | https://inmobiliariamega.com.ar/propiedades/espana-567-casona-centrica-ideal-emprendimiento/
+- Terreno | Excelete Lote en Puerto Barrancas | Venta USD 35.000 | 0D/0B | 840 m2 | https://inmobiliariamega.com.ar/propiedades/excelete-lote-en-puerto-barrancas/
+- Terreno | Fidel Sagastume 919. Excelente Lote en plena ciudad | Venta USD 35.000 | 0D/0B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/fidel-sagastume-919-excelente-lote-en-plena-ciudad/
+- Local/Oficina | Francia y Circunvalación. Se vende Local Con amplio terreno! | Venta USD 45.000 | 0D/1B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/se-vende-local-con-amplio-terreno-calle-francia-y-circunvalacion/
+- Galpón/Cochera | Galpón en Parana | Venta ARS 200.000 | 0D/1B | 509 m2 | https://inmobiliariamega.com.ar/propiedades/galpon-en-parana-2/
+- Galpón/Cochera | Galpón en Parana | Venta USD 170.000 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/galpon-en-parana/
+- Galpón/Cochera | Galpones Punto Norte. Zona Acceso Norte | Venta USD 250.000 | 0D/0B | 795 m2 | https://inmobiliariamega.com.ar/propiedades/galpones-punto-norte-zona-acceso-norte-2/
+- Departamento | Garay y Cordoba. Departamento en venta de 3 dormitorios! | Venta USD 210.000 | 4D/2B | 98 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-en-parana-4/
+- Casa | Gobernador Parera 1356 &#8211; CASA EN VENTA | Venta USD 190.000 | 5D/4B | 360 m2 | https://inmobiliariamega.com.ar/propiedades/gobernador-parera-1356-casa-en-venta/
+- Galpón/Cochera | Gral J J de Urquiza 1269. OPORTUNIDAD! Cochera centrica | Venta USD 11.000 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/gral-j-j-de-urquiza-1269-oportunidad-cochera-centrica/
+- PH | Gral J J de Urquiza al 700. Gran Casa en Planta Baja | Venta USD 280.000 | 0D/2B | 200 m2 | https://inmobiliariamega.com.ar/propiedades/gral-j-j-de-urquiza-al-700-gran-casa-en-planta-baja/
+- Casa | Gran Esquina en Venta Plena Avenida Las Americas | Venta USD 170.000 | 2D/3B | 1,292 m2 | https://inmobiliariamega.com.ar/propiedades/gran-esquina-en-venta-plena-avenida-las-americas/
+- Terreno | Gran Terreno En Esquina A Metros De Acceso Norte | Venta USD 46.000 | 0D/0B | 507 m2 | https://inmobiliariamega.com.ar/propiedades/gran-terreno-en-esquina-a-metros-de-acceso-norte/
+- Casa | Guatemala 799. Casa en esquina a reciclar | Venta USD 45.000 | 3D/1B | 114 m2 | https://inmobiliariamega.com.ar/propiedades/guatemala-799-casa-en-esquina-a-reciclar/
+- Casa | Hermosa Casa Tipo de Campo Zona La Toma. El Ibapoy 3919 | Venta USD 300.000 | 2D/2B | 1,240 m2 | https://inmobiliariamega.com.ar/propiedades/hermosa-casa-tipo-de-campo-zona-la-toma-el-ibapoy-3919/
+- Casa | IMPORTANTE PROPIEDAD UBICADA EN CALLE SAN MARTIN 285, EN UN LUGAR ESTRATEGICO DE LA CIUDAD DE PARANA | Venta USD 400.000 | 3D/3B | - | https://inmobiliariamega.com.ar/propiedades/importante-propiedad-ubicada-en-calle-san-martin-285-en-un-lugar-estrategico-de-la-ciudad-de-parana/
+- Departamento | ING. CHABRILLON. DEPARTAMENTO EN VENTA. 1 DORMITORIO | Venta USD 30.000 | 1D/1B | 40 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-en-venta/
+- Casa | Italia 18. Casa en venta | Venta USD 330.000 | 7D/3B | 484 m2 | https://inmobiliariamega.com.ar/propiedades/italia-18-casa-en-venta/
+- Casa | Juan Baez al 100. Casa en Venta. | Venta USD 290.000 | 3D/4B | 1,450 m2 | https://inmobiliariamega.com.ar/propiedades/juan-baez-al-100-casa-en-venta/
+- Galpón/Cochera | La Rioja 459. Cochera Centrica Cubierta | Venta USD 10.000 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/la-rioja-459-cochera-centrica-cubierta/
+- Casa | Las Azaleas 4558. Casa en Venta Las Acacias. | Venta USD 120.000 | 3D/2B | 630 m2 | https://inmobiliariamega.com.ar/propiedades/las-azaleas-4558-casa-en-venta-las-acacias/
+- Local/Oficina | LOCAL COMERCIAL CENTRICO &#8211; DOS AMBIENTES IDEAL INVERSION | Venta USD 38.000 | 0D/1B | - | https://inmobiliariamega.com.ar/propiedades/local-comercial-centrico-dos-ambientes-ideal-inversion/
+- Local/Oficina | Local en Parana | Venta USD 250.000 | 0D/2B | 487 m2 | https://inmobiliariamega.com.ar/propiedades/local-en-parana/
+- Terreno | Lopez Jordán (Darwin y Acceso Norte) &#8211; Urbanizacion Distrito Norte | Venta USD 45.000 | 0D/0B | 450 m2 | https://inmobiliariamega.com.ar/propiedades/lopez-jordan-darwin-y-acceso-norte-urbanizacion-distrito-norte/
+- Terreno | Lote a metros del Acceso Norte | Venta USD 55.000 | 0D/0B | 1,100 m2 | https://inmobiliariamega.com.ar/propiedades/lote-a-metros-del-acceso-norte/
+- Terreno | Lote en Condominio “Jardines Don Bosco”. Paraná, E.R. | Venta ARS 9.000.000 | 0D/0B | 165 m2 | https://inmobiliariamega.com.ar/propiedades/lote-en-condominio-jardines-don-bosco-parana-e-r/
+- Terreno | Lote en Zona Norte Loteo Terrazas | Venta USD 36.000 | 0D/0B | 450 m2 | https://inmobiliariamega.com.ar/propiedades/lote-en-zona-norte-loteo-terrazas/
+- Terreno | Loteo Chacras De Larralde. Entrega y Financiacion | Venta USD 13.000 | 0D/0B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/loteo-chacras-de-larralde-entrega-y-financiacion/
+- Terreno | LOTES DISPONIBLES EN VISTAS DEL SEMINARIO | Venta USD 20.000 | 0D/0B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/lotes-disponibles-en-vistas-del-seminario/
+- Departamento | Malvinas 140. Departamento en Venta | Venta USD 250.000 | 2D/2B | 85 m2 | https://inmobiliariamega.com.ar/propiedades/unidad-disponible-premium-edificio-malvinas-140/
+- Departamento | Malvinas 276. Hermoso Loft zona parque con amenities | Venta USD 75.000 | 0D/1B | - | https://inmobiliariamega.com.ar/propiedades/malvinas-276-hermoso-loft-zona-parque-con-amenities/
+- Local/Oficina | Malvinas 452. Oficinas en Venta Zona Parque. | Venta USD 320.000 | 0D/2B | 160 m2 | https://inmobiliariamega.com.ar/propiedades/malvinas-452-oficinas-en-venta-zona-parque/
+- Departamento | Malvinas al 100. Departamento de 3 dormitorios en Venta. | Venta USD 385.000 | 3D/2B | - | https://inmobiliariamega.com.ar/propiedades/malvinas-al-100-departamento-de-3-dormitorios-en-venta/
+- Departamento | Malvinas y Córdoba. Departamento de 3 dormitorios en Venta! | Venta USD 350.000 | 3D/2B | 160 m2 | https://inmobiliariamega.com.ar/propiedades/unidad-disponible-en-edificio-malvinas-inn/
+- Departamento | Malvinas y Cordoba. Departamento de 3 dormitorios en Venta. | Venta USD 370.000 | 3D/2B | 160 m2 | https://inmobiliariamega.com.ar/propiedades/malvinas-inn-importante-piso-en-venta/
+- Departamento | Mexico 376 7A. Semipiso Zona Parque | Venta USD 140.000 | 2D/2B | - | https://inmobiliariamega.com.ar/propiedades/mexico-376-7a-semipiso-zona-parque/
+- Departamento | Mitre 413 . Departamento. Venta | Venta USD 290.000 | 3D/4B | 150 m2 | https://inmobiliariamega.com.ar/propiedades/mitre-413-departamento-venta/
+- Local/Oficina | Moreno 70. Oficina de 2 ambientes! | Venta USD 90.000 | 0D/1B | 45 m2 | https://inmobiliariamega.com.ar/propiedades/moreno-70-oficina-de-2-ambientes/
+- Local/Oficina | Oficina &#8211; Parana | Venta USD 95.000 | 0D/1B | 50 m2 | https://inmobiliariamega.com.ar/propiedades/oficina-parana/
+- Casa | Pasaje Baucis 429. Casona Centrica | Venta USD 120.000 | 3D/2B | 170 m2 | https://inmobiliariamega.com.ar/propiedades/pasaje-baucis-429-casona-centrica/
+- Casa | Pellegrini 379. Casa en Venta a Refaccionar | Venta USD 130.000 | 3D/1B | 197 m2 | https://inmobiliariamega.com.ar/propiedades/pellegrini-379-casa-en-venta-a-refaccionar/
+- PH | Ph En Venta Con Patio. Gualeguaychu 263 | Venta USD 115.000 | 3D/2B | 135 m2 | https://inmobiliariamega.com.ar/propiedades/ph-en-venta-con-patio-gualeguaychu-263-2/
+- Departamento | Piedrabuena 57. Departamento 2 dormitorios en Venta. | Venta USD 95.000 | 2D/0B | 65 m2 | https://inmobiliariamega.com.ar/propiedades/piedrabuena-57-departamento-2-dormitorios-en-venta/
+- Departamento | Piedrabuena 57. Departamento en venta de 2 dormitorios | Venta USD 95.000 | 0D/0B | 65 m2 | https://inmobiliariamega.com.ar/propiedades/piedrabuena-57-departamento-en-venta-de-2-dormitorios/
+- Terreno | Pintor Nux Puerto Barrancas. Etapa 1. Se vende Gran Lote mas Proyecto! | Venta USD 72.000 | 0D/0B | 1,200 m2 | https://inmobiliariamega.com.ar/propiedades/pintor-nux-puerto-barrancas-etapa-1-se-vende-gran-lote-mas-proyecto/
+- Terreno | Pintor Nux Y Lopez Jordan . Excelente Lote En Esquina Puerto Barrncas | Venta USD 65.000 | 0D/0B | 1,200 m2 | https://inmobiliariamega.com.ar/propiedades/pintor-nux-y-lopez-jordan-excelente-lote-en-esquina-puerto-barrncas/
+- Departamento | Presidente Perón al 400. Departamento en Venta Zona Hospital | Venta USD 65.000 | 2D/1B | 65 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-dos-dormis-con-cochera-frente-a-hospital-san-martin/
+- Terreno | Puerto Barrancas Etapa II. Financiado &#8211; Entrega Minima | Venta USD 45.000 | 0D/0B | 800 m2 | https://inmobiliariamega.com.ar/propiedades/puerto-barrancas-etapa-ii-financiado-entrega-minima/
+- Galpón/Cochera | Regis martinez 1773. Galpon en venta | Venta USD 60.000 | 0D/1B | 525 m2 | https://inmobiliariamega.com.ar/propiedades/regis-martinez-1773-galpon-en-venta/
+- Departamento | Republica de Eslovenia al 2200. Departamento en venta Bajada grande | Venta USD 200.000 | 2D/2B | - | https://inmobiliariamega.com.ar/propiedades/republica-de-eslovenia-al-2200-departamento-en-venta-bajada-grande-2/
+- Casa | Rosario del Tala al 500. Amplia casa en Venta. | Venta USD 115.000 | 2D/2B | 150 m2 | https://inmobiliariamega.com.ar/propiedades/rosario-del-tala-al-500-amplia-casa-en-venta/
+- PH | Ruiz Moreno 1082. Se venden dos Unidades Funcionales. Ideal Inversion! | Venta USD 75.000 | 0D/2B | - | https://inmobiliariamega.com.ar/propiedades/ruiz-moreno-1082-se-venden-dos-unidades-funcionales-ideal-inversion/
+- Departamento | Salta 524. Dpto Un Dormitorio Centrico | Venta USD 95.000 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/salta-524-dpto-un-dormitorio-centrico/
+- Departamento | San Luis Y La Paz . Fideicomiso Torre Ambar. 100% Financiado | Venta USD 12.960 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/san-luis-y-la-paz-fideicomiso-torre-ambar-100-financiado-2/
+- Departamento | San Martin 118 | Venta USD 200.000 | 2D/1B | 70 m2 | https://inmobiliariamega.com.ar/propiedades/san-martin-118/
+- Departamento | San Martin 329. Departamento de 3 dormitorios en Venta. | Venta USD 280.000 | 3D/2B | 150 m2 | https://inmobiliariamega.com.ar/propiedades/san-martin-329-importante-semipiso-en-venta-dos-dormitorios/
+- Local/Oficina | San Martin y La Paz. Local en venta sobre peatonal! | Venta USD 300.000 | 0D/2B | 132 m2 | https://inmobiliariamega.com.ar/propiedades/excelente-local-en-venta-plena-peatonal-san-martin-esquina-la-paz/
+- Departamento | Se vende hermoso Departamento reciclado a nuevo! Zona centro | Venta USD 90.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/se-vende-hermoso-departamento-reciclado-a-nuevo-zona-centro/
+- Departamento | SEMIPISO CON VISTA AL RIO | Venta USD 180.000 | 2D/2B | - | https://inmobiliariamega.com.ar/propiedades/semipiso-con-vista-al-rio/
+- Terreno | Terreno &#8211; Parana | Venta USD 15.000 | 0D/0B | 983 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-10/
+- Terreno | Terreno &#8211; Parana | Venta USD 50.000 | 0D/0B | 750 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-9/
+- Terreno | Terreno &#8211; Parana | Venta USD 175.500 | 0D/0B | 1,351 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-8/
+- Terreno | Terreno &#8211; Parana | Venta USD 120.000 | 0D/0B | 700 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-7/
+- Terreno | Terreno &#8211; Parana | Venta USD 2.000 | 0D/0B | 400 m2 | https://inmobiliariamega.com.ar/propiedades/lotes-en-strobel-diamante-opcion-financiado/
+- Terreno | Terreno &#8211; Parana | Venta USD 18.000 | 0D/0B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-5/
+- Terreno | Terreno &#8211; Parana | Venta USD 15.500 | 0D/0B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-4/
+- Terreno | Terreno &#8211; Parana | Venta USD 157.500 | 0D/0B | 4,500 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-3/
+- Terreno | Terreno &#8211; Parana | Venta USD 33.000 | 0D/0B | 500 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-2/
+- Terreno | Terreno &#8211; Parana | Venta USD 3.000 | 0D/0B | 400 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana/
+- Terreno | Terreno centrico en venta | Venta USD 125.000 | 0D/0B | 217 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-centrico-en-venta/
+- Terreno | Terreno en Club de Campo Las Colinas, Manzana 3, Lote 9 | Venta USD 25.000 | 0D/0B | 1,072 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-club-de-campo-las-colinas-manzana-3-lote-9-2/
+- Terreno | Terreno en esquina Zona Norte | Venta USD 40.000 | 0D/0B | 478 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-esquina-zona-norte/
+- Terreno | Terreno En Los Lapachos 3 | Venta USD 18.000 | 0D/0B | 360 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-los-lapachos-3/
+- Terreno | Terreno en Parana | Venta USD 15.000 | 0D/0B | 250 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-parana-8/
+- Terreno | Terreno en Parana | Venta ARS 35.000 | 0D/0B | 450 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-parana-7/
+- Terreno | Terreno en Parana | Venta USD 75.000 | 0D/0B | 800 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-parana-6/
+- Terreno | Terreno en Parana | Venta USD 35.000 | 0D/0B | 450 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-parana-5/
+- Terreno | Terreno en Parana | Venta USD 100.000 | 0D/0B | 10,000 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-parana-4/
+- Terreno | Terreno en Parana | Venta USD 35.000 | 0D/0B | 420 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-parana-3/
+- Terreno | Terreno en Parana | Venta USD 50.000 | 0D/0B | 48,000 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-parana-2/
+- Terreno | Terreno en Parana | Venta USD 36.000 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/toscanini-255-terreno-con-todos-los-servicios/
+- Terreno | Terreno en Puerto Barrancas Etapa II | Venta USD 34.000 | 0D/0B | 800 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-puerto-barrancas-etapa-ii/
+- Terreno | Terreno en Puerto Urquiza | Venta USD 70.000 | 0D/0B | 814 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-puerto-urquiza/
+- Terreno | Terreno en zona norte a un valor IMPRESIONANTE | Venta USD 31.000 | 0D/0B | 478 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-zona-norte-a-un-valor-impresionante/
+- Casa | Triplez Centrico Con Cochera. Apto Credito | Venta USD 150.000 | 3D/4B | - | https://inmobiliariamega.com.ar/propiedades/triplez-centrico-con-cochera-apto-credito/
+- Departamento | Tucumán Y Mitre. Gran semipiso en Zona parque. | Venta USD 189.000 | 2D/2B | - | https://inmobiliariamega.com.ar/propiedades/gran-semipiso-en-venta-pleno-parque-tucuman-y-mitre/
+- Departamento | Urquiza al 1500. Departamento 1 dormitorio en Venta. | Venta USD 70.000 | 1D/1B | 34 m2 | https://inmobiliariamega.com.ar/propiedades/urquiza-al-1500-departamento-1-dormitorio-en-venta/
+- Departamento | Urquiza 1530. Departamento en Venta | Venta USD 70.000 | 1D/1B | 34 m2 | https://inmobiliariamega.com.ar/propiedades/urquiza-1530-departamento-en-venta/
+- Casa | Vicegobernador Luis Chaile al 1800. Casa en Venta | Venta USD 110.000 | 3D/2B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/vicegobernador-luis-chaile-al-1800-casa-en-venta/
+- Casa | Victorio Camerano 1826. Casa A Remodelar APTA CREDITO | Venta USD 50.000 | 3D/2B | 276 m2 | https://inmobiliariamega.com.ar/propiedades/victorio-camerano-1826-casa-a-remodelar-apta-credito/
+- Casa | Victorio Camerano 1826. OPORTUNIDAD! Casa a remodelar | Venta USD 50.000 | 3D/2B | 276 m2 | https://inmobiliariamega.com.ar/propiedades/victorio-camerano-1826-oportunidad-casa-a-remodelar/
 
 ### San Benito
 
-- MLA7399988 | Terreno | Oportunidad De Inversion Apto Loteo San Benito | Venta USD 180.000 | - | -
-- MLA6114361 | Terreno | Lote Sobre Avda Principal Altos Del Este San Benito | Venta USD 13.000 | - | -
+- Terreno | Oportunidad De Inversion Apto Loteo San Benito | Venta USD 180.000 | 0D/0B | 18,000 m2 | https://inmobiliariamega.com.ar/propiedades/oportunidad-de-inversion-apto-loteo-san-benito/
+- Terreno | Terreno en San Benito | Venta USD 13.000 | 0D/0B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-san-benito/
 
 ### Santa Fe
 
-- MHO8040824 | Casa | Riobamba 6700 | Venta USD 320.000 | 4D/4B | 331 m2
-- MHO8010408 | Casa | Ohiggin's 3515 | Venta USD 35.000 | 6D/1B | -
-- MHO7975711 | Casa | Juan de Garay 3480 | Venta USD 170.000 | 4D/2B | 250 m2
-- MHO7269220 | Casa | Larrea 5320 | Venta USD 65.000 | 2D/1B | 112 m2
-- MAP8169699 | Departamento | Sara Pinasco de Julierac Piso 16 Departamento d | Venta USD 150.000 | 0D/1B | 49 m2
-- MAP8154567 | Departamento | Maipu 2300 Piso 6 Departamento A | Venta USD 125.000 | 2D/1B | 68 m2
-- MAP8088553 | Departamento | Güemes 3846 | Venta USD 160.000 | 2D/1B | 64 m2
-- MAP8088493 | Departamento | Güemes 3846 8 | Venta USD 280.000 | 3D/3B | 104 m2
-- MAP8080462 | Departamento | Avellaneda 3273 | Venta USD 87.500 | 1D/1B | 40 m2
-- MAP7947814 | Departamento | Guemes 3841 Piso 7 Departamento B | Venta USD 160.000 | - | -
-- MAP7903579 | Departamento | Estanislao Zeballos 4343 Piso 0 Departamento 4 | Venta USD 43.000 | 2D/1B | 45 m2
-- MAP7878020 | Departamento | PEDRO VITTORI 3537 Piso 5 Departamento D | Venta USD 135.000 | 2D/1B | 60 m2
-- MAP7802426 | Departamento | Moreno 3207 Piso 1 Departamento 3 | Venta USD 88.000 Alquiler USD 537 | 2D/1B | 39 m2
-- MAP7802219 | Departamento | San José 1941 PH planta baja depto 4 | Venta USD 45.500 | 1D/1B | 28 m2
-- MAP7242130 | Departamento | Pilay No Adjudicado | Venta USD 15.000 | 2D/1B | -
-- MAP7194650 | Departamento | Departamento Pilay Sin Adjudicar | Venta USD 40.000 | 1D/1B | -
-- MAP7174294 | Departamento | Departamento Pilay Sin adjudicar | Venta USD 37.000 | 2D/1B | -
-- MAP7138173 | Departamento | Belgrano 4746 2 | Venta USD 65.000 | 2D/1B | -
-- MAP7148505 | Departamento | Eva Peron 2279 | Venta USD 42.000 | 2D/1B | -
-- MAP6381073 | Departamento | Departamento a Estrenar. 9 de julio al 2600 | Venta USD 149.000 | 1D/1B | 65 m2
+- Departamento | Departamento en Santa Fe | Alquiler ARS 750.000 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-santa-fe-6/
+- Departamento | 1ero De Mayo 2754. Departamento Monoambiente con Cochera | Venta USD 75.000 | 0D/1B | - | https://inmobiliariamega.com.ar/propiedades/1ero-de-mayo-2754-departamento-monoambiente-con-cochera/
+- Departamento | AV. FREYRE 3100 PORTAL AVENIDA (CAM 88) > Departamento en VENTA en Santa Fe | Venta USD 92.000 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/av-freyre-3100-portal-avenida-cam-88-departamento-en-venta-en-santa-fe-2/
+- Casa | Casa &#8211; Santa Fe | Venta USD 110.000 | 3D/3B | - | https://inmobiliariamega.com.ar/propiedades/casa-santa-fe/
+- Casa | Casa &#8211; Santa Fe | Venta USD 88.000 | 0D/0B | 217 m2 | https://inmobiliariamega.com.ar/propiedades/casa-santa-fe-2/
+- Casa | Casa en Santa Fe | Venta USD 35.000 | 6D/1B | 113 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-santa-fe-3/
+- Casa | Casa en Santa Fe | Venta USD 65.000 | 2D/1B | 192 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-santa-fe/
+- Casa | Casa en Santa Fe | Venta USD 90.000 | 3D/2B | 217 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-santa-fe-2/
+- Departamento | Departamento &#8211; Santa Fe | Venta USD 160.000 | 2D/1B | 78 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-santa-fe-3/
+- Departamento | Departamento &#8211; Santa Fe | Venta USD 280.000 | 3D/3B | 124 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-santa-fe-2/
+- Departamento | Departamento &#8211; Santa Fe | Venta USD 87.500 | 1D/1B | 46 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-santa-fe/
+- Departamento | Departamento en Torre | Venta USD 65.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-torre/
+- Departamento | Departamento en Santa Fe | Venta USD 135.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-santa-fe-5/
+- Departamento | Departamento en Santa Fe | Venta USD 88.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-santa-fe-4/
+- Departamento | Departamento en Santa Fe | Venta USD 45.500 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-santa-fe-3/
+- Departamento | Departamento en Santa Fe | Venta USD 42.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-santa-fe-2/
+- Departamento | Departamento en Santa Fe | Venta USD 149.000 | 1D/1B | 65 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-en-santa-fe/
+- Departamento | Departamento interno | Venta USD 43.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-interno/
+- Departamento | Departamento Pilay sin adjudicar | Venta USD 37.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-pilay-sin-adjudicar/
+- Departamento | Maipu 2371 Departamento 2 dorm. VENTA Paseo de los Molinos Pilay cancelado. edificio San jerónimo 83 | Venta USD 125.000 | 2D/1B | 73 m2 | https://inmobiliariamega.com.ar/propiedades/maipu-2371-departamento-2-dorm-venta-paseo-de-los-molinos-pilay-cancelado-edificio-san-jeronimo-83/
+- Departamento | Pilay no adjudicado dos dormitorios | Venta USD 15.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/pilay-no-adjudicado-dos-dormitorios/
+- Departamento | Plan pilay &#8211; departamento en venta | Venta USD 40.000 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/plan-pilay-departamento-en-venta/
+- Casa | Riobamba 6700. Casa en venta | Venta USD 320.000 | 4D/4B | 447 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-guadalupe-este/
+- Casa | VENTA de casa + departamento a remodelar o demoler | Venta USD 170.000 | 4D/2B | 310 m2 | https://inmobiliariamega.com.ar/propiedades/venta-de-casa-departamento-a-remodelar-o-demoler/
 
 ### Santisima Trinidad
 
-- MAP7287578 | Departamento | Departamento Moderno en Venta en Asunción, Paraguay. | Venta USD 119.000 | 1D/1B | 48 m2
+- Departamento | Departamento Moderno en Venta en Asunción, Paraguay. | Venta USD 119.000 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-moderno-en-venta-en-asuncion-paraguay/
 
 ### Santo Tome
 
-- MAP7817698 | Departamento | 12 de Septiembre 1622 Piso 1 | Venta USD 38.000 | 3D/1B | 55 m2
-- MLA7902562 | Terreno | Centenario 4723 | Venta USD 13.000 | - | -
-- MLA7855517 | Terreno | Dorrego 3217 | Venta USD 25.000 | - | -
+- Departamento | Departamento en venta de 3 dormitorios. 12 de Septiembre al 1600 | Venta USD 38.000 | 3D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-venta-de-3-dormitorios-12-de-septiembre-al-1600/
+- Terreno | Terreno en Santo Tome | Venta USD 13.000 | 0D/0B | 360 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-santo-tome-2/
+- Terreno | Terreno en Santo Tome | Venta USD 25.000 | 0D/0B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-santo-tome/
 
 ### Sargento Cabral
 
-- MAP7843627 | Departamento | Belgrano 4746 Piso 21 Departamento E | Venta USD 82.900 | 1D/1B | 55 m2
+- Casa | Casa en Sargento Cabral | Venta USD 62.000 | 2D/1B | 85 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-sargento-cabral/
+- Departamento | Venta luminoso departamento de 1 dorm | Venta USD 82.900 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/venta-luminoso-departamento-de-1-dorm/
 
 ### Sauce Montrull
 
-- MWE6817370 | Quinta | Se Vende Casa Quinta Amoblada Sauce Montrull | Venta USD 60.000 | 1D/1B | 85 m2
-- MWE5500530 | Quinta | Ruta 12 km 15 (Barrio Sauce Pueblo - Sauce Montrull) | Venta USD 140.000 | 0D/2B | -
-- MLA8078245 | Terreno | Geronimo Ojeda y Maradona. Terreno en Sauce Pueblo | Venta USD 13.000 | - | -
-- MLA6974049 | Terreno | Lote en Zona Tilcara Sauce Montrull | Venta USD 14.000 | - | -
-- MLA6014095 | Terreno | Esteban Maradona Y Las Acacias. Sauce Pueblo Ruta 12 | Venta USD 12.500 | - | -
+- Terreno | Geronimo Ojeda y Maradona. Terreno en Sauce Pueblo | Venta USD 13.000 | 0D/0B | 341 m2 | https://inmobiliariamega.com.ar/propiedades/geronimo-ojeda-y-maradona-terreno-en-sauce-pueblo/
+- Terreno | Lote en Zona Tilcara Sauce Montrull | Venta USD 14.000 | 0D/0B | 450 m2 | https://inmobiliariamega.com.ar/propiedades/lote-en-zona-tilcara-sauce-montrull/
+- Terreno | Lotes disponibles en Sauce Pueblo | Venta USD 12.500 | 0D/0B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/lotes-disponibles-en-sauce-pueblo/
+- Quinta | Quinta en VENTA | Venta USD 140.000 | 0D/2B | 301 m2 | https://inmobiliariamega.com.ar/propiedades/quinta-en-venta/
+- Quinta | Se Vende Casa Quinta Amoblada Sauce Montrull | Venta USD 60.000 | 1D/1B | 499 m2 | https://inmobiliariamega.com.ar/propiedades/se-vende-casa-quinta-amoblada-sauce-montrull/
 
 ### Sauce Viejo
 
-- MWE7926842 | Quinta | Julio A Roca S/N | Venta USD 190.000 | 2D/1B | 75 m2
-- MLA8080277 | Terreno | Ruta 11 y Pres. Agustín Justo 0 | Venta USD 25.000 | - | -
-- MLA7721049 | Terreno | Calle 5 entre Calle 10 y 12 | Venta USD 16.000 | - | -
+- Casa | Casa con pileta y quincho en Sauce Viejo | Venta USD 58.000 | 0D/1B | 60 m2 | https://inmobiliariamega.com.ar/propiedades/casa-con-pileta-y-quincho-en-sauce-viejo/
+- Casa | Casa en Sauce Viejo | Venta USD 58.000 | 2D/1B | 360 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-sauce-viejo/
+- Casa | Casa en Sauce Viejo | Venta USD 45.000 | 2D/1B | 250 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-sauce-viejo-2/
+- Quinta | Julio A. Roca S/N. Quinta en Sauce Viejo | Venta USD 190.000 | 2D/1B | 750 m2 | https://inmobiliariamega.com.ar/propiedades/quinta-en-sauce-viejo-2/
+- Terreno | Terreno &#8211; Sauce Viejo | Venta USD 25.000 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/terreno-sauce-viejo-2/
+- Terreno | Terreno &#8211; Sauce Viejo | Venta USD 28.000 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/terreno-sauce-viejo/
+- Terreno | Terreno en Sauce Viejo | Venta USD 16.000 | 0D/0B | 600 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-sauce-viejo/
 
 ### Sur
 
-- MGA7512407 | Cochera | Juan de Garay | Venta USD 15.000 | - | -
-- MAP7769243 | Departamento | Saavedra 2053 Piso 13 Departamento B | Alquiler USD 697 | 2D/1B | -
+- Departamento | Departamento en Sur | Alquiler ARS 1.000.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-sur/
+- Casa | Casa en Sur | Venta ARS 139.000 | 3D/2B | 122 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-sur/
+- Galpón/Cochera | Cochera en Sur | Venta USD 15.000 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/cochera-en-sur/
 
 ### Viale
 
-- TLA3718563 | Terreno | Corrientes (Av. San Martin y San Luis) - Viale | Venta USD 63.000 | - | 2520 m2
+- Terreno | Terreno &#8211; Viale | Venta USD 63.000 | 0D/0B | 2,520 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-viale/
 
 ### Villa California
 
-- MWE7821693 | Quinta | Lorenzo Tello 0 | Venta USD 180.000 | 4D/2B | 180 m2
+- Quinta | Quinta en Villa California | Venta USD 180.000 | 4D/2B | 950 m2 | https://inmobiliariamega.com.ar/propiedades/quinta-en-villa-california/
 
 ### Villa Hernandarias
 
-- MLA7517560 | Terreno | Guido Mariza. Terreno en Villa Hernandarias | Venta USD 7.000 | - | -
+- Terreno | Guido Mariza. Terreno en Villa Hernandarias | Venta USD 7.000 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/guido-mariza-terreno-en-villa-hernandarias-2/
 
 ### Villa Libertador San Martin
 
-- MHO8066930 | Casa | Moreno y Francisco Laprida. Casa en Venta en Villa Libertador San martin! | Venta USD 130.000 | 3D/2B | 150 m2
+- Casa | Moreno y Francisco Laprida. Casa en Venta en Villa Libertador San martin! | Venta USD 130.000 | 3D/2B | 361 m2 | https://inmobiliariamega.com.ar/propiedades/moreno-y-francisco-laprida-casa-en-venta-en-villa-libertador-san-martin/
 
 ### Villa Urquiza
 
-- MWE7754764 | Quinta | Los Olivos y Montiel. Gran Casa Quinta en Villa Urquiza! | Venta USD 130.000 | 3D/1B | 150 m2
-- MWE7549271 | Quinta | Malvinas Argentina Villa Urquiza | Venta USD 185.000 | 3D/3B | 260 m2
-- MLA7994548 | Terreno | Lotes En Venta Loteo "Solares De Villa Urquiza" | Venta USD 12.000 | - | -
-- MLA6778019 | Terreno | Lotes En Villa Urquiza. | Venta USD 15.000 | - | -
-- MLA6777795 | Terreno | Lotes Diponibles En Villa Urquiza. Opcion Financiado | Venta USD 9.070 | - | -
-
-### Otros
-
-- MHO7799458 | Calle Espejo al 3500 | Casa Quinta en Venta – Zona Paracao | Venta USD 69.000 | 1D/1B | 51 m2
-- MHO7978420 | Venta | Casa en Sauce Viejo | s/precio | 2D/1B | 60 m2
-- MGA7944587 | Zona Escuela Hogar, calle Jose Ramos al 1600 | Galpon con cocheras en venta– Ideal inversión | Venta USD 40.000 | - | 158 m2
+- Quinta | Gran Quinta en Venta en Villa Urquiza! | Venta USD 130.000 | 3D/1B | 832 m2 | https://inmobiliariamega.com.ar/propiedades/gran-quinta-en-venta-en-villa-urquiza/
+- Quinta | INCREIBLE CASA QUINTA | Venta USD 185.000 | 3D/3B | 1,260 m2 | https://inmobiliariamega.com.ar/propiedades/increible-casa-quinta/
+- Terreno | Lotes Diponibles En Villa Urquiza. Opcion Financiado | Venta ARS 13.000.000 | 0D/0B | 690 m2 | https://inmobiliariamega.com.ar/propiedades/lotes-diponibles-en-villa-urquiza-opcion-financiado/
+- Terreno | Lotes En Venta Loteo «Solares De Villa Urquiza» | Venta USD 12.000 | 0D/0B | 675 m2 | https://inmobiliariamega.com.ar/propiedades/lotes-en-venta-loteo-solares-de-villa-urquiza/
