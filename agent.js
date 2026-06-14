@@ -282,7 +282,21 @@ const letras = (texto.match(/[a-záéíóúñ]/gi) || []).length;
 return letras < 2;
 }
 
-// ─── Menú interactivo ─────────────────────────────────────────────────────────
+// Intencion inmobiliaria legitima (raices de operacion). Backstop para impedir
+// que la respuesta fija de seguridad se dispare sobre respuestas validas del cliente.
+function esIntencionInmobiliaria(texto) {
+const t = (texto || "")
+.toLowerCase()
+.normalize("NFD")
+.replace(/[\u0300-\u036f]/g, "")
+.trim();
+if (!t) return false;
+if (/\b(compr|alquil|rent|invert|invers|vend|venta|permut|tas|valu|credit|hipotec|nido|uva)/.test(t)) return true;
+if (/\bcuanto (vale|sale|cuesta)/.test(t)) return true;
+return false;
+}
+
+// ─── Menú interactivo ─────────────────────────────────────────────────────
 // Palabras exactas que vuelven a mostrar el menú de servicios.
 const MENU_TRIGGERS = new Set([
 "menu", "menú", "opciones", "inicio", "empezar", "0", "hola", "buenas",
@@ -362,7 +376,7 @@ return m ? m[0].trim() : null;
 
 function extractTipo(text) {
 // Normaliza a minúsculas y sin acentos para detectar por RAÍZ (no por lista cerrada)
-const t = (text || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+const t = (text || "").toLowerCase().normalize("NFD").replace(/[̀-ɯ]/g, "");
 
 // Tasación / valuación (raíz tas- / valu-, "cuánto vale / cuánto sale")
 if (/\btasa/.test(t) || /\btasc/.test(t) || /\bvalu/.test(t) || /cuanto\s+(vale|sale|cuesta)/.test(t)) return "tasación";
@@ -657,6 +671,24 @@ session.propsOfrecidas.add(code);
 }
 }
 text = text.replace(/\s*\[REF:[^\]]*\]\s*/gi, " ").replace(/ +/g, " ").trim();
+}
+// Backstop deterministico: si el modelo emitio la respuesta fija de seguridad pero
+// el usuario expreso una intencion inmobiliaria legitima, la suprimimos para que el
+// flujo continue normal. La frase fija solo corresponde ante manipulacion real.
+const ultimoUser = [...messages].reverse().find((m) => m.role === "user");
+if (ultimoUser && esIntencionInmobiliaria(ultimoUser.content)) {
+text = text
+.split(/(?<=[.!?])\s+/)
+.filter((s) => {
+const n = s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+return (
+!n.includes("solo puedo ayudarte con consultas inmobiliarias") &&
+!n.includes("en que te asesoro")
+);
+})
+.join(" ")
+.trim();
+if (text.length < 3) text = "¡Perfecto! 🙌 Te ayudo con eso.";
 }
 return text;
 } catch (error) {
