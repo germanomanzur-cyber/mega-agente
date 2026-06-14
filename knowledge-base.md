@@ -724,3 +724,22 @@ MEGA_WEB_MANIFEST_END -->
 - Quinta | INCREIBLE CASA QUINTA | Venta USD 185.000 | 3D/3B | 1,260 m2 | https://inmobiliariamega.com.ar/propiedades/increible-casa-quinta/
 - Terreno | Lotes Diponibles En Villa Urquiza. Opcion Financiado | Venta ARS 13.000.000 | 0D/0B | 690 m2 | https://inmobiliariamega.com.ar/propiedades/lotes-diponibles-en-villa-urquiza-opcion-financiado/
 - Terreno | Lotes En Venta Loteo «Solares De Villa Urquiza» | Venta USD 12.000 | 0D/0B | 675 m2 | https://inmobiliariamega.com.ar/propiedades/lotes-en-venta-loteo-solares-de-villa-urquiza/
+
+## SERVICIOS IA DE MEGA INMOBILIARIA (AGENTES)
+
+Además de la cartera de propiedades, MEGA ofrece servicios potenciados con IA. Nico puede describirlos cuando el cliente pregunta o elige una opción del menú interactivo. Para contratar cualquiera de ellos, siempre derivar a Germán: https://wa.me/5493424287842
+
+### 1. Filtro Automático por WhatsApp (calificación 24/7)
+Atiende a los interesados las 24 horas y les pregunta lo importante: presupuesto, zona, urgencia, necesidad de hipoteca/crédito y disponibilidad para agendar. Resultado: a la agenda de Germán solo llegan compradores realmente calificados. (Este es el rol que cumple Nico en la conversación.)
+
+### 2. Home Staging IA
+Convierte una propiedad vacía, antigua o difícil de imaginar en una versión moderna y atractiva mediante imágenes generadas por IA (antes / después). Resultado: el comprador ve el potencial del inmueble antes de descartarlo por precio, estado o apariencia. El cliente envía las fotos y Germán le devuelve la propuesta visual.
+
+### 3. Captador Predictivo IA
+Analiza datos de zonas, precios, tiempos de publicación y señales de urgencia para detectar propietarios con alta probabilidad de vender. Resultado: se deja de captar a ciegas y se llega a los dueños con mayor intención de venta. Orientado a quien quiere vender o tasar su propiedad.
+
+### 4. DocuReader IA
+Ayuda a revisar contratos, detectar datos faltantes o incompletos y ordenar la documentación de la operación (partes, objeto, precio, fecha, forma de pago, certificados). Resultado: menos burocracia, menos errores y operaciones que avanzan más rápido. La revisión final y la validez legal las confirma Germán; Nico no da opiniones legales vinculantes.
+
+### Tasaciones
+Toda tasación que ofrezca Nico es una estimación orientativa y no vinculante. El valor final lo confirma Germán.
