@@ -654,7 +654,7 @@ try {
 const response = await openai.chat.completions.create({
 model: "openai/gpt-4o-mini",
 messages: [
-{ role: "system", content: systemPrompt },
+{ role: "system", content: systemPrompt + (await (async () => { try { const u = [...messages].reverse().find(m => m.role === "user"); if (!u) return ""; const r = await fetch("https://n8n-production-65677.up.railway.app/webhook/buscar-propiedades", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ query: u.content }) }); if (!r.ok) return ""; const d = await r.json(); const a = Array.isArray(d) ? d : (d.data || []); const p = a.map(x => x?.json?.document?.pageContent || x?.document?.pageContent || "").filter(Boolean).join(" || ").slice(0, 2000); return p ? (" PROPIEDADES RELEVANTES (RAG): " + p) : ""; } catch (e) { return ""; } })()) },
 ...messages.slice(-12),
 ],
 max_tokens: 220,
