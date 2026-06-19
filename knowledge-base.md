@@ -290,7 +290,7 @@ Reglas: ubicar la propiedad del cliente en la banda P25-P75 según estado y ubic
 
 ---
 
-## INVENTARIO COMPLETO MEGA WEB — 306 PROPIEDADES (sincronizado 18/06/2026)
+## INVENTARIO COMPLETO MEGA WEB — 306 PROPIEDADES (sincronizado 19/06/2026)
 
 Instrucciones:
 - Cuando pregunten por zona, presupuesto o dormitorios, buscar acá y ofrecer máximo 3 opciones con precio y datos clave. Cerrar derivando a Germán: https://wa.me/5493424287842
@@ -525,9 +525,9 @@ MEGA_WEB_MANIFEST_END -->
 - Galpón/Cochera | Corrientes 265. Cocheras Cubo | Venta USD 15.000 | 0D/0B | 15 m2 | https://inmobiliariamega.com.ar/propiedades/corrientes-265-cocheras-cubo/
 - Terreno | Del loro y Del boyero Piedras Blancas . Terreno. Venta | Venta USD 17.000 | 0D/0B | 440 m2 | https://inmobiliariamega.com.ar/propiedades/del-loro-y-del-boyero-piedras-blancas-terreno-venta/
 - Departamento | Departamento &#8211; Parana | Venta USD 75.000 | 3D/1B | 100 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana-2/
-- Departamento | Departamento &#8211; Parana | Venta USD 430.000 | 3D/2B | 170 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana/
 - Departamento | Departamento &#8211; Parana | Venta USD 100.000 | 1D/1B | 51 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana-9/
 - Departamento | Departamento &#8211; Parana | Venta USD 120.000 | 3D/2B | 65 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana-3/
+- Departamento | Departamento &#8211; Parana | Venta USD 430.000 | 3D/2B | 170 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana/
 - Departamento | Departamento Dos Dormitorios Con Amenities en Complejo Cerrado. Av Uranga 580 | Venta USD 65.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-dos-dormitorios-con-amenities-en-complejo-cerrado-av-uranga-580/
 - Departamento | Departamento en Parana | Venta USD 75.000 | 1D/1B | 50 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-en-parana-2/
 - Departamento | Departamento en Parana | Venta USD 48.500 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-parana/
@@ -627,8 +627,8 @@ MEGA_WEB_MANIFEST_END -->
 - Terreno | Terreno en Parana | Venta USD 35.000 | 0D/0B | 450 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-parana-5/
 - Terreno | Terreno en Parana | Venta USD 100.000 | 0D/0B | 10,000 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-parana-4/
 - Terreno | Terreno en Parana | Venta USD 35.000 | 0D/0B | 420 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-parana-3/
-- Terreno | Terreno en Parana | Venta USD 36.000 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/toscanini-255-terreno-con-todos-los-servicios/
 - Terreno | Terreno en Parana | Venta USD 50.000 | 0D/0B | 48,000 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-parana-2/
+- Terreno | Terreno en Parana | Venta USD 36.000 | 0D/0B | - | https://inmobiliariamega.com.ar/propiedades/toscanini-255-terreno-con-todos-los-servicios/
 - Terreno | Terreno en Puerto Barrancas Etapa II | Venta USD 34.000 | 0D/0B | 800 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-puerto-barrancas-etapa-ii/
 - Terreno | Terreno en Puerto Urquiza | Venta USD 70.000 | 0D/0B | 814 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-puerto-urquiza/
 - Terreno | Terreno en zona norte a un valor IMPRESIONANTE | Venta USD 31.000 | 0D/0B | 478 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-zona-norte-a-un-valor-impresionante/
@@ -661,8 +661,8 @@ MEGA_WEB_MANIFEST_END -->
 - Departamento | Departamento &#8211; Santa Fe | Venta USD 280.000 | 3D/3B | 124 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-santa-fe-2/
 - Departamento | Departamento &#8211; Santa Fe | Venta USD 87.500 | 1D/1B | 46 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-santa-fe/
 - Departamento | Departamento en Torre | Venta USD 65.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-torre/
-- Departamento | Departamento en Santa Fe | Venta USD 150.000 | 0D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-santa-fe-7/
 - Departamento | Departamento en Santa Fe | Venta ARS 130.000 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-santa-fe-8/
+- Departamento | Departamento en Santa Fe | Venta USD 150.000 | 0D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-santa-fe-7/
 - Departamento | Departamento en Santa Fe | Venta USD 135.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-santa-fe-5/
 - Departamento | Departamento en Santa Fe | Venta USD 88.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-santa-fe-4/
 - Departamento | Departamento en Santa Fe | Venta USD 45.500 | 1D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-en-santa-fe-3/
