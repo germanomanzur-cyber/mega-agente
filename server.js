@@ -105,7 +105,7 @@ return keywords.filter(k => t.includes(k)).length >= 2;
 }
 
 // ─── Notificar lead caliente a n8n ────────────────────────────────────────────
-const N8N_LEAD_WEBHOOK = "https://german33.app.n8n.cloud/webhook/lead-nico";
+const N8N_LEAD_WEBHOOK = "https://n8n-production-65677.up.railway.app/webhook/lead-nico";
 
 async function notificarLeadN8n(lead) {
 try {
