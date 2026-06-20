@@ -52,6 +52,7 @@ function pushClienteToN8n(lead) {
         interes: lead.interesEn || "",
         tier: lead.tier || "",
         ultimo_mensaje: lead.lastMessage || "",
+        props_mostradas: lead.propsMostradas || "",
       }),
     }).catch(() => {});
   } catch (_) {}
@@ -102,6 +103,7 @@ async function restoreMemoryFromN8n() {
         interesEn: row.interes || null,
         tier: row.tier || "frio",
         lastMessage: row.ultimo_mensaje || "",
+        propsMostradas: row.props_mostradas || "",
       };
       const idx = leads.findIndex((l) => l.phone === row.numero);
       if (idx >= 0) leads[idx] = { ...leads[idx], ...mapped };
@@ -142,6 +144,7 @@ function getSession(phoneNumber) {
       presupuesto: null,
       timing: null,
       interesEn: null,
+      propsMostradas: "",
       canal: "whatsapp",
       firstContact: new Date().toISOString(),
     },
@@ -161,6 +164,7 @@ function getSession(phoneNumber) {
       newSession.profile.presupuesto = saved.presupuesto || null;
       newSession.profile.timing = saved.timing || null;
       newSession.profile.interesEn = saved.interesEn || null;
+      newSession.profile.propsMostradas = saved.propsMostradas || "";
       if (saved.tier) newSession.tier = saved.tier;
       newSession.returning = true;
     }
@@ -359,7 +363,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
       session.qualifyStep++;
       const systemPrompt = buildSystemPrompt(session);
       const aiResp = await callOpenAI(session.messages, systemPrompt);
-      session.messages.push({ role: "assistant", content: aiResp });
+      session.messages.push({ role: "assistant", content: aiResp }); trackShownProps(session, aiResp);
       saveLead({ phone: phoneNumber, ...session.profile, tier: "tibio", lastMessage: userText });
       if (q) return `${aiResp}\n\n${q}`;
       return aiResp;
@@ -390,7 +394,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
     session.messages.push({ role: "user", content: userText });
     const systemPrompt = buildSystemPrompt(session);
     const aiResp = await callOpenAI(session.messages, systemPrompt);
-    session.messages.push({ role: "assistant", content: aiResp });
+    session.messages.push({ role: "assistant", content: aiResp }); trackShownProps(session, aiResp);
     const q = nextQualifyQuestion(session);
     session.qualifyStep++;
     if (q && session.qualifyStep <= 2) {
@@ -410,7 +414,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
   session.messages.push({ role: "user", content: userText });
   const systemPrompt = buildSystemPrompt(session);
   const aiResp = await callOpenAI(session.messages, systemPrompt);
-  session.messages.push({ role: "assistant", content: aiResp });
+  session.messages.push({ role: "assistant", content: aiResp }); trackShownProps(session, aiResp);
 
   if (session.messages.length > 20) {
     session.messages = session.messages.slice(-18);
@@ -419,6 +423,8 @@ export async function handleIncomingMessage(phoneNumber, userText) {
   saveLead({ phone: phoneNumber, ...session.profile, tier: session.tier, lastMessage: userText });
   return aiResp;
 }
+
+function trackShownProps(session, text){ try { const flat=String(text).split(String.fromCharCode(10)).join(" "); const segs=flat.split("http"); if(segs.length<2) return; let cur=(session.profile.propsMostradas||"").split("|").filter(Boolean); for(let i=1;i<segs.length;i++){ if(segs[i].indexOf("propiedad")!==-1){ const u=("http"+segs[i]).split(" ")[0]; if(cur.indexOf(u)===-1) cur.push(u); } } session.profile.propsMostradas=cur.slice(-15).join("|"); } catch(e){} }
 
 function buildSystemPrompt(session) {
   const p = session.profile;
@@ -438,6 +444,8 @@ function buildSystemPrompt(session) {
     ? `\n\nESTE CLIENTE YA HABLÓ ANTES CON VOS: saludalo por su nombre si lo sabés y NO vuelvas a preguntar datos que ya están en el contexto. Retomá la conversación donde quedó.`
     : "";
 
+  const shownContext = (session.profile.propsMostradas||"") ? (String.fromCharCode(10)+String.fromCharCode(10)+"PROPIEDADES QUE YA LE MOSTRASTE (no repitas, ofrece alternativas distintas):"+String.fromCharCode(10)+session.profile.propsMostradas.split("|").join(String.fromCharCode(10))) : "";
+
   return `Sos Nico, asistente de ventas inmobiliarias de Germán Manzur (MEGA Inmobiliaria, Santa Fe).
 
 PERSONALIDAD: Profesional, cálido, directo. Sin rodeos. Sin emojis excesivos. Máx 3 frases por respuesta.
@@ -454,7 +462,7 @@ REGLAS:
 - Si preguntan por créditos Nido/UVA, dar la info de la knowledge base sobre bancos.
 - Nunca inventar propiedades que no están en la base de conocimiento.
 - Si no tenés la info, decí que Germán la tiene y derivá al WA.
-- Respuestas cortas. Si el lead es caliente, derivar a Germán INMEDIATAMENTE.${leadContext}${returningContext}
+- Respuestas cortas. Si el lead es caliente, derivar a Germán INMEDIATAMENTE.${leadContext}${returningContext}${shownContext}
 
 BASE DE CONOCIMIENTO:
 ${knowledgeBase}`;
