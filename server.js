@@ -90,8 +90,8 @@ return "Comando no reconocido. Escribí //ayuda";
 // ─── Respuesta automática para redes sociales ─────────────────────────────────
 const RESPUESTA_SOCIAL = `¡Hola! Soy Germán Manzur de MEGA Inmobiliaria Santa Fe 🏠 Vi tu consulta y tengo propiedades disponibles en esa zona. Escribime por WhatsApp y te mando los detalles: https://wa.me/5493424287842`;
 
-const BIENVENIDA = `¡Hola! Gracias por escribir a MEGA Inmobiliaria. Soy *Germán Manzur*, tu asesor especialista. 💼
-Ya tomé tu consulta y te respondo personalmente en breve. Mientras tanto, contame en una línea: ¿buscás tu próximo hogar, querés calificar para el *Crédito Nido*, o vas por una oportunidad de *Flipping/Inversión*? 🏡
+const BIENVENIDA = `¡Hola! Gracias por escribir a MEGA Inmobiliaria. Soy *Nico*, el asistente de *Germán Manzur*, y ya le pasé tu consulta: te responde personalmente en breve. 💼
+Mientras tanto, contame en una línea: ¿buscás tu próximo hogar, querés calificar para el *Crédito Nido*, o vas por una oportunidad de *Flipping/Inversión*? 🏡
 Para ir adelantando, mirá nuestro stock oficial, actualizado y verificado por IA, acá: https://drive.google.com/file/d/1fUZCJykuXltwKN05sqLwmaqwnl9qSGwy/view?usp=drive_link`;
 
 // ─── Detectar si un texto es consulta inmobiliaria ────────────────────────────
