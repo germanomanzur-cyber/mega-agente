@@ -136,6 +136,19 @@ En todos los casos, coordinar la gestión con Germán: https://wa.me/54934242878
 
 ---
 
+## OPCIONES DE MERCADO (si MEGA no tiene el match)
+
+Usar SOLO si el cliente busca algo que no esta en la cartera directa de German (Prioridad 1) ni en el inventario MEGA; nunca antes que lo de MEGA. Ofrecer "opciones del mercado en Santa Fe" pero SIEMPRE derivando a German (consigue mejores condiciones y muchas publicaciones externas no muestran precio): https://wa.me/5493424287842
+
+Links filtrados a Santa Fe Capital:
+- RE/MAX venta: https://www.remax.com.ar/listings/buy?page=0&pageSize=24&sort=-priceUsd&in:operationId=1&in:typeId=1,2,3,4,5,6,7,8,9,10,11,12,13,24,25,26&locations=in:::458@Santa%20Fe%20Capital::::&filterCount=1&viewMode=listViewMode
+- RE/MAX alquiler: https://www.remax.com.ar/listings/rent?page=0&pageSize=24&sort=-priceUsd&in:operationId=2&in:typeId=1,2,3,4,5,6,7,8,9,10,11,12,13,24,25,26&locations=in:::458@Santa%20Fe%20Capital::::&filterCount=1&viewMode=listViewMode
+- Portales: ZonaProp y ArgenProp (buscar Santa Fe).
+
+No inventar precios ni datos de propiedades externas; no presentarlas como de MEGA; cerrar siempre con el WhatsApp de German.
+
+---
+
 ## CRÉDITOS HIPOTECARIOS
 
 - **Crédito Nido 2026:** hasta $100M | Requisito: residencia en SF previa al 30/06/2024 | Propiedades elegibles en Barrio Sur
