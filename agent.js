@@ -101,7 +101,7 @@ async function restoreMemoryFromN8n() {
         timing: row.timing || null,
         interesEn: row.interes || null,
         tier: row.tier || "frio",
-        lastMessaje: row.ultimo_mensaje || "",
+        lastMessage: row.ultimo_mensaje || "",
       };
       const idx = leads.findIndex((l) => l.phone === row.numero);
       if (idx >= 0) leads[idx] = { ...leads[idx], ...mapped };
@@ -343,7 +343,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
   if (esCaliente(userText)) {
     session.tier = "caliente";
     const summary = buildLeadSummary(phoneNumber, session);
-    saveLead({ phone: phoneNumber, ...session.profile, tier: "caliente", lastMessaje: userText });
+    saveLead({ phone: phoneNumber, ...session.profile, tier: "caliente", lastMessage: userText });
     session.pendingHandoff = summary;
     session.handoffSent = true;
     return `¡Perfecto${session.profile.name ? `, ${session.profile.name}` : ""}! 🔥 Tengo todo lo que necesitás. Germán te contacta en minutos al *+54 342 4287842* para darte la información completa y coordinar una visita.\n\nTambién podés escribirle directamente: https://wa.me/5493424287842`;
@@ -360,7 +360,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
       const systemPrompt = buildSystemPrompt(session);
       const aiResp = await callOpenAI(session.messages, systemPrompt);
       session.messages.push({ role: "assistant", content: aiResp });
-      saveLead({ phone: phoneNumber, ...session.profile, tier: "tibio", lastMessaje: userText });
+      saveLead({ phone: phoneNumber, ...session.profile, tier: "tibio", lastMessage: userText });
       if (q) return `${aiResp}\n\n${q}`;
       return aiResp;
     }
@@ -383,7 +383,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
 
   if (esTibio(userText) && session.tier === "frio") {
     session.tier = "tibio";
-    saveLead({ phone: phoneNumber, ...session.profile, tier: "tibio", lastMensaje: userText });
+    saveLead({ phone: phoneNumber, ...session.profile, tier: "tibio", lastMessage: userText });
   }
 
   if (session.tier === "tibio" && session.qualifyStep < 2) {
@@ -394,14 +394,14 @@ export async function handleIncomingMessage(phoneNumber, userText) {
     const q = nextQualifyQuestion(session);
     session.qualifyStep++;
     if (q && session.qualifyStep <= 2) {
-      saveLead({ phone: phoneNumber, ...session.profile, tier: "tibio", lastMensaje: userText });
+      saveLead({ phone: phoneNumber, ...session.profile, tier: "tibio", lastMessage: userText });
       return `${aiResp}\n\n${q}`;
     }
     if (!session.handoffSent) {
       session.handoffSent = true;
       const summary = buildLeadSummary(phoneNumber, session);
       session.pendingHandoff = summary;
-      saveLead({ phone: phoneNumber, ...session.profile, tier: "tibio", lastMensaje: userText });
+      saveLead({ phone: phoneNumber, ...session.profile, tier: "tibio", lastMessage: userText });
       return `${aiResp}\n\nPara darte la atención que merecés, te voy a conectar directamente con Germán. Podés escribirle por WhatsApp: https://wa.me/5493424287842 📲`;
     }
     return aiResp;
@@ -416,7 +416,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
     session.messages = session.messages.slice(-18);
   }
 
-  saveLead({ phone: phoneNumber, ...session.profile, tier: session.tier, lastMensaje: userText });
+  saveLead({ phone: phoneNumber, ...session.profile, tier: session.tier, lastMessage: userText });
   return aiResp;
 }
 
@@ -435,7 +435,7 @@ function buildSystemPrompt(session) {
     : "";
 
   const returningContext = session.returning
-    ? `\n\nESTE CLIENTE YA HABLÓN ANTES CON VOS: saludalo por su nombre si lo sabés y NO vuelvas a preguntar datos que ya están en el contexto. Retomá la conversación donde quedó.`
+    ? `\n\nESTE CLIENTE YA HABLÓ ANTES CON VOS: saludalo por su nombre si lo sabés y NO vuelvas a preguntar datos que ya están en el contexto. Retomá la conversación donde quedó.`
     : "";
 
   return `Sos Nico, asistente de ventas inmobiliarias de Germán Manzur (MEGA Inmobiliaria, Santa Fe).
