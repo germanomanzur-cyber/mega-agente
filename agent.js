@@ -478,7 +478,11 @@ return handleMenuOption(userText, session, phoneNumber);
 }
 
 // ─ Mostrar menú: primer contacto (salvo lead caliente) o palabra clave exacta
-if ((session.isFirstMessage && !esCaliente(userText)) || esMenuTrigger(userText)) {
+if (session.isFirstMessage && !esCaliente(userText)) {
+session.isFirstMessage = false;
+return "__BIENVENIDA__";
+}
+if (esMenuTrigger(userText)) {
 session.isFirstMessage = false;
 return "__MENU__";
 }
