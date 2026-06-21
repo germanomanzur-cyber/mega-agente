@@ -485,3 +485,106 @@ async function callOpenAI(messages, systemPrompt) {
     return "En este momento no puedo responder. Escribile directamente a Germán: https://wa.me/5493424287842";
   }
 }
+
+// ─── Radar: WhatsApp profile names en leads ───────────────────────────
+export function saveLeadWaName(phone, waName) {
+  if (!phone || !waName) return;
+  try {
+    const leads = loadLeads();
+    const idx = leads.findIndex((l) => l.phone === phone);
+    if (idx >= 0) {
+      if (!leads[idx].waName) {
+        leads[idx].waName = waName;
+        leads[idx].updatedAt = new Date().toISOString();
+        writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
+      }
+    } else {
+      leads.push({ phone, waName, tier: "frio", createdAt: new Date().toISOString() });
+      writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
+    }
+  } catch (e) {
+    console.error("Error guardando waName:", e.message);
+  }
+}
+
+export function searchLeadByName(nombre) {
+  if (!nombre) return [];
+  const q = String(nombre).trim().toLowerCase();
+  if (!q) return [];
+  try {
+    return loadLeads().filter((l) => {
+      const n = (l.name || "").toLowerCase();
+      const w = (l.waName || "").toLowerCase();
+      return n.includes(q) || w.includes(q);
+    });
+  } catch (_) {
+    return [];
+  }
+}
+
+// ─── Radar: agentes / inmobiliarias detectadas ───────────────────────
+const AGENTES_FILE = path.join(__dirname, "agentes.json");
+
+function loadAgentes() {
+  try {
+    if (existsSync(AGENTES_FILE)) {
+      return JSON.parse(readFileSync(AGENTES_FILE, "utf-8"));
+    }
+  } catch (_) {}
+  return [];
+}
+
+export function getAgentes() {
+  return loadAgentes();
+}
+
+export function saveAgente(data) {
+  try {
+    const { nombre, phone, inmobiliaria, zona, fuente, propiedad } = data || {};
+    if (!phone && !nombre) return;
+    const agentes = loadAgentes();
+    const idx = agentes.findIndex(
+      (a) => (phone && a.phone === phone) || (!phone && nombre && a.nombre === nombre)
+    );
+    if (idx >= 0) {
+      const a = agentes[idx];
+      if (nombre) a.nombre = nombre;
+      if (inmobiliaria) a.inmobiliaria = inmobiliaria;
+      if (zona) a.zona = zona;
+      if (fuente) a.fuente = fuente;
+      if (propiedad) {
+        a.propiedades = a.propiedades || [];
+        a.propiedades.push(propiedad);
+      }
+      a.updatedAt = new Date().toISOString();
+    } else {
+      agentes.push({
+        nombre: nombre || null,
+        phone: phone || null,
+        inmobiliaria: inmobiliaria || "",
+        zona: zona || null,
+        fuente: fuente || null,
+        propiedades: propiedad ? [propiedad] : [],
+        createdAt: new Date().toISOString(),
+      });
+    }
+    writeFileSync(AGENTES_FILE, JSON.stringify(agentes, null, 2), "utf-8");
+  } catch (e) {
+    console.error("Error guardando agente:", e.message);
+  }
+}
+
+export function searchAgenteByName(nombre) {
+  if (!nombre) return [];
+  const q = String(nombre).trim().toLowerCase();
+  if (!q) return [];
+  try {
+    return loadAgentes().filter((a) => {
+      const n = (a.nombre || "").toLowerCase();
+      const i = (a.inmobiliaria || "").toLowerCase();
+      return n.includes(q) || i.includes(q);
+    });
+  } catch (_) {
+    return [];
+  }
+}
