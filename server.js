@@ -141,8 +141,6 @@ if (to === GERMAN_WA) logMessage("wa", GERMAN_WA, "nico", body);
 }
 
 // ─── WhatsApp: enviar menú interactivo de servicios ───────────────────────────
-// Lista interactiva (no botones: hay más de 3 opciones). Cada fila tiene un id
-// "opt_*" que agent.js interpreta en handleMenuOption.
 async function sendWhatsAppMenu(to) {
 const recipient = to.startsWith("549") ? "54" + to.substring(3) : to;
 await axios.post(
@@ -234,18 +232,44 @@ if (!message) return;
 
 const from = message.from;
 let userText = message.text?.body || null;
-if (message.type === "audio") userText = "__AUDIO__";
+
+// ─── Transcripción de notas de voz con Whisper ────────────────────────
+if (message.type === "audio") {
+  try {
+    const _mediaId = message.audio.id;
+    const { data: _mediaInfo } = await axios.get(
+      `https://graph.facebook.com/v21.0/${_mediaId}`,
+      { headers: { Authorization: `Bearer ${WHATSAPP_ACCESS_TOKEN}` } }
+    );
+    const _audioResp = await axios.get(_mediaInfo.url, {
+      responseType: "arraybuffer",
+      headers: { Authorization: `Bearer ${WHATSAPP_ACCESS_TOKEN}` }
+    });
+    const _fd = new FormData();
+    _fd.append("file", new Blob([_audioResp.data], { type: "audio/ogg" }), "audio.ogg");
+    _fd.append("model", "whisper-1");
+    _fd.append("language", "es");
+    const _whisper = await axios.post(
+      "https://api.openai.com/v1/audio/transcriptions",
+      _fd,
+      { headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}` } }
+    );
+    userText = _whisper.data.text || "__AUDIO__";
+    console.log(`[NICO/WA] Transcripción audio: ${userText}`);
+  } catch (_err) {
+    console.error("[NICO/WA] Error transcribiendo audio:", _err.message);
+    userText = "__AUDIO__";
+  }
+}
+
 if (message.type === "image") userText = "__IMAGE__";
-// Selección del menú interactivo (lista o botones)
 if (message.type === "interactive") {
 userText = message.interactive?.list_reply?.id || message.interactive?.button_reply?.id || null;
 }
 
-// Guardar nombre WA del perfil (solo leads, no Germán)
 const waProfileName = changes?.value?.contacts?.[0]?.profile?.name;
 if (waProfileName && from !== GERMAN_WA) saveLeadWaName(from, waProfileName);
 
-// ─ Modo Germán: prefijo // activa comandos privados (solo 5493424287842)
 if (from === GERMAN_WA && userText && userText.trim().startsWith("//")) {
 const reply = handleModoGerman(userText.trim(), getLeads(), searchLeadByName);
 await sendWhatsApp(GERMAN_WA, reply);
@@ -258,7 +282,6 @@ logMessage("wa", from, "user", userText);
 const responseText = await handleIncomingMessage(from, userText);
 if (responseText === null) return;
 
-// __MENU__ → enviar el menú interactivo de servicios en vez de texto
 if (responseText === "__MENU__") {
 await sendWhatsAppMenu(from);
 logMessage("wa", from, "nico", "[menú de servicios enviado]");
@@ -367,11 +390,9 @@ app.post("/report", async (req, res) => {
 const { token, message, agente, phone: agentePhone, inmobiliaria, zona, propiedad } = req.body || {};
 if (!token || token !== REPORT_TOKEN) return res.status(401).json({ error: "No autorizado" });
 if (!message) return res.status(400).json({ error: "message requerido" });
-// Guardar agente si viene estructurado
 if (agente || agentePhone) {
 saveAgente({ nombre: agente, phone: agentePhone, inmobiliaria, zona, fuente: "reporte", propiedad });
 }
-// Auto-extraer agentes del texto del mensaje
 const agentesEncontrados = extractAgentesFromText(message);
 for (const ag of agentesEncontrados) {
 if (ag.phone || ag.nombre) saveAgente({ ...ag, propiedad: propiedad || null });
