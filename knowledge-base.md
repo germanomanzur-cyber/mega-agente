@@ -261,7 +261,7 @@ Reglas: ubicar la propiedad del cliente en la banda P25-P75 según estado y ubic
 
 ---
 
-## INVENTARIO COMPLETO MEGA WEB — 305 PROPIEDADES (sincronizado 22/6/2026, Railway 03:00)
+## INVENTARIO COMPLETO MEGA WEB — 305 PROPIEDADES (sincronizado 23/6/2026, Railway 03:00)
 
 Instrucciones:
 - Cuando pregunten por zona, presupuesto o dormitorios, buscar aca y ofrecer maximo 3 opciones con precio y datos clave. Cerrar derivando a German: https://wa.me/5493424287842
