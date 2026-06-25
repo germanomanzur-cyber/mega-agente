@@ -13,32 +13,32 @@ const REPORT_TOKEN = REPORT_TOKEN_ENV || VERIFY_TOKEN;
 
 function handleModoGerman(cmd, leads, searchFn) {
 const c = (cmd||"").trim().toLowerCase();
-if (c==="//ayuda") return "Comandos disponibles:\n//tel <nombre> — busca lead o agente\n//agentes — agentes guardados\n//leads — últimos 10 leads\n//calientes — calientes\n//ayuda — esta lista";
-if (c==="//leads") { const lista=leads.slice(-10).reverse(); if(!lista.length) return "Sin leads registrados aún."; return lista.map(l=>(l.waName||l.name||"?")+" — wa.me/"+l.phone+" ("+(l.tier||"-")+")").join("\n"); }
-if (c==="//calientes") { const cal=leads.filter(l=>l.tier==="caliente").slice(-10).reverse(); if(!cal.length) return "Sin leads calientes."; return cal.map(l=>(l.waName||l.name||"?")+" — wa.me/"+l.phone+" — "+(l.zona||"-")+" — "+(l.presupuesto||"-")).join("\n"); }
-if (c==="//agentes") { const ag=getAgentes().slice(-10).reverse(); if(!ag.length) return "Sin agentes registrados aún."; return ag.map(a=>(a.nombre||"?")+(a.inmobiliaria?" ("+a.inmobiliaria+")":"")+" — wa.me/"+a.phone+(a.propiedades&&a.propiedades.length?" — "+a.propiedades.length+" prop.":"")).join("\n"); }
-const mm=cmd.match(/^\/\/(tele?|num|numero|n[úu]mero|contacto|buscar)\s+(.+)/i);
-if (mm) { const nombre=mm[2].trim(),resLeads=searchFn(nombre),resAgentes=searchAgenteByName(nombre),todos=[...resLeads,...resAgentes]; if(!todos.length) return "Sin resultados para \""+nombre+"\". Probá nombre parcial (ej: //tel Dana)"; if(todos.length===1){const r=todos[0];if(r.inmobiliaria!==undefined){let txt=(r.nombre||"Sin nombre")+"\nwa.me/"+r.phone;if(r.inmobiliaria)txt+="\n"+r.inmobiliaria;if(r.zona)txt+=" · "+r.zona;if(r.propiedades&&r.propiedades.length){txt+="\n📋 "+r.propiedades.length+" propiedad(es) compartida(s):\n"+r.propiedades.slice(-3).map(p=>" • "+(p.titulo||p.link||"sin título")).join("\n");}return txt;}return(r.waName||r.name||"Sin nombre")+"\nwa.me/"+r.phone+"\n"+(r.tier||"-")+" · "+(r.zona||"-")+" · "+(r.presupuesto||"-");} return todos.length+" resultados:\n"+todos.slice(0,5).map(r=>"• "+(r.nombre||r.waName||r.name||"?")+" → wa.me/"+r.phone+(r.inmobiliaria?" ("+r.inmobiliaria+")":"")).join("\n"); }
-return "Comando no reconocido. Escribí //ayuda";
+if (c==="//ayuda") return "Comandos disponibles:\n//tel <nombre> â busca lead o agente\n//agentes â agentes guardados\n//leads â Ãºltimos 10 leads\n//calientes â calientes\n//ayuda â esta lista";
+if (c==="//leads") { const lista=leads.slice(-10).reverse(); if(!lista.length) return "Sin leads registrados aÃºn."; return lista.map(l=>(l.waName||l.name||"?")+" â wa.me/"+l.phone+" ("+(l.tier||"-")+")").join("\n"); }
+if (c==="//calientes") { const cal=leads.filter(l=>l.tier==="caliente").slice(-10).reverse(); if(!cal.length) return "Sin leads calientes."; return cal.map(l=>(l.waName||l.name||"?")+" â wa.me/"+l.phone+" â "+(l.zona||"-")+" â "+(l.presupuesto||"-")).join("\n"); }
+if (c==="//agentes") { const ag=getAgentes().slice(-10).reverse(); if(!ag.length) return "Sin agentes registrados aÃºn."; return ag.map(a=>(a.nombre||"?")+(a.inmobiliaria?" ("+a.inmobiliaria+")":"")+" â wa.me/"+a.phone+(a.propiedades&&a.propiedades.length?" â "+a.propiedades.length+" prop.":"")).join("\n"); }
+const mm=cmd.match(/^\/\/(tele?|num|numero|n[Ãºu]mero|contacto|buscar)\s+(.+)/i);
+if (mm) { const nombre=mm[2].trim(),resLeads=searchFn(nombre),resAgentes=searchAgenteByName(nombre),todos=[...resLeads,...resAgentes]; if(!todos.length) return "Sin resultados para \""+nombre+"\". ProbÃ¡ nombre parcial (ej: //tel Dana)"; if(todos.length===1){const r=todos[0];if(r.inmobiliaria!==undefined){let txt=(r.nombre||"Sin nombre")+"\nwa.me/"+r.phone;if(r.inmobiliaria)txt+="\n"+r.inmobiliaria;if(r.zona)txt+=" Â· "+r.zona;if(r.propiedades&&r.propiedades.length){txt+="\nð "+r.propiedades.length+" propiedad(es) compartida(s):\n"+r.propiedades.slice(-3).map(p=>" â¢ "+(p.titulo||p.link||"sin tÃ­tulo")).join("\n");}return txt;}return(r.waName||r.name||"Sin nombre")+"\nwa.me/"+r.phone+"\n"+(r.tier||"-")+" Â· "+(r.zona||"-")+" Â· "+(r.presupuesto||"-");} return todos.length+" resultados:\n"+todos.slice(0,5).map(r=>"â¢ "+(r.nombre||r.waName||r.name||"?")+" â wa.me/"+r.phone+(r.inmobiliaria?" ("+r.inmobiliaria+")":"")).join("\n"); }
+return "Comando no reconocido. EscribÃ­ //ayuda";
 }
 
-const RESPUESTA_SOCIAL=`¡Hola! Soy Germán Manzur de MEGA Inmobiliaria Santa Fe 🏠 Vi tu consulta y tengo propiedades disponibles en esa zona. Escribime por WhatsApp y te mando los detalles: https://wa.me/5493424287842`;
-const BIENVENIDA=`¡Hola! Gracias por escribir a MEGA Inmobiliaria. Soy *Nico*, el asistente de *Germán Manzur*, y ya le pasé tu consulta: te responde personalmente en breve. 💼\nMientras tanto, contame en una línea: ¿buscás tu próximo hogar, querés calificar para el *Crédito Nido*, o vas por una oportunidad de *Flipping/Inversión*? 🏡\nPara ir adelantando, mirá nuestro stock oficial, actualizado y verificado por IA, acá: https://drive.google.com/file/d/1fUZCJykuXltwKN05sqLwmaqwnl9qSGwy/view?usp=drive_link`;
+const RESPUESTA_SOCIAL=`Â¡Hola! Soy GermÃ¡n Manzur de MEGA Inmobiliaria Santa Fe ð  Vi tu consulta y tengo propiedades disponibles en esa zona. Escribime por WhatsApp y te mando los detalles: https://wa.me/5493424287842`;
+const BIENVENIDA=`Â¡Hola! Gracias por escribir a MEGA Inmobiliaria. Soy *Nico*, el asistente de *GermÃ¡n Manzur*, y ya le pasÃ© tu consulta: te responde personalmente en breve. ð¼\nMientras tanto, contame en una lÃ­nea: Â¿buscÃ¡s tu prÃ³ximo hogar, querÃ©s calificar para el *CrÃ©dito Nido*, o vas por una oportunidad de *Flipping/InversiÃ³n*? ð¡\nPara ir adelantando, mirÃ¡ nuestro stock oficial, actualizado y verificado por IA, acÃ¡: https://drive.google.com/file/d/1fUZCJykuXltwKN05sqLwmaqwnl9qSGwy/view?usp=drive_link`;
 
-function esConsultaInmobiliaria(texto) { if(!texto) return false; const t=texto.toLowerCase(); return["busco","busca","necesito","alquilo","compro","buscamos","casa","departamento","dpto","propiedad","inmueble","terreno","alquiler","venta","compra","zona","ambientes","dormitorios","cochera","patio","jardín","pileta","usd","pesos","precio","m2","metros","planta baja","pb","monoambiente"].filter(k=>t.includes(k)).length>=2; }
+function esConsultaInmobiliaria(texto) { if(!texto) return false; const t=texto.toLowerCase(); return["busco","busca","necesito","alquilo","compro","buscamos","casa","departamento","dpto","propiedad","inmueble","terreno","alquiler","venta","compra","zona","ambientes","dormitorios","cochera","patio","jardÃ­n","pileta","usd","pesos","precio","m2","metros","planta baja","pb","monoambiente"].filter(k=>t.includes(k)).length>=2; }
 
 const N8N_LEAD_WEBHOOK="https://n8n-production-65677.up.railway.app/webhook/lead-nico";
 async function notificarLeadN8n(lead){try{await axios.post(N8N_LEAD_WEBHOOK,{nombre:lead.nombre||"",numero:lead.numero||"",plataforma:lead.plataforma||"whatsapp",busqueda:lead.busqueda||"",zona:lead.zona||"",presupuesto:lead.presupuesto||"",nivel:lead.nivel||"",refs:lead.refs||""});console.log("[NICO] Lead caliente notificado a n8n");}catch(e){console.error("[NICO] Error notificando lead a n8n:",e.message);}}
 
 async function sendWhatsApp(to,body){const recipient=to.startsWith("549")?"54"+to.substring(3):to;await axios.post(`https://graph.facebook.com/v21.0/${WHATSAPP_PHONE_NUMBER_ID}/messages`,{messaging_product:"whatsapp",to:recipient,type:"text",text:{body}},{headers:{Authorization:`Bearer ${WHATSAPP_ACCESS_TOKEN}`}});if(to===GERMAN_WA)logMessage("wa",GERMAN_WA,"nico",body);}
 
-async function sendWhatsAppMenu(to){const recipient=to.startsWith("549")?"54"+to.substring(3):to;await axios.post(`https://graph.facebook.com/v21.0/${WHATSAPP_PHONE_NUMBER_ID}/messages`,{messaging_product:"whatsapp",to:recipient,type:"interactive",interactive:{type:"list",header:{type:"text",text:"MEGA Inmobiliaria"},body:{text:"Hola, soy Nico 🤖, el asistente de Germán Manzur. ¿Con qué te ayudo hoy? Elegí una opción del menú."},footer:{text:"Santa Fe · MEGA Inmobiliaria"},action:{button:"Ver opciones",sections:[{title:"Servicios",rows:[{id:"opt_comprar",title:"Comprar o invertir",description:"Te ayudo a encontrar tu propiedad"},{id:"opt_vender",title:"Vender o tasar",description:"Tasación orientativa de tu propiedad"},{id:"opt_staging",title:"Home Staging IA",description:"Tu propiedad en versión moderna"},{id:"opt_docs",title:"Revisar documentación",description:"Contratos y papeles en orden"},{id:"opt_german",title:"Hablar con Germán",description:"Te conecto directo con el asesor"}]}]}}},{headers:{Authorization:`Bearer ${WHATSAPP_ACCESS_TOKEN}`}});}
+async function sendWhatsAppMenu(to){const recipient=to.startsWith("549")?"54"+to.substring(3):to;await axios.post(`https://graph.facebook.com/v21.0/${WHATSAPP_PHONE_NUMBER_ID}/messages`,{messaging_product:"whatsapp",to:recipient,type:"interactive",interactive:{type:"list",header:{type:"text",text:"MEGA Inmobiliaria"},body:{text:"Hola, soy Nico ð¤, el asistente de GermÃ¡n Manzur. Â¿Con quÃ© te ayudo hoy? ElegÃ­ una opciÃ³n del menÃº."},footer:{text:"Santa Fe Â· MEGA Inmobiliaria"},action:{button:"Ver opciones",sections:[{title:"Servicios",rows:[{id:"opt_comprar",title:"Comprar o invertir",description:"Te ayudo a encontrar tu propiedad"},{id:"opt_vender",title:"Vender o tasar",description:"TasaciÃ³n orientativa de tu propiedad"},{id:"opt_staging",title:"Home Staging IA",description:"Tu propiedad en versiÃ³n moderna"},{id:"opt_docs",title:"Revisar documentaciÃ³n",description:"Contratos y papeles en orden"},{id:"opt_german",title:"Hablar con GermÃ¡n",description:"Te conecto directo con el asesor"}]}]}}},{headers:{Authorization:`Bearer ${WHATSAPP_ACCESS_TOKEN}`}});}
 
 async function responderFBMessenger(id,msg){if(!PAGE_ACCESS_TOKEN)return;await axios.post(`https://graph.facebook.com/v21.0/${FB_PAGE_ID||"me"}/messages`,{recipient:{id},message:{text:msg}},{headers:{Authorization:`Bearer ${PAGE_ACCESS_TOKEN}`}});}
 async function responderFBComment(id,msg){if(!PAGE_ACCESS_TOKEN)return;await axios.post(`https://graph.facebook.com/v21.0/${id}/comments`,{message:msg},{headers:{Authorization:`Bearer ${PAGE_ACCESS_TOKEN}`}});}
 async function responderIGMessenger(id,msg){if(!PAGE_ACCESS_TOKEN)return;await axios.post(`https://graph.facebook.com/v21.0/me/messages`,{recipient:{id},message:{text:msg}},{headers:{Authorization:`Bearer ${PAGE_ACCESS_TOKEN}`}});}
 
-async function sendWhatsAppAudioTTS(to,text){try{const K=process.env.ELEVENLABS_API_KEY;if(!K)return false;const t2=text.length>500?text.substring(0,497)+"...":text;const r=await axios.post("https://api.elevenlabs.io/v1/text-to-speech/onwK4e9ZLuTAKqWW03F9",{text:t2,model_id:"eleven_multilingual_v2",voice_settings:{stability:0.5,similarity_boost:0.75}},{headers:{"xi-api-key":K,"Content-Type":"application/json",Accept:"audio/mpeg"},responseType:"arraybuffer"});const fd=new FormData();fd.append("file",new Blob([r.data],{type:"audio/mpeg"}),"reply.mp3");fd.append("messaging_product","whatsapp");fd.append("type","audio/mpeg");const up=await axios.post(`https://graph.facebook.com/v21.0/${WHATSAPP_PHONE_NUMBER_ID}/media`,fd,{headers:{Authorization:`Bearer ${WHATSAPP_ACCESS_TOKEN}`}});const rec=to.startsWith("549")?"54"+to.substring(3):to;await axios.post(`https://graph.facebook.com/v21.0/${WHATSAPP_PHONE_NUMBER_ID}/messages`,{messaging_product:"whatsapp",to:rec,type:"audio",audio:{id:up.data.id}},{headers:{Authorization:`Bearer ${WHATSAPP_ACCESS_TOKEN}`}});console.log(`[NICO/WA] Audio TTS enviado a ${to}`);return true;}catch(err){console.error("[NICO/WA] Error TTS ElevenLabs:",err.message);return false;}}
+async function sendWhatsAppAudioTTS(to,text){try{const K=process.env.ELEVENLABS_API_KEY;if(!K)return false;const t2=text.length>500?text.substring(0,497)+"...":text;const r=await axios.post("https://api.elevenlabs.io/v1/text-to-speech/XB0fDUnXU5powFXDhCwa",{text:t2,model_id:"eleven_multilingual_v2",voice_settings:{stability:0.5,similarity_boost:0.75}},{headers:{"xi-api-key":K,"Content-Type":"application/json",Accept:"audio/mpeg"},responseType:"arraybuffer"});const fd=new FormData();fd.append("file",new Blob([r.data],{type:"audio/mpeg"}),"reply.mp3");fd.append("messaging_product","whatsapp");fd.append("type","audio/mpeg");const up=await axios.post(`https://graph.facebook.com/v21.0/${WHATSAPP_PHONE_NUMBER_ID}/media`,fd,{headers:{Authorization:`Bearer ${WHATSAPP_ACCESS_TOKEN}`}});const rec=to.startsWith("549")?"54"+to.substring(3):to;await axios.post(`https://graph.facebook.com/v21.0/${WHATSAPP_PHONE_NUMBER_ID}/messages`,{messaging_product:"whatsapp",to:rec,type:"audio",audio:{id:up.data.id}},{headers:{Authorization:`Bearer ${WHATSAPP_ACCESS_TOKEN}`}});console.log(`[NICO/WA] Audio TTS enviado a ${to}`);return true;}catch(err){console.error("[NICO/WA] Error TTS ElevenLabs:",err.message);return false;}}
 
 app.get("/health",(req,res)=>{res.status(200).json({status:"ok",service:"mega-agente"});});
 app.get("/webhook",(req,res)=>{const mode=req.query["hub.mode"],token=req.query["hub.verify_token"],challenge=req.query["hub.challenge"];if(mode==="subscribe"&&token===VERIFY_TOKEN){res.status(200).send(challenge);}else{res.sendStatus(403);}});
@@ -50,28 +50,105 @@ if(body.object==="whatsapp_business_account"){
 const entry=body.entry?.[0],changes=entry?.changes?.[0],message=changes?.value?.messages?.[0];
 if(!message)return;
 const from=message.from;let userText=message.text?.body||null;
-if(message.type==="audio"){try{const _mid=message.audio.id;const{data:_mi}=await axios.get(`https://graph.facebook.com/v21.0/${_mid}`,{headers:{Authorization:`Bearer ${WHATSAPP_ACCESS_TOKEN}`}});const _ar=await axios.get(_mi.url,{responseType:"arraybuffer",headers:{Authorization:`Bearer ${WHATSAPP_ACCESS_TOKEN}`}});const _fd=new FormData();_fd.append("file",new Blob([_ar.data],{type:"audio/ogg"}),"audio.ogg");_fd.append("model","whisper-1");_fd.append("language","es");const _wr=await fetch("https://api.openai.com/v1/audio/transcriptions",{method:"POST",headers:{Authorization:`Bearer ${process.env.OPENAI_API_KEY}`},body:_fd});const _wj=await _wr.json();userText=_wj.text||"__AUDIO__";console.log(`[NICO/WA] Transcripción audio: ${userText}`);}catch(_e){console.error("[NICO/WA] Error transcribiendo audio:",_e.message);userText="__AUDIO__";}}
-if(message.type==="image"){try{const _iid=message.image.id;const{data:_ii}=await axios.get(`https://graph.facebook.com/v21.0/${_iid}`,{headers:{Authorization:`Bearer ${WHATSAPP_ACCESS_TOKEN}`}});const _ir=await axios.get(_ii.url,{responseType:"arraybuffer",headers:{Authorization:`Bearer ${WHATSAPP_ACCESS_TOKEN}`}});const _b64=Buffer.from(_ir.data).toString("base64");const _mime=_ii.mime_type||"image/jpeg";const _vis=await axios.post("https://api.openai.com/v1/chat/completions",{model:"gpt-4o",messages:[{role:"user",content:[{type:"text",text:"Describí esta imagen en español en el contexto de una consulta inmobiliaria. Si hay texto visible, transcribilo. Sé breve y directo."},{type:"image_url",image_url:{url:`data:${_mime};base64,${_b64}`}}]}],max_tokens:400},{headers:{Authorization:`Bearer ${process.env.OPENAI_API_KEY}`}});const _desc=_vis.data.choices[0]?.message?.content||"__IMAGE__";userText=`[Imagen recibida] ${_desc}`;console.log(`[NICO/WA] Vision: ${userText}`);}catch(_e){console.error("[NICO/WA] Error Vision:",_e.message);userText="__IMAGE__";}}
+if(message.type==="audio"){try{const _mid=message.audio.id;const{data:_mi}=await axios.get(`https://graph.facebook.com/v21.0/${_mid}`,{headers:{Authorization:`Bearer ${WHATSAPP_ACCESS_TOKEN}`}});const _ar=await axios.get(_mi.url,{responseType:"arraybuffer",headers:{Authorization:`Bearer ${WHATSAPP_ACCESS_TOKEN}`}});const _fd=new FormData();_fd.append("file",new Blob([_ar.data],{type:"audio/ogg"}),"audio.ogg");_fd.append("model","whisper-1");_fd.append("language","es");const _w=await axios.post("https://api.openai.com/v1/audio/transcriptions",_fd,{headers:{Authorization:`Bearer ${process.env.OPENAI_API_KEY}`}});userText=_w.data.text||"__AUDIO__";console.log(`[NICO/WA] TranscripciÃ³n audio: ${userText}`);}catch(_e){console.error("[NICO/WA] Error transcribiendo audio:",_e.message);userText="__AUDIO__";}}
+if(message.type==="image"){try{const _iid=message.image.id;const{data:_ii}=await axios.get(`https://graph.facebook.com/v21.0/${_iid}`,{headers:{Authorization:`Bearer ${WHATSAPP_ACCESS_TOKEN}`}});const _ir=await axios.get(_ii.url,{responseType:"arraybuffer",headers:{Authorization:`Bearer ${WHATSAPP_ACCESS_TOKEN}`}});const _b64=Buffer.from(_ir.data).toString("base64");const _mime=_ii.mime_type||"image/jpeg";const _vis=await axios.post("https://api.openai.com/v1/chat/completions",{model:"gpt-4o",messages:[{role:"user",content:[{type:"text",text:"DescribÃ­ esta imagen en espaÃ±ol en el contexto de una consulta inmobiliaria. Si hay texto visible, transcribilo. SÃ© breve y directo."},{type:"image_url",image_url:{url:`data:${_mime};base64,${_b64}`}}]}],max_tokens:400},{headers:{Authorization:`Bearer ${process.env.OPENAI_API_KEY}`}});const _desc=_vis.data.choices[0]?.message?.content||"__IMAGE__";userText=`[Imagen recibida] ${_desc}`;console.log(`[NICO/WA] Vision: ${userText}`);}catch(_e){console.error("[NICO/WA] Error Vision:",_e.message);userText="__IMAGE__";}}
 if(message.type==="interactive"){userText=message.interactive?.list_reply?.id||message.interactive?.button_reply?.id||null;}
 const waPN=changes?.value?.contacts?.[0]?.profile?.name;if(waPN&&from!==GERMAN_WA)saveLeadWaName(from,waPN);
 if(from===GERMAN_WA&&userText&&userText.trim().startsWith("//")){const reply=handleModoGerman(userText.trim(),getLeads(),searchLeadByName);await sendWhatsApp(GERMAN_WA,reply);logMessage("wa",GERMAN_WA,"nico",reply);return;}
 console.log(`[NICO/WA] Mensaje de ${from}: ${userText}`);logMessage("wa",from,"user",userText);
 const responseText=await handleIncomingMessage(from,userText);if(responseText===null)return;
-if(responseText==="__MENU__"){await sendWhatsAppMenu(from);logMessage("wa",from,"nico","[menú de servicios enviado]");}
-else if(responseText==="__BIENVENIDA__"){await sendWhatsApp(from,BIENVENIDA);logMessage("wa",from,"nico",BIENVENIDA);await sendWhatsAppMenu(from);logMessage("wa",from,"nico","[menú de servicios enviado]");}
-else{await sendWhatsApp(from,responseText);logMessage("wa",from,"nico",responseText);await sendWhatsAppAudioTTS(from,responseText);}}
+if(responseText==="__MENU__"){await sendWhatsAppMenu(from);logMessage("wa",from,"nico","[menÃº de servicios enviado]");}
+else if(responseText==="__BIENVENIDA__"){await sendWhatsApp(from,BIENVENIDA);logMessage("wa",from,"nico",BIENVENIDA);await sendWhatsAppMenu(from);logMessage("wa",from,"nico","[menÃº de servicios enviado]");}
+else{await sendWhatsApp(from,responseText);logMessage("wa",from,"nico",responseText);if(message.type==="audio"){await sendWhatsAppAudioTTS(from,responseText);}}
 const handoffMsg=getAndClearPendingHandoff(from);
 if(handoffMsg){await sendWhatsApp(GERMAN_WA,handoffMsg);const lead=getLeads().find(l=>l.phone===from);if(lead?.tier==="caliente"){await notificarLeadN8n({nombre:lead.name||"",numero:from,plataforma:"whatsapp",busqueda:lead.lastMessage||"",zona:lead.zona||"",presupuesto:lead.presupuesto||"",nivel:lead.tier,refs:lead.interesEn||""});}}
-} catch (err) { console.error('[NICO/WA] Error TTS ElevenLabs:', err.message); return false; }
-else if(body.object==="page"){for(const entry of body.entry||[]){for(const event of entry.messaging||[]){const senderId=event.sender?.id,texto=event.message?.text;if(!senderId||!texto)continue;logMessage("fb",senderId,"user",texto);if(esConsultaInmobiliaria(texto)){await responderFBMessenger(senderId,RESPUESTA_SOCIAL);logMessage("fb",senderId,"nico",RESPUESTA_SOCIAL);await sendWhatsApp(GERMAN_WA,`📘 FB Messenger:\n"${texto}"\nUserID: ${senderId}`);}}for(const change of entry.changes||[]){if(change.field!=="feed")continue;const val=change.value;if(val.item!=="comment"||val.verb!=="add")continue;const texto=val.message,commentId=val.comment_id,autor=val.from?.name||"Alguien";logMessage("fb",commentId,"user",texto);if(esConsultaInmobiliaria(texto)){await responderFBComment(commentId,RESPUESTA_SOCIAL);logMessage("fb",commentId,"nico",RESPUESTA_SOCIAL);await sendWhatsApp(GERMAN_WA,`📘 FB Comentario — ${autor}:\n"${texto}"`);}}}}
-else if(body.object==="instagram"){for(const entry of body.entry||[]){for(const event of entry.messaging||[]){const senderId=event.sender?.id,texto=event.message?.text;if(!senderId||!texto)continue;logMessage("ig",senderId,"user",texto);if(esConsultaInmobiliaria(texto)){await responderIGMessenger(senderId,RESPUESTA_SOCIAL);logMessage("ig",senderId,"nico",RESPUESTA_SOCIAL);await sendWhatsApp(GERMAN_WA,`📸 IG Mensaje:\n"${texto}"\nIGSID: ${senderId}`);}}for(const change of entry.changes||[]){if(change.field!=="comments")continue;const val=change.value;if(esConsultaInmobiliaria(val.text)){await sendWhatsApp(GERMAN_WA,`📸 IG Comentario — @${val.from?.username||"alguien"}:\n"${val.text}"\nPost: ${val.media?.id}`);}}}}
-}catch(error){console.error("[NICO] Error en webhook:",error.response?.data||error.message);}});
+}
+else if(body.object==="page"){for(const entry of body.entry||[]){for(const event of entry.messaging||[]){const senderId=event.sender?.id,texto=event.message?.text;if(!senderId||!texto)continue;logMessage("fb",senderId,"user",texto);if(esConsultaInmobiliaria(texto)){await responderFBMessenger(senderId,RESPUESTA_SOCIAL);logMessage("fb",senderId,"nico",RESPUESTASOCIAL);await sendWhatsApp(GERMAN_WA,`ð FB Messenger:\n"${texto}"\nUserID: ${senderId}`);}}for(const change of entry.changes||[]){if(change.field!=="feed")continue;const val=change.value;if(val.item!=="comment"||val.verb!=="add")continue;const texto=val.message,commentId=val.commentÚY]]Ü][ÛOË[Y_[ÝZY[ÛÙÓY\ÜØYÙJÛÛ[Y[Y\Ù\^ÊNÚY\ÐÛÛÝ[R[[Ø[X\XJ^ÊJ^Ø]ØZ]\ÜÛ\ÛÛ[Y[
+ÛÛ[Y[YTÔQTÕWÔÓÐÒPS
+NÛÙÓY\ÜØYÙJÛÛ[Y[YXÛÈTÔQTÕWÔÓÐÒPS
+NØ]ØZ]Ù[Ú]Ð\
+ÑTPSÕÐK<'äæÛÛY[\[È8 %	Ø]]ÜNÝ^ßH
+Nß___B[ÙHYÙKØXÝOOH[ÝYÜ[H^ÙÜÛÛÝ[HÙÙK[_×J^ÙÜÛÛÝ][Ù[KY\ÜØYÚ[ß×J^ØÛÛÝÙ[\YY][Ù[\ËY^ÏY][Y\ÜØYÙOË^ÚY\Ù[\Y]^ÊXÛÛ[YNÛÙÓY\ÜØYÙJYÈÙ[\Y\Ù\^ÊNÚY\ÐÛÛÝ[R[[Ø[X\XJ^ÊJ^Ø]ØZ]\ÜÛ\QÓY\ÜÙ[Ù\Ù[\YTÔQTÕWÔÓÐÒPS
+NÛÙÓY\ÜØYÙJYÈÙ[\YXÛÈTÔQTÕWÔÓÐÒPS
+NØ]ØZ]Ù[Ú]Ð\
+ÑTPSÕÐK<'äîQÈY[ØZNÝ^ßHQÔÒQ	ÜÙ[\YX
+Nß_YÜÛÛÝÚ[ÙHÙ[KÚ[Ù\ß×J^ÚYÚ[ÙKY[OOHÛÛ[Y[ÈXÛÛ[YNØÛÛÝ[XÚ[ÙK[YNÚY\ÐÛÛÝ[R[[Ø[X\XJ[^
+J^Ø]ØZ]Ù[Ú]Ð\
+ÑTPSÕÐK<'äîQÈÛÛY[\[È8 %	Ý[ÛOË\Ù\[Y_[ÝZY[NÝ[^HÜÝ	Ý[YYXOËYX
+Nß___BXØ]Ú
+\Ü^ØÛÛÛÛK\ÜÓPÓ×H\Ü[ÙXÛÚÎ\Ü\ÜÛÙOË]_\ÜY\ÜØYÙJNß_JNÂ\Ù]
+ÛXYÈ
+\K\ÊOOÚY\K]Y\KÚÙ[OOUTQWÕÒÑS\]\\ËÝ]\Ê
+JKÛÛÙ\ÜÈ]]Ü^YÈJNØÛÛÝXYÏYÙ]XYÊ
+NÜ\ËÛÛÜÝ]ÎÝÝ[XYË[ÝØ[Y[\ÎXYË[\OY\OOHØ[Y[HK[ÝX[ÜÎXYË[\OY\OOHX[ÈK[Ý[ÜÎXYË[\OY\OOH[ÈK[ÝKXYÎXYËÛXÙJML
+_JNßJNÂ\ÜÝ
+Ü\Ü\Þ[Ê\K\ÊOOØÛÛÝÝÚÙ[Y\ÜØYÙKYÙ[KÛNYÙ[TÛK[[Ø[X\XKÛKÜYYYO\\KÙ_ßNÚY]ÚÙ[ÚÙ[OOTTÔÕÒÑS\]\\ËÝ]\Ê
+JKÛÛÙ\ÜÈ]]Ü^YÈJNÚY[Y\ÜØYÙJ\]\\ËÝ]\Ê
+
+KÛÛÙ\ÜY\ÜØYÙH\]Y\YÈJNÚYYÙ[_YÙ[TÛJ^ÜØ]PYÙ[JÛÛXNYÙ[KÛNYÙ[TÛK[[Ø[X\XKÛKY[N\ÜHÜYYYJNß]^Ø]ØZ]Ù[Ú]Ð\
+ÑTPSÕÐKY\ÜØYÙJNÜ\ËÛÛÛÚÎY_JNßXØ]Ú
+\Ü^Ü\ËÝ]\Ê
+L
+KÛÛÙ\Ü\ÜY\ÜØYÙ_JNß_JNÂ\\Ý[ÔÌ
 
-app.get("/leads",(req,res)=>{if(req.query.token!==VERIFY_TOKEN)return res.status(401).json({error:"No autorizado"});const leads=getLeads();res.json({stats:{total:leads.length,calientes:leads.filter(l=>l.tier==="caliente").length,tibios:leads.filter(l=>l.tier==="tibio").length,frios:leads.filter(l=>l.tier==="frio").length},leads:leads.slice(-50)});});
+OOØÛÛÛÛKÙÊ<'çèQQÐHYÙ[HXÛÈXÝ]È[Y\È	ÔÔÌX
+NØÛÛÛÛKÙÊÐH[\È8¡¤	ÑÑTPSÕÐ_X
+NßJNÂ\Ù]
+Ü]XÞH
+\K\ÊOOÜ\ËÙ[
+	ÏQÐÕTH[[[ÏH\ÈXYY]HÚ\Ù]H]N]O]XÚYYÝ]OÚXYÙOOÛ]XØHH]XÚYY8 %QQÐHYÙ[OÚOÜ\YÈÜÙ\X[X[\8 %Ù\X[ÛX[\ÛXZ[ÛÛH8 %Ø[HK\Ù[[KÜØÙOÚ[ÊNßJNÂ\Ù]
+ØÚ]ËÛÛ
+\K\ÊOOÚY\K]Y\KÚÙ[OOUTQWÕÒÑS\]\\ËÝ]\Ê
+JKÛÛÙ\ÜÈ]]Ü^YÈJNÜ\ËÛÛÙ]Ú]Ê
+JNßJNÂ\Ù]
+ØÚ]È
+\K\ÊOOÚY\K]Y\KÚÙ[OOUTQWÕÒÑS\]\\ËÝ]\Ê
+JKÙ[
+È]]Ü^YÈNÜ\ËÙ[
+QÐÕTH[[[ÏH\ÈXYY]HÚ\Ù]H]NY]H[YOHY]ÜÜÛÛ[HÚYY]XÙK]ÚY[]X[\ØØ[OLH]OXÛÈHÛÛ\ØXÚ[Û\ÏÝ]OÝ[OØÞ\Ú^[ÎÜ\XÞÛX\Ú[XÙ^ÙÛY[Z[N\X[Ø[Ë\Ù\YÚZYÚLÙ\Ü^N^Ù^Y\XÝ[ÛÛÛ[[ØXÚÙÜÝ[ÙXÙMYZXY\ØXÚÙÜÝ[Ì
+ÍYMMØÛÛÜÙÜY[ÎLNÙÛ\Ú^NMÜÙÛ]ÙZYÚÛHÝÜ\Ù^NÙ\Ü^N^ÛZ[ZZYÚHÜÚY^ÝÚYÌØXÚÙÜÝ[ÙØÜ\\YÚ\ÛÛYÙÛÝ\ÝË^N]]ßKÛÛÜY[ÎLMØÜ\XÝÛN\ÛÛYÙYYNØÝ\ÛÜÚ[\KÛÛÝ\ØXÚÙÜÝ[ÙYY_KÛÛÙ[ØXÚÙÜÝ[ÙNYN_KÛÛÚÞÙÛ]ÙZYÚÛÙÛ\Ú^NMKÛÛ]ØÛÛÜÍÙÛ\Ú^NLÝÚ]K\ÜXÙNÝÜ\ÛÝ\ÝÎY[Ý^[Ý\ÝÎ[\Ú\ßKÛÛY]^ØÛÛÜÎNNNÙÛ\Ú^NL\ÛX\Ú[]ÜHÛXZ[Ù^NÛÝ\ÝË^N]]ÎÜY[ÎNÙ\Ü^N^Ù^Y\XÝ[ÛÛÛ[[ÙØ\K\ÙÞÛX^]ÚYÌ	NÜY[ÎLØÜ\\Y]\ÎÙÛ\Ú^NMÛ[KZZYÚKÝÚ]K\ÜXÙNK]Ü\ÝÛÜXXZÎXZË]ÛÜK\ÙÈ]Ù\Ü^NØÚÎÙÛ\Ú^NLØÛÛÜÍÍÍÎÛX\Ú[]ÜÝ^X[YÛYÚK\Ù\ØXÚÙÜÝ[ÙØ[YÛ\Ù[^\Ý\KXÛÞØXÚÙÜÝ[ÙÙÍØ[YÛ\Ù[^Y[HÙ[\^ØÛÛÜÎÛX\Ú[]]ßOÜÝ[OÚXYÙOXY\XÛÈ8 %ÛÛ\ØXÚ[Û\ÏÚXY\]YHÜ\]YHÚYHÙ]]YHXZ[]YH[\HØ\Ø[ËÙ]Ù]Ù]ØÜ\\UO^ßKÑS[[Ý\ÒÑS[]ÈTÙX\Ú\[\ÊØØ][ÛÙX\Ú
+KÙ]
+ÚÙ[NÙ[Ý[Û]
+Ê^Ý\[]È]JÊNÜ]\ÓØØ[Q]TÝ[Ê\ËPTJÈÙÓØØ[U[YTÝ[Ê\ËPTÚÝ\YYÚ]Z[]NYYÚ]JNßY[Ý[ÛØY
 
-app.post("/report",async(req,res)=>{const{token,message,agente,phone:agentePhone,inmobiliaria,zona,propiedad}=req.body||{};if(!token||token!==REPORT_TOKEN)return res.status(401).json({error:"No autorizado"});if(!message)return res.status(400).json({error:"message requerido"});if(agente||agentePhone){saveAgente({nombre:agente,phone:agentePhone,inmobiliaria,zona,fuente:"reporte",propiedad});}try{await sendWhatsApp(GERMAN_WA,message);res.json({ok:true});}catch(error){res.status(500).json({error:error.message});}});
+^Ù]Ú
+ØÚ]ËÛÛÝÚÙ[HÕÒÑSK[[Ý[Û^Ü]\ÛÛ
+_JK[[Ý[Û
+^ÑUOYÜ[\
+NßJNßY[Ý[Û[\
+^Ý\ÚYOYØÝ[Y[Ù][[Y[RY
+ÚYHNÜÚYK[\SHÝ\Ù^\ÏSØXÝÙ^\ÊUJKÛÜ
+[Ý[ÛK^Ý\XOQUVØWKY\ÜØYÙ\ËXQUVØKY\ÜØYÙ\ÎÜ]\]È]JXÛX[ÝLWK]
+K[]È]JXVÛXK[ÝLWK]
+NßJNÚÙ^\ËÜXXÚ
+[Ý[ÛÊ^Ý\ÏQUVÚ×NÝ\\ÝXËY\ÜØYÙ\ÖØËY\ÜØYÙ\Ë[ÝLWNÝ\]YØÝ[Y[ÜX]Q[[Y[
+]NÙ]Û\ÜÓ[YOHÛÛÊÏOOTÑSÈÙ[NÝ\ÚÏYØÝ[Y[ÜX]Q[[Y[
+]NÝÚËÛ\ÜÓ[YOHÚÈÝÚË^ÛÛ[JËÚ[[OOHØHÈÚ]Ð\Y\ÜÙ[Ù\JØË\Ù\YÝ\]YØÝ[Y[ÜX]Q[[Y[
+]NÜ]Û\ÜÓ[YOH]Ü]^ÛÛ[[\Ý^Ý\Y]OYØÝ[Y[ÜX]Q[[Y[
+]NÛY]KÛ\ÜÓ[YOHY]HÛY]K^ÛÛ[XËY\ÜØYÙ\Ë[Ý
+ÈY[ØZ\ÈHÙ]
+\Ý]
+NÙ]\[Ú[
+ÚÊNÙ]\[Ú[
+]NÙ]\[Ú[
+Y]JNÙ]ÛÛXÚÏY[Ý[Û
+^ÔÑSZÎÜ[\
+NßNÜÚYK\[Ú[
+]NßJNÝ\XZ[YØÝ[Y[Ù][[Y[RY
+XZ[NÛXZ[[\SHÚYTÑSQUVÔÑSJ^Ý\OYØÝ[Y[ÜX]Q[[Y[
+]NÙKYH[\HÙK^ÛÛ[ZÙ^\Ë[ÝÈÙ[XØÚ[ÛH[HÛÛ\ØXÚ[ÛÚ[ÛÛ\ØXÚ[Û\ÈÙ]XHÛXZ[\[Ú[
+JNÜ]\ßQUVÔÑSKY\ÜØYÙ\ËÜXXÚ
+[Ý[ÛJ^Ý\YØÝ[Y[ÜX]Q[[Y[
+]NÙÛ\ÜÓ[YOH\ÙÈÊKÛOOOHXÛÈÈXÛÈ\Ù\NÙ^ÛÛ[[K^Ý\]YØÝ[Y[ÜX]Q[[Y[
+Ü[NØ]Û\ÜÓ[YOH]Ø]^ÛÛ[JKÛOOOHXÛÈÈXÛÈHJÙ]
+K]
+NÙ\[Ú[
+]
+NÛXZ[\[Ú[
+
+NßJNÛXZ[ØÜÛÜ[XZ[ØÜÛZYÚß[ØY
 
-app.listen(PORT||3000,()=>{console.log(`🟢 MEGA Agente Nico activo en puerto ${PORT||3000}`);console.log(` WA alerts → ${GERMAN_WA}`);});
-app.get("/privacy",(req,res)=>{res.send('<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Privacidad</title></head><body><h1>Politica de Privacidad — MEGA Agente</h1><p>Operado por German Manzur — germanomanzur@gmail.com — Santa Fe, Argentina.</p></body></html>');});
-app.get("/chats.json",(req,res)=>{if(req.query.token!==VERIFY_TOKEN)return res.status(401).json({error:"No autorizado"});res.json(getChats());});
-app.get("/chats",(req,res)=>{if(req.query.token!==VERIFY_TOKEN)return res.status(401).send("No autorizado");res.send(`<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nico - Conversaciones</title><style>*{box-sizing:border-box;margin:0}body{font-family:Arial,sans-serif;height:100vh;display:flex;flex-direction:column;background:#ece5dd}header{background:#075e54;color:#fff;padding:12px 18px;font-size:17px;font-weight:bold}#wrap{flex:1;display:flex;min-height:0}#side{width:320px;background:#fff;border-right:1px solid #ddd;overflow-y:auto}.conv{padding:12px 14px;border-bottom:1px solid #eee;cursor:pointer}.conv:hover{background:#f5f5f5}.conv.sel{background:#e8f5e9}.conv .who{font-weight:bold;font-size:14px}.conv .prev{color:#666;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.conv .meta{color:#999;font-size:11px;margin-top:2px}#main{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:6px}.msg{max-width:70%;padding:8px 12px;border-radius:8px;font-size:14px;line-height:1.4;white-space:pre-wrap;word-break:break-word}.msg .at{display:block;font-size:10px;color:#777;margin-top:4px;text-align:right}.user{background:#fff;align-self:flex-start}.nico{background:#dcf8c6;align-self:flex-end}#empty{color:#888;margin:auto}</style></head><body><header>Nico — Conversaciones</header><div id="wrap"><div id="side"></div><div id="main"><div id="empty">Cargando...</div></div></div><script>var DATA={},SEL=null;var TOKEN=new URLSearchParams(location.search).get("token");function fmt(s){var d=new Date(s);return d.toLocaleDateString("es-AR")+" "+d.toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit"});}function load(){fetch("/chats.json?token="+TOKEN).then(function(r){return r.json()}).then(function(d){DATA=d;render();});}function render(){var side=document.getElementById("side");side.innerHTML="";var keys=Object.keys(DATA).sort(function(a,b){var ma=DATA[a].messages,mb=DATA[b].messages;return new Date(mb[mb.length-1].at)-new Date(ma[ma.length-1].at);});keys.forEach(function(k){var c=DATA[k];var last=c.messages[c.messages.length-1];var div=document.createElement("div");div.className="conv"+(k===SEL?" sel":"");var who=document.createElement("div");who.className="who";who.textContent=(c.channel==="wa"?"WhatsApp ":"Messenger ")+c.userId;var prev=document.createElement("div");prev.className="prev";prev.textContent=last.text;var meta=document.createElement("div");meta.className="meta";meta.textContent=c.messages.length+" mensajes - "+fmt(last.at);div.appendChild(who);div.appendChild(prev);div.appendChild(meta);div.onclick=function(){SEL=k;render();};side.appendChild(div);});var main=document.getElementById("main");main.innerHTML="";if(!SEL||!DATA[SEL]){var e=document.createElement("div");e.id="empty";e.textContent=keys.length?"Selecciona una conversacion":"Sin conversaciones todavia";main.appendChild(e);return;}DATA[SEL].messages.forEach(function(m){var d=document.createElement("div");d.className="msg "+(m.role==="nico"?"nico":"user");d.textContent=m.text;var at=document.createElement("span");at.className="at";at.textContent=(m.role==="nico"?"Nico - ":"")+fmt(m.at);d.appendChild(at);main.appendChild(d);});main.scrollTop=main.scrollHeight;}load();setInterval(load,8000);</script></body></html>`);});
+NÜÙ][\[
+ØY
+NÏÜØÜ\ØÙOÚ[
+NßJNÂ
