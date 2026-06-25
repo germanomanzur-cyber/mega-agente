@@ -25,6 +25,18 @@ return "Comando no reconocido. EscribÃ­ //ayuda";
 const RESPUESTA_SOCIAL=`Â¡Hola! Soy GermÃ¡n Manzur de MEGA Inmobiliaria Santa Fe ð  Vi tu consulta y tengo propiedades disponibles en esa zona. Escribime por WhatsApp y te mando los detalles: https://wa.me/5493424287842`;
 const BIENVENIDA=`Â¡Hola! Gracias por escribir a MEGA Inmobiliaria. Soy *Nico*, el asistente de *GermÃ¡n Manzur*, y ya le pasÃ© tu consulta: te responde personalmente en breve. ð¼\nMientras tanto, contame en una lÃ­nea: Â¿buscÃ¡s tu prÃ³ximo hogar, querÃ©s calificar para el *CrÃ©dito Nido*, o vas por una oportunidad de *Flipping/InversiÃ³n*? ð¡\nPara ir adelantando, mirÃ¡ nuestro stock oficial, actualizado y verificado por IA, acÃ¡: https://drive.google.com/file/d/1fUZCJykuXltwKN05sqLwmaqwnl9qSGwy/view?usp=drive_link`;
 
+// ─── Extraer agentes de texto de reporte ─────────────────────────────────────
+function extractAgentesFromText(text) {
+  if (!text) return [];
+  const agents = [];
+  const phoneRe = /(?:wa\.me\/|whatsapp\.com\/|\+?549?)(\d{10,13})/g;
+  let m;
+  while ((m = phoneRe.exec(text)) !== null) {
+    agents.push({ phone: m[1], nombre: null });
+  }
+  return agents;
+}
+
 function esConsultaInmobiliaria(texto) { if(!texto) return false; const t=texto.toLowerCase(); return["busco","busca","necesito","alquilo","compro","buscamos","casa","departamento","dpto","propiedad","inmueble","terreno","alquiler","venta","compra","zona","ambientes","dormitorios","cochera","patio","jardÃ­n","pileta","usd","pesos","precio","m2","metros","planta baja","pb","monoambiente"].filter(k=>t.includes(k)).length>=2; }
 
 const N8N_LEAD_WEBHOOK="https://n8n-production-65677.up.railway.app/webhook/lead-nico";
