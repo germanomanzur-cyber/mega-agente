@@ -6,7 +6,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai = new OpenAI({ apiKey: process.env.OPENROUTER_API_KEY, baseURL: "https://openrouter.ai/api/v1" });
 
 const knowledgeBase = readFileSync(
 path.join(__dirname, "knowledge-base.md"),
@@ -191,7 +191,7 @@ ${knowledgeBase}`;
 }
 
 async function callOpenAI(messages, systemPrompt) {
-  try { const r = await openai.chat.completions.create({ model: "gpt-4o-mini", messages: [{ role: "system", content: systemPrompt }, ...messages.slice(-12)], max_tokens: 160, temperature: 0.4 }); return r.choices[0].message.content.trim(); }
+  try { const r = await openai.chat.completions.create({ model: "openai/gpt-4o-mini", messages: [{ role: "system", content: systemPrompt }, ...messages.slice(-12)], max_tokens: 160, temperature: 0.4 }); return r.choices[0].message.content.trim(); }
   catch (error) { console.error("OpenAI error:", error.message); return "En este momento no puedo responder. Escribile directamente a GermÃ¡n: https://wa.me/5493424287842"; }
 }
 
