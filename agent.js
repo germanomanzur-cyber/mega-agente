@@ -94,6 +94,15 @@ const TIPOS_OPERACION = ["comprar", "compra", "vender", "venta", "alquilar", "al
 function esCaliente(texto) { const t = texto.toLowerCase(); const tieneMonto = /\b(usd|dolar|dÃ³lar|\$|mil|millÃ³n|millon|k\b|precio|presupuesto|cuÃ¡nto cuesta|cuanto vale)/i.test(t); const tieneZona = ZONAS.some((z) => t.includes(z)); const tieneUrgencia = /\b(ya|hoy|urgente|cuanto antes|lo antes posible|esta semana|inmediato|necesito|quiero ver|puedo visitar|visita)/i.test(t); const tieneContacto = /\b(telÃ©fono|telefono|llamar|reuniÃ³n|reunion|turno|visitar|agenda|cita|escribime|mandame|pasame)/i.test(t); return tieneMonto && (tieneZona || tieneUrgencia || tieneContacto); }
 function esTibio(texto) { const t = texto.toLowerCase(); return ZONAS.some((z) => t.includes(z)) || TIPOS_OPERACION.some((op) => t.includes(op)) || /\b(busco|buscando|necesito|quiero|me interesa|interesado|mirando|consultando|averiguando|informaciÃ³n|info)\b/i.test(t); }
 function esSpam(texto) { if (!texto || texto.trim().length < 3) return true; if (/^\d+$/.test(texto.trim())) return true; if (texto.trim().length < 5 && !/\b(ok|si|no|ya|dale|bien|gracias)\b/i.test(texto)) return true; return (texto.match(/[a-zÃ¡Ã©Ã­Ã³ÃºÃ±]/gi) || []).length < 2; }
+function esIntencionInmobiliaria(texto) {
+  const t = (texto || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+  if (!t) return false;
+  if (/\b(compr|alquil|rent|arrend|invert|invier|invirt|invers|invest|flipping|vend|venta|permut|tas|valu|credit|hipotec|nido|uva)/.test(t)) return true;
+  if (/\bcuanto (vale|sale|cuesta)/.test(t)) return true;
+  if (/\b(compra|alq|rent|buy|inversion)\b/.test(t)) return true;
+  return false;
+}
+
 function extractName(text) { const patterns = [/(?:me llamo|soy|mi nombre es|mi nombre:?)\s+([A-ZÃÃÃÃÃÃ][a-zÃ¡Ã©Ã­Ã³ÃºÃ±]{2,}(?:\s+[A-ZÃÃÃÃÃÃ][a-zÃ¡Ã©Ã­Ã³ÃºÃ±]{2,})?)/i, /hola[,!.]?\s+(?:soy\s+)?([A-ZÃÃÃÃÃÃ][a-zÃ¡Ã©Ã­Ã³ÃºÃ±]{2,})/i, /^([A-ZÃÃÃÃÃÃ][a-zÃ¡Ã©Ã­Ã³ÃºÃ±]{2,})[\s,!.]/]; for (const p of patterns) { const m = text.match(p); if (m) return m[1].trim(); } return null; }
 function extractZona(text) { const t = text.toLowerCase(); return ZONAS.find((z) => t.includes(z)) || null; }
 function extractPresupuesto(text) { const m = text.match(/(?:usd|u\$s|dolar|dÃ³lar|\$)\s*[\d.,]+k?|[\d.,]+\s*(?:mil|k)\s*(?:dolar|dÃ³lar|usd|u\$s)?/i); return m ? m[0].trim() : null; }
@@ -191,7 +200,7 @@ ${knowledgeBase}`;
 }
 
 async function callOpenAI(messages, systemPrompt) {
-  try { const r = await openai.chat.completions.create({ model: "openai/gpt-4o-mini", messages: [{ role: "system", content: systemPrompt }, ...messages.slice(-12)], max_tokens: 160, temperature: 0.4 }); return r.choices[0].message.content.trim(); }
+  try { const r = await openai.chat.completions.create({ model: "openai/gpt-4o-mini", messages: [{ role: "system", content: systemPrompt }, ...messages.slice(-12)], max_tokens: 160, temperature: 0.4 }); let text = r.choices[0].message.content.trim(); const ultimoUser = [...messages].reverse().find((m) => m.role === "user"); if (ultimoUser && esIntencionInmobiliaria(ultimoUser.content)) { text = text.split(/(?<=[.!?])\s+/).filter((s) => { const n = s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); return !n.includes("solo puedo ayudarte con consultas inmobiliarias") && !n.includes("en que te asesoro"); }).join(" ").trim(); if (text.length < 3) text = "\u00a1Perfecto! Te ayudo con eso. \u00bfEn qu\u00e9 zona buscas y con qu\u00e9 presupuesto?"; } return text; }
   catch (error) { console.error("OpenAI error:", error.message); return "En este momento no puedo responder. Escribile directamente a GermÃ¡n: https://wa.me/5493424287842"; }
 }
 
