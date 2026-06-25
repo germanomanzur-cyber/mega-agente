@@ -261,7 +261,7 @@ Reglas: ubicar la propiedad del cliente en la banda P25-P75 según estado y ubic
 
 ---
 
-## INVENTARIO COMPLETO MEGA WEB — 305 PROPIEDADES (sincronizado 24/6/2026, Railway 03:00)
+## INVENTARIO COMPLETO MEGA WEB — 300 PROPIEDADES (sincronizado 25/6/2026, Railway 03:00)
 
 Instrucciones:
 - Cuando pregunten por zona, presupuesto o dormitorios, buscar aca y ofrecer maximo 3 opciones con precio y datos clave. Cerrar derivando a German: https://wa.me/5493424287842
@@ -280,8 +280,8 @@ Formato: Tipo | Titulo | Operacion y precio | Dorm/Banos | Superficie | Link fic
 - Locales y Oficinas Comerciales · Ventas | Alem al 800. Local Comercial en Venta | $ 450,000 USD | 4 Baños | Tamaño 332 m2 | https://inmobiliariamega.com.ar/propiedades/alem-al-800-local-comercial-en-venta/
 - Departamentos · Ventas | Departamento – Parana | $ 430,000 USD | 3 Dormitorios 2 Baños | Tamaño 170 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana/
 - Casas · Ventas | CASA EN COUNTRY EL PASO | $ 420,000 USD | 2 Dormitorios 3 Baños | Tamaño 1,600 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-country-el-paso/
-- Casas · Ventas | IMPORTANTE PROPIEDAD UBICADA EN CALLE SAN MA... | $ 400,000 USD | 3 Dormitorios 3 Baños | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/importante-propiedad-ubicada-en-calle-san-martin-285-en-un-lugar-estrategico-de-la-ciudad-de-parana/
 - Casas · Ventas | El Guayacan y Blas Parera. Casa en Venta en ... | $ 400,000 USD | 4 Dormitorios 3 Baños | Tamaño 987 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana-7/
+- Casas · Ventas | IMPORTANTE PROPIEDAD UBICADA EN CALLE SAN MA... | $ 400,000 USD | 3 Dormitorios 3 Baños | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/importante-propiedad-ubicada-en-calle-san-martin-285-en-un-lugar-estrategico-de-la-ciudad-de-parana/
 - Departamentos · Ventas | Malvinas al 100. Departamento de 3 dormitori... | $ 385,000 USD | 3 Dormitorios 2 Baños | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/malvinas-al-100-departamento-de-3-dormitorios-en-venta/
 - Departamentos · Ventas | Malvinas y Cordoba. Departamento de 3 dormit... | $ 370,000 USD | 3 Dormitorios 2 Baños | Tamaño 160 m2 | https://inmobiliariamega.com.ar/propiedades/malvinas-inn-importante-piso-en-venta/
 - Departamentos · Ventas | Departamento Premium en Venta en Zona Parque... | $ 365,000 USD | 3 Dormitorios 2 Baños | Tamaño 130 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-premium-en-venta-en-zona-parque-2/
@@ -289,26 +289,26 @@ Formato: Tipo | Titulo | Operacion y precio | Dorm/Banos | Superficie | Link fic
 - Casas · Ventas | Italia 18. Casa en venta | $ 330,000 USD | 7 Dormitorios 3 Baños | Tamaño 484 m2 | https://inmobiliariamega.com.ar/propiedades/italia-18-casa-en-venta/
 - Locales y Oficinas Comerciales · Ventas | Malvinas 452. Oficinas en Venta Zona Parque. | $ 320,000 USD | 2 Baños | Tamaño 160 m2 | https://inmobiliariamega.com.ar/propiedades/malvinas-452-oficinas-en-venta-zona-parque/
 - Casas · Ventas | Riobamba 6700. Casa en venta | $ 320,000 USD | 4 Dormitorios 4 Baños | Tamaño 447 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-guadalupe-este/
-- Locales y Oficinas Comerciales · Ventas | San Martin y La Paz. Local en venta sobre pe... | $ 300,000 USD | 2 Baños | Tamaño 132 m2 | https://inmobiliariamega.com.ar/propiedades/excelente-local-en-venta-plena-peatonal-san-martin-esquina-la-paz/
-- Locales y Oficinas Comerciales · Ventas | Av. Almafuerte N°377. Local en Venta y Alqui... | $ 300,000 USD | 1 Baño | Tamaño 300 m2 | https://inmobiliariamega.com.ar/propiedades/local-en-parana-2/
 - Casas · Ventas | Hermosa Casa Tipo de Campo Zona La Toma. El... | $ 300,000 USD | 2 Dormitorios 2 Baños | Tamaño 1,240 m2 | https://inmobiliariamega.com.ar/propiedades/hermosa-casa-tipo-de-campo-zona-la-toma-el-ibapoy-3919/
 - Casas · Ventas | Av. Estrada N°3318. Casa en venta con excele... | $ 300,000 USD | 4 Dormitorios 2 Baños | Tamaño 230 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-venta-en-zona-bajada-grande-con-salida-al-rio-2/
 - Casas · Ventas | Casa – Parana | $ 300,000 USD | 3 Dormitorios 2 Baños | Tamaño 202 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana-3/
-- Departamentos · Ventas | Mitre 413 . Departamento. Venta | $ 290,000 USD | 3 Dormitorios 4 Baños | Tamaño 150 m2 | https://inmobiliariamega.com.ar/propiedades/mitre-413-departamento-venta/
+- Locales y Oficinas Comerciales · Ventas | San Martin y La Paz. Local en venta sobre pe... | $ 300,000 USD | 2 Baños | Tamaño 132 m2 | https://inmobiliariamega.com.ar/propiedades/excelente-local-en-venta-plena-peatonal-san-martin-esquina-la-paz/
+- Locales y Oficinas Comerciales · Ventas | Av. Almafuerte N°377. Local en Venta y Alqui... | $ 300,000 USD | 1 Baño | Tamaño 300 m2 | https://inmobiliariamega.com.ar/propiedades/local-en-parana-2/
 - Casas · Ventas | Juan Baez al 100. Casa en Venta. | $ 290,000 USD | 3 Dormitorios 4 Baños | Tamaño 1,450 m2 | https://inmobiliariamega.com.ar/propiedades/juan-baez-al-100-casa-en-venta/
+- Departamentos · Ventas | Mitre 413 . Departamento. Venta | $ 290,000 USD | 3 Dormitorios 4 Baños | Tamaño 150 m2 | https://inmobiliariamega.com.ar/propiedades/mitre-413-departamento-venta/
 - Departamentos · Ventas | Departamento – Santa Fe | $ 280,000 USD | 3 Dormitorios 3 Baños | Tamaño 124 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-santa-fe-2/
 - PH · Ventas | Gral J J de Urquiza al 700. Gran Casa en Pla... | $ 280,000 USD | 2 Baños | Tamaño 200 m2 | https://inmobiliariamega.com.ar/propiedades/gral-j-j-de-urquiza-al-700-gran-casa-en-planta-baja/
 - Departamentos · Ventas | San Martin 329. Departamento de 3 dormitorio... | $ 280,000 USD | 3 Dormitorios 2 Baños | Tamaño 150 m2 | https://inmobiliariamega.com.ar/propiedades/san-martin-329-importante-semipiso-en-venta-dos-dormitorios/
 - Casas · Ventas | Casa en Centro | $ 270,000 USD | 4 Dormitorios 2 Baños | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-centro/
 - Locales y Oficinas Comerciales · Ventas | Av Uranga al 1100. Importante Propiedad en v... | $ 270,000 USD | - | Tamaño 718 m2 | https://inmobiliariamega.com.ar/propiedades/av-uranga-al-1100-importante-propiedad-en-venta/
 - Casas · Ventas | Sarmiento 700 – CASA EN VENTA | $ 260,000 USD | 3 Dormitorios 1 Baño | Tamaño 587 m2 | https://inmobiliariamega.com.ar/propiedades/sarmiento-700-casa-en-venta/
-- Departamentos · Ventas | Departamento en Punta del Este | $ 250,000 USD | 2 Dormitorios 2 Baños | Tamaño 65 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-en-punta-del-este/
-- Locales y Oficinas Comerciales · Ventas | Local en Parana | $ 250,000 USD | 2 Baños | Tamaño 487 m2 | https://inmobiliariamega.com.ar/propiedades/local-en-parana/
-- Departamentos · Ventas | Malvinas 140. Departamento en Venta | $ 250,000 USD | 2 Dormitorios 2 Baños | Tamaño 85 m2 | https://inmobiliariamega.com.ar/propiedades/unidad-disponible-premium-edificio-malvinas-140/
 - Galpones y Cocheras · Ventas | Galpones Punto Norte. Zona Acceso Norte | $ 250,000 USD | - | Tamaño 795 m2 | https://inmobiliariamega.com.ar/propiedades/galpones-punto-norte-zona-acceso-norte-2/
 - Casas · Ventas | Barrio Las Colinas. Casa en Venta! | $ 250,000 USD | 4 Dormitorios 4 Baños | Tamaño 2,786 m2 | https://inmobiliariamega.com.ar/propiedades/amplia-casa-en-venta-en-barrio-las-colinas-2/
 - Casas · Ventas | Casa – Parana | $ 250,000 USD | 5 Dormitorios 3 Baños | Tamaño 220 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana-8/
 - Locales y Oficinas Comerciales · Ventas | Local en Colonia Avellaneda | $ 250,000 USD | 3 Baños | Tamaño 582 m2 | https://inmobiliariamega.com.ar/propiedades/local-en-colonia-avellaneda/
+- Departamentos · Ventas | Departamento en Punta del Este | $ 250,000 USD | 2 Dormitorios 2 Baños | Tamaño 65 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-en-punta-del-este/
+- Locales y Oficinas Comerciales · Ventas | Local en Parana | $ 250,000 USD | 2 Baños | Tamaño 487 m2 | https://inmobiliariamega.com.ar/propiedades/local-en-parana/
+- Departamentos · Ventas | Malvinas 140. Departamento en Venta | $ 250,000 USD | 2 Dormitorios 2 Baños | Tamaño 85 m2 | https://inmobiliariamega.com.ar/propiedades/unidad-disponible-premium-edificio-malvinas-140/
 - Casas · Ventas | Pedro de Vega 800. Casa en venta | $ 240,000 USD | 3 Dormitorios 2 Baños | Tamaño 470 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-guadalupe/
 - Departamentos · Ventas | Departamento en Punta del Este | $ 220,000 USD | 2 Dormitorios 2 Baños | Tamaño 75 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-en-punta-del-este-2/
 - Casas · Ventas | Dr Enrique Bonflis esquina verdier. Casa en... | $ 220,000 USD | 3 Dormitorios 2 Baños | Tamaño 225 m2 | https://inmobiliariamega.com.ar/propiedades/dr-enrique-bonflis-esquina-verdier-casa-en-venta-toma-vieja/
@@ -316,10 +316,10 @@ Formato: Tipo | Titulo | Operacion y precio | Dorm/Banos | Superficie | Link fic
 - Casas · Ventas | Catamarca 485. Casa Zona parque tres dormito... | $ 210,000 USD | 5 Dormitorios 3 Baños | Tamaño 216 m2 | https://inmobiliariamega.com.ar/propiedades/catamarca-385-casa-zona-parque/
 - Departamentos · Ventas | Garay y Cordoba. Departamento en venta de 3 ... | $ 210,000 USD | 4 Dormitorios 2 Baños | Tamaño 98 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-en-parana-4/
 - Casas · Ventas | Alejandro Carbo .Casa | $ 206,000 USD | 5 Dormitorios 2 Baños | Tamaño 200 m2 | https://inmobiliariamega.com.ar/propiedades/alejandro-carbo-casa/
-- Galpones y Cocheras · Ventas | Galpón en Parana | $ 200,000 ARS | 1 Baño | Tamaño 509 m2 | https://inmobiliariamega.com.ar/propiedades/galpon-en-parana-2/
 - Departamentos · Ventas | Bajada Views. Manuel Estrada 3885 | $ 200,000 USD | 2 Dormitorios 1 Baño | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/bajada-views-manuel-estrada-3885/
 - Departamentos · Ventas | San Martin 118 | $ 200,000 USD | 2 Dormitorios 1 Baño | Tamaño 70 m2 | https://inmobiliariamega.com.ar/propiedades/san-martin-118/
 - Departamentos · Ventas | Republica de Eslovenia al 2200. Departament... | $ 200,000 USD | 2 Dormitorios 2 Baños | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/republica-de-eslovenia-al-2200-departamento-en-venta-bajada-grande-2/
+- Galpones y Cocheras · Ventas | Galpón en Parana | $ 200,000 ARS | 1 Baño | Tamaño 509 m2 | https://inmobiliariamega.com.ar/propiedades/galpon-en-parana-2/
 - Quintas · Ventas | Quinta – Colon | $ 199,000 USD | 6 Dormitorios | Tamaño 1,751 m2 | https://inmobiliariamega.com.ar/propiedades/quinta-colon/
 - Casas · Ventas | Gobernador Parera 1356 – CASA EN VENTA | $ 190,000 USD | 5 Dormitorios 4 Baños | Tamaño 360 m2 | https://inmobiliariamega.com.ar/propiedades/gobernador-parera-1356-casa-en-venta/
 - Quintas · Ventas | Julio A. Roca S/N. Quinta en Sauce Viejo | $ 190,000 USD | 2 Dormitorios 1 Baño | Tamaño 750 m2 | https://inmobiliariamega.com.ar/propiedades/quinta-en-sauce-viejo-2/
@@ -332,9 +332,9 @@ Formato: Tipo | Titulo | Operacion y precio | Dorm/Banos | Superficie | Link fic
 - Terrenos · Ventas | Terreno – Parana | $ 175,500 USD | - | Tamaño 1,351 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-8/
 - Casas · Ventas | CASA EN VENTA – COLASTINE | $ 175,000 USD | 3 Dormitorios 2 Baños | Tamaño 812 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-venta-colastine/
 - Casas · Ventas | CASA EN LA PICADA – VENTA | $ 175,000 USD | 3 Dormitorios 3 Baños | Tamaño 741 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-la-picada-venta/
-- Galpones y Cocheras · Ventas | Galpón en Parana | $ 170,000 USD | - | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/galpon-en-parana/
 - Casas · Ventas | Gran Esquina en Venta Plena Avenida Las Amer... | $ 170,000 USD | 2 Dormitorios 3 Baños | Tamaño 1,292 m2 | https://inmobiliariamega.com.ar/propiedades/gran-esquina-en-venta-plena-avenida-las-americas/
 - Casas · Ventas | VENTA de casa + departamento a remodelar o ... | $ 170,000 USD | 4 Dormitorios 2 Baños | Tamaño 310 m2 | https://inmobiliariamega.com.ar/propiedades/venta-de-casa-departamento-a-remodelar-o-demoler/
+- Galpones y Cocheras · Ventas | Galpón en Parana | $ 170,000 USD | - | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/galpon-en-parana/
 - Casas · Ventas | Casa en Parana | $ 165,000 USD | 3 Dormitorios 2 Baños | Tamaño 275 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-parana-3/
 - Casas · Ventas | Casa en Altos del Sauce | $ 165,000 USD | 2 Dormitorios 1 Baño | Tamaño 280 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-altos-del-sauce/
 - Casas · Ventas | Casa en Mayoraz | $ 165,000 USD | 2 Dormitorios 1 Baño | Tamaño 399 m2 | https://inmobiliariamega.com.ar/propiedades/casa-en-mayoraz/
@@ -370,7 +370,6 @@ Formato: Tipo | Titulo | Operacion y precio | Dorm/Banos | Superficie | Link fic
 - Terrenos · Ventas | Terreno centrico en venta | $ 125,000 USD | - | Tamaño 217 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-centrico-en-venta/
 - Casas · Ventas | Hermoso Lote con quincho a orillas del Rio | $ 125,000 USD | 1 Dormitorio 1 Baño | Tamaño 3,000 m2 | https://inmobiliariamega.com.ar/propiedades/hermoso-lote-con-quincho-a-orillas-del-rio/
 - Quintas · Ventas | Casa Quinta en La Picada | $ 125,000 USD | 1 Baño | Tamaño 25,000 m2 | https://inmobiliariamega.com.ar/propiedades/casa-quinta-en-la-picada/
-- Casas · Ventas | Casa A Terminar Zona Tortuguitas. Rondeau 34... | $ 120,000 USD | 3 Dormitorios 2 Baños | Tamaño 300 m2 | https://inmobiliariamega.com.ar/propiedades/casa-a-terminar-zona-tortuguitas-rondeau-3419/
 - Casas · Ventas | Pasaje Baucis 429. Casona Centrica | $ 120,000 USD | 3 Dormitorios 2 Baños | Tamaño 170 m2 | https://inmobiliariamega.com.ar/propiedades/pasaje-baucis-429-casona-centrica/
 - Terrenos · Ventas | Terreno en Maria Grande | $ 120,000 USD | - | Tamaño 3,000 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-maria-grande/
 - Terrenos · Ventas | Terreno en Altos de la Ribera MZNA 6 LOTE 47 | $ 120,000 ARS | - | Tamaño 1,008 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-altos-de-la-ribera-mzna-6-lote-47/
@@ -378,6 +377,7 @@ Formato: Tipo | Titulo | Operacion y precio | Dorm/Banos | Superficie | Link fic
 - Casas · Ventas · Apta Crédito | Misiones 175. Casa Centrica en Venta Con Pat... | $ 120,000 USD | 2 Dormitorios 1 Baño | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/casa-centrica-con-gran-fondo-apta-credito/
 - Terrenos · Ventas | Terreno – Parana | $ 120,000 USD | - | Tamaño 700 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-7/
 - Departamentos · Ventas | Departamento – Parana | $ 120,000 USD | 3 Dormitorios 2 Baños | Tamaño 65 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana-3/
+- Casas · Ventas | Casa A Terminar Zona Tortuguitas. Rondeau 34... | $ 120,000 USD | 3 Dormitorios 2 Baños | Tamaño 300 m2 | https://inmobiliariamega.com.ar/propiedades/casa-a-terminar-zona-tortuguitas-rondeau-3419/
 - Departamentos · Ventas | Departamento Moderno en Venta en Asunción, ... | $ 119,000 USD | 1 Dormitorio 1 Baño | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-moderno-en-venta-en-asuncion-paraguay/
 - Casas · Ventas | Rosario del Tala al 500. Amplia casa en Vent... | $ 115,000 USD | 2 Dormitorios 2 Baños | Tamaño 150 m2 | https://inmobiliariamega.com.ar/propiedades/rosario-del-tala-al-500-amplia-casa-en-venta/
 - PH · Ventas | Ph En Venta Con Patio. Gualeguaychu 263 | $ 115,000 USD | 3 Dormitorios 2 Baños | Tamaño 135 m2 | https://inmobiliariamega.com.ar/propiedades/ph-en-venta-con-patio-gualeguaychu-263-2/
@@ -415,19 +415,18 @@ Formato: Tipo | Titulo | Operacion y precio | Dorm/Banos | Superficie | Link fic
 - Departamentos · Ventas | Departamentos en venta! Ecuador 15. Edificio... | $ 80,000 USD | 1 Dormitorio 1 Baño | Tamaño 45 m2 | https://inmobiliariamega.com.ar/propiedades/departamentos-en-venta-ecuador-15-edificio-providencia/
 - Terrenos · Ventas | Terreno – Colonia Avellaneda | $ 80,000 USD | - | Tamaño 6,500 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-colonia-avellaneda-2/
 - Casas · Ventas | Echeverria 2010. Casa Zona Norte | $ 80,000 USD | 2 Dormitorios 2 Baños | Tamaño 285 m2 | https://inmobiliariamega.com.ar/propiedades/echeverria-2010-casa-zona-norte/
-- Departamentos · Ventas | Departamento de dos dormitorios | $ 79,000 USD | 2 Dormitorios 1 Baño | Tamaño 115 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-de-dos-dormitorios/
-- PH · Ventas | Ruiz Moreno 1082. Se venden dos Unidades Fun... | $ 75,000 USD | 2 Baños | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/ruiz-moreno-1082-se-venden-dos-unidades-funcionales-ideal-inversion/
 - Departamentos · Ventas · Activo | Colon y corrientes. Departamento de 1 dormit... | Usd $ 75,000 USD | 1 Dormitorio 1 Baño | Tamaño 50 m2 | https://inmobiliariamega.com.ar/propiedades/colon-y-corrientes-departamento-de-1-dormitorio-en-venta/
 - Departamentos · Ventas | Echague al 500. Departamento en Venta Zona ... | $ 75,000 USD | 1 Baño | Tamaño 45 m2 | https://inmobiliariamega.com.ar/propiedades/echague-al-500-departamento-en-venta-zona-centro/
 - Departamentos · Ventas | Presidente Perón al 400. Departamento en Ven... | $ 75,000 USD | 2 Dormitorios 1 Baño | Tamaño 65 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-dos-dormis-con-cochera-frente-a-hospital-san-martin/
 - Departamentos · Ventas | Malvinas 276. Hermoso Loft zona parque con a... | $ 75,000 USD | 1 Baño | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/malvinas-276-hermoso-loft-zona-parque-con-amenities/
-- Departamentos · Ventas | 1ero De Mayo 2754. Departamento Monoambiente... | $ 75,000 USD | 1 Baño | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/1ero-de-mayo-2754-departamento-monoambiente-con-cochera/
 - Departamentos · Ventas | Departamento – Parana | $ 75,000 USD | 3 Dormitorios 1 Baño | Tamaño 100 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana-2/
 - Terrenos · Ventas | Terreno en Parana | $ 75,000 USD | - | Tamaño 800 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-parana-6/
 - Casas · Ventas | Casa a estrenar con entrega y financiacion | $ 75,000 USD | 2 Dormitorios 1 Baño | Tamaño 256 m2 | https://inmobiliariamega.com.ar/propiedades/casa-a-estrenar-con-entrega-y-financiacion/
 - Departamentos · Ventas | Echague 550. Departamento en Venta. | $ 75,000 USD | 1 Dormitorio 1 Baño | Tamaño 1 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-en-venta-zona-centro-echague-550/
+- Departamentos · Ventas | 1ero De Mayo 2754. Departamento Monoambiente... | $ 75,000 USD | 1 Baño | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/1ero-de-mayo-2754-departamento-monoambiente-con-cochera/
 - Departamentos · Ventas | Departamento en Parana | $ 75,000 USD | 1 Dormitorio 1 Baño | Tamaño 50 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-en-parana-2/
 - Departamentos · Ventas | Departamento en Venta, Malvinas 400. | $ 75,000 USD | 1 Dormitorio 1 Baño | Tamaño 38 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-en-venta-malvinas-400/
+- PH · Ventas | Ruiz Moreno 1082. Se venden dos Unidades Fun... | $ 75,000 USD | 2 Baños | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/ruiz-moreno-1082-se-venden-dos-unidades-funcionales-ideal-inversion/
 - Departamentos · Ventas | 25 de junio al 400. Departamento en venta 1... | $ 73,000 USD | 1 Dormitorio 1 Baño | Tamaño 40 m2 | https://inmobiliariamega.com.ar/propiedades/25-de-junio-al-400-departamento-en-venta-1-dormitorio/
 - Terrenos · Ventas | Pintor Nux Puerto Barrancas. Etapa 1. Se ven... | $ 72,000 USD | - | Tamaño 1,200 m2 | https://inmobiliariamega.com.ar/propiedades/pintor-nux-puerto-barrancas-etapa-1-se-vende-gran-lote-mas-proyecto/
 - Departamentos · Ventas · Activo | Urquiza 1530. Departamento en Venta | Usd $ 70,000 | 1 Dormitorio 1 Baño | Tamaño 34 m2 | https://inmobiliariamega.com.ar/propiedades/urquiza-1530-departamento-en-venta/
@@ -532,9 +531,7 @@ Formato: Tipo | Titulo | Operacion y precio | Dorm/Banos | Superficie | Link fic
 - Terrenos · Ventas | Oportunidad Lote en Tierra Alta II FINANCIAD... | $ 10,000 USD | - | Tamaño 588 m2 | https://inmobiliariamega.com.ar/propiedades/oportunidad-lote-en-tierra-alta-ii-financiado/
 - Galpones y Cocheras · Ventas | La Rioja 459. Cochera Centrica Cubierta | $ 10,000 USD | - | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/la-rioja-459-cochera-centrica-cubierta/
 - Terrenos · Ventas | Terreno en Oro Verde | $ 10,000 USD | - | Tamaño 450 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-oro-verde/
-- Terrenos · Ventas | Excelente Lote en Tierra Alta I | $ 9,000 USD | - | Tamaño 450 m2 | https://inmobiliariamega.com.ar/propiedades/excelente-lote-en-tierra-alta-i/
 - Terrenos · Ventas | Terreno en Colonia Avellaneda | $ 8,500 USD | - | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-colonia-avellaneda/
-- Terrenos · Ventas | Nuevo Loteo Colonia Ensayo – Loteo Las... | $ 8,500 USD | - | Tamaño 360 m2 | https://inmobiliariamega.com.ar/propiedades/nuevo-loteo-colonia-ensayo-loteo-las-colinas-2/
 - Terrenos · Ventas | Guido Mariza. Terreno en Villa Hernandarias | $ 7,000 USD | - | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/guido-mariza-terreno-en-villa-hernandarias-2/
 - Galpones y Cocheras · Ventas | Cochera en Eva Peron y Rivadavia | $ 6,500 USD | - | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/cochera-en-eva-peron-y-rivadavia/
 - Terrenos · Ventas | Terreno – Parana | $ 3,000 USD | - | Tamaño 400 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana/
@@ -562,8 +559,8 @@ Formato: Tipo | Titulo | Operacion y precio | Dorm/Banos | Superficie | Link fic
 - Departamentos · Alquileres | Mexico 376. Departamento un Dormitorio en Al... | $ 530,000 ARS | 1 Dormitorio 1 Baño | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/mexico-376-departamento-un-dormitorio-en-alquiler/
 - Departamentos · Alquileres | Cervantes 217. Se Alquila Departamento Dos D... | $ 500,000 ARS | 2 Dormitorios 1 Baño | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/cervantes-217-se-alquila-departamento-dos-dormitorios-centrico/
 - Departamentos · Alquileres | Villaguay 54. Duplex en alquiler Un Dormitor... | $ 490,000 ARS | 1 Dormitorio 1 Baño | Tamaño 50 m2 | https://inmobiliariamega.com.ar/propiedades/ph-parana/
-- Departamentos · Alquileres | Departamento en La Capital | $ 450,000 ARS | 1 Dormitorio 1 Baño | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-en-la-capital-2/
 - Departamentos · Alquileres | PERON 70. DEPARTAMENTO 1 DORMITORIO.ALQUILER | $ 450,000 ARS | 1 Dormitorio 1 Baño | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/peron-70-departamento-1-dormitorio-alquiler/
+- Departamentos · Alquileres | Departamento en La Capital | $ 450,000 ARS | 1 Dormitorio 1 Baño | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-en-la-capital-2/
 - Departamentos · Alquileres | ALQUILER MONOAMBIENTE AMOBLADO | $ 350,000 ARS | 1 Dormitorio 1 Baño | Tamaño 30 m2 | https://inmobiliariamega.com.ar/propiedades/alquiler-monoambiente-amoblado/
 - PH · Alquileres | MIHURA 1111. DUPLEX EN ALQUILER. DOS DORMITO... | $ 340,000 ARS | 2 Dormitorios 1 Baño | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/ph-parana-3/
 - PH · Alquileres | MIHURA 1111. DUPLEX EN ALQUILER. 1 DORMITORI... | $ 300,000 ARS | 1 Dormitorio 1 Baño | Tamaño 0 m2 | https://inmobiliariamega.com.ar/propiedades/ph-parana-2/
@@ -571,8 +568,6 @@ Formato: Tipo | Titulo | Operacion y precio | Dorm/Banos | Superficie | Link fic
 - Galpones y Cocheras · Alquileres | Andres Pazos N°128. Alquiler de Cochera Tech... | $ 80,000 ARS | - | Tamaño 1 m2 | https://inmobiliariamega.com.ar/propiedades/andres-pazos-n128-alquiler-de-cochera-techada-en-planta-baja-zona-centro-parana/
 - Departamentos · Alquileres | Av. Ramirez 2030. Departamento Temporal Por ... | $ 60,000 ARS | 1 Dormitorio 1 Baño | Tamaño 45 m2 | https://inmobiliariamega.com.ar/propiedades/av-ramirez-2030-departamento-temporal-por-dia-semanames/
 - Locales y Oficinas Comerciales · Alquileres | Casa oficina | $ 40,000 ARS | 2 Baños | Tamaño 200 m2 | https://inmobiliariamega.com.ar/propiedades/casa-oficina/
-- Locales y Oficinas Comerciales · Alquileres | Local en Parana | $ 1,111 ARS | 4 Baños | Tamaño 350 m2 | https://inmobiliariamega.com.ar/propiedades/local-en-parana-3/
 - Casas · Alquileres | Zona La Toma. Casa Amoblada con Pileta Tempo... | $ 600 USD | 2 Baños | Tamaño 150 m2 | https://inmobiliariamega.com.ar/propiedades/casa-amoblada-con-pileta-temporal-zona-la-toma-2/
 - Departamentos · Alquileres | 25 de Junio 439 – ALQUILER DEPARTAMEN... | $ 550 ARS | 1 Dormitorio 1 Baño | Tamaño 40 m2 | https://inmobiliariamega.com.ar/propiedades/25-de-junio-439-alquiler-departamento-amoblado/
 - Terrenos · Alquileres | Terreno en Feliciano | $ 10 ARS | - | Tamaño 1,100,000 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-en-feliciano/
-- Locales y Oficinas Comerciales · Alquileres | Italia al 100. Amplio Local en alquiler en P... | $ 1 USD | 3 Baños | Tamaño 430 m2 | https://inmobiliariamega.com.ar/propiedades/italia-al-100-amplio-local-en-alquiler-en-parana/
