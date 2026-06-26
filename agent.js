@@ -8,8 +8,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENROUTER_API_KEY,
-  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.GROQ_API_KEY,
+  baseURL: "https://api.groq.com/openai/v1",
 });
 
 // âââ Knowledge base âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
@@ -336,8 +336,8 @@ export async function handleIncomingMessage(phoneNumber, userText) {
     const summary = buildLeadSummary(phoneNumber, session);
     saveLead({ phone: phoneNumber, ...session.profile, tier: "caliente", lastMessage: userText });
     session.handoffSent = true;
-    const _zona = (session.profile.zone || '').trim();
-    const _budget = (session.profile.budget || '').trim();
+    const _zona = (session.profile.zona || '').trim();
+    const _budget = (session.profile.presupuesto || '').trim();
     const _kbFiltrado = filterKBByZona(knowledgeBase, _zona);
     session.messages.push({ role: "user", content: userText });
     if (_kbFiltrado) {
@@ -431,7 +431,7 @@ function buildSystemPrompt(session) {
     ? `\n\nCONTEXTO DEL LEAD ACTUAL:\n${contextLines.join("\n")}`
     : "";
 
-  return `Sos Nico, asistente de ventas inmobiliarias de Germán Manzur (MEGA Inmobiliaria, Santa Fe).
+  return `IMPORTANTE - REGLAS QUE MANDAN SOBRE TODO LO DEMAS:\n- Responde SIEMPRE en espanol rioplatense (argentino). NUNCA en ingles, bajo ninguna circunstancia.\n- Sin emojis. Solo texto plano.\n- Maximo 3-4 frases. Si listas propiedades: maximo 3, formato breve (direccion, precio USD, m2, link de ficha).\n- Se concreto, con datos exactos de la cartera. Nada de relleno generico.\n\nSos Nico, asistente de ventas inmobiliarias de Germán Manzur (MEGA Inmobiliaria, Santa Fe).
 
 PERSONALIDAD: Profesional, cálido, directo. Sin rodeos. Sin emojis excesivos. Máx 3 frases por respuesta.
 
@@ -462,12 +462,12 @@ REGLAS CRITICAS:
 async function callOpenAI(messages, systemPrompt) {
   try {
     const response = await openai.chat.completions.create({
-      model: "nvidia/nemotron-3-super-120b-a12b:free",
+      model: "openai/gpt-oss-120b",
       messages: [
         { role: "system", content: systemPrompt },
         ...messages.slice(-12),
       ],
-      max_tokens: 1500,
+      max_tokens: 500,
       temperature: 0.4,
     });
     return response.choices[0].message.content.trim();
