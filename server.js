@@ -125,14 +125,35 @@ async function notificarLeadN8n(lead) {
   }
 }
 
-// --- WhatsApp: enviar mensaje
+// --- WhatsApp: dividir texto en bloques <= max (limite de Meta: 4096 chars)
+function splitMessage(text, max = 4000) {
+  const t = String(text == null ? "" : text);
+  if (t.length <= max) return [t];
+  const partes = [];
+  let resto = t;
+  while (resto.length > max) {
+    let corte = resto.lastIndexOf("\n", max);
+    if (corte < max * 0.5) corte = resto.lastIndexOf(" ", max);
+    if (corte < max * 0.5) corte = max;
+    partes.push(resto.slice(0, corte).trim());
+    resto = resto.slice(corte).trim();
+  }
+  if (resto.length) partes.push(resto);
+  return partes;
+}
+
+// --- WhatsApp: enviar mensaje (divide en bloques por limite de 4096 de Meta)
 async function sendWhatsApp(to, body) {
   const recipient = to.startsWith("549") ? "54" + to.substring(3) : to;
-  await axios.post(
-    `https://graph.facebook.com/v21.0/${WHATSAPP_PHONE_NUMBER_ID}/messages`,
-    { messaging_product: "whatsapp", to: recipient, type: "text", text: { body } },
-    { headers: { Authorization: `Bearer ${WHATSAPP_ACCESS_TOKEN}` } }
-  );
+  const partes = splitMessage(body, 4000);
+  for (const parte of partes) {
+    if (!parte) continue;
+    await axios.post(
+      `https://graph.facebook.com/v21.0/${WHATSAPP_PHONE_NUMBER_ID}/messages`,
+      { messaging_product: "whatsapp", to: recipient, type: "text", text: { body: parte } },
+      { headers: { Authorization: `Bearer ${WHATSAPP_ACCESS_TOKEN}` } }
+    );
+  }
   if (to === GERMAN_WA) logMessage("wa", GERMAN_WA, "nico", body);
 }
 
