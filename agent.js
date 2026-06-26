@@ -295,6 +295,18 @@ function nextQualifyQuestion(session) {
   return null;
 }
 
+// Filtra KB por zona exacta del lead antes de enviarlo al LLM
+function filterKBByZona(kb, zona) {
+  if (!zona || zona.trim().length < 3) return kb;
+  const z = zona.toLowerCase().trim();
+  const blocks = kb.split(/\n(?=##)/);
+  const matches = blocks.filter(b => b.toLowerCase().includes(z));
+  if (matches.length === 0) return '';
+  let result = matches.join('\n\n');
+  if (result.length > 7000) result = result.substring(0, 7000) + '\n...[mas propiedades disponibles]';
+  return result;
+}
+
 export async function handleIncomingMessage(phoneNumber, userText) {
   const session = getSession(phoneNumber);
 
@@ -324,8 +336,15 @@ export async function handleIncomingMessage(phoneNumber, userText) {
     saveLead({ phone: phoneNumber, ...session.profile, tier: "caliente", lastMessage: userText });
     session.pendingHandoff = summary;
     session.handoffSent = true;
+    const _zona = (session.profile.zone || '').trim();
+    const _budget = (session.profile.budget || '').trim();
+    const _kbFiltrado = filterKBByZona(knowledgeBase, _zona);
     session.messages.push({ role: "user", content: userText });
-    session.messages.push({ role: "system", content: `INSTRUCCION CRITICA: Lead calificado (zona: ${session.profile.zone||"Santa Fe"}, presupuesto: ${session.profile.budget||"a definir"}). Lista 3 propiedades REALES del knowledge base que coincidan. Luego indica que German Manzur contacta en minutos al +54 342 4287842. Sin emojis.` });
+    if (_kbFiltrado) {
+      session.messages.push({ role: "system", content: `PROPIEDADES EN CARTERA PARA LA ZONA "${_zona}":\n${_kbFiltrado}\n\nINSTRUCCION ESTRICTA: Lista 2-3 de ESTAS propiedades con direccion, precio USD, m2 y caracteristicas. PROHIBIDO listar propiedades de otras zonas. Al final, indica que German Manzur contacta en minutos al +54 342 4287842 para coordinar visita. Sin emojis.` });
+    } else {
+      session.messages.push({ role: "system", content: `No hay propiedades en cartera para "${_zona || 'esa zona'}" con presupuesto "${_budget}". Respondele: "Por el momento no tenemos propiedades en esa zona dentro de tu presupuesto en nuestra cartera. German Manzur te contacta en minutos y busca opciones en ZonaProp y Tokko Broker." Sin emojis. No inventes propiedades.` });
+    }
     const _sysP = buildSystemPrompt(session);
     const _aiR = await callOpenAI(session.messages, _sysP);
     session.messages.push({ role: "assistant", content: _aiR });
