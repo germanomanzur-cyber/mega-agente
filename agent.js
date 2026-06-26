@@ -304,7 +304,7 @@ function filterKBByZona(kb, zona) {
   const matches = blocks.filter(b => b.toLowerCase().includes(z));
   if (matches.length === 0) return '';
   let result = matches.join('\n\n');
-  if (result.length > 7000) result = result.substring(0, 7000) + '\n...[mas propiedades disponibles]';
+  if (result.length > 3500) result = result.substring(0, 3500) + '\n...[mas propiedades disponibles]';
   return result;
 }
 
@@ -336,16 +336,8 @@ export async function handleIncomingMessage(phoneNumber, userText) {
     const summary = buildLeadSummary(phoneNumber, session);
     saveLead({ phone: phoneNumber, ...session.profile, tier: "caliente", lastMessage: userText });
     session.handoffSent = true;
-    const _zona = (session.profile.zona || '').trim();
-    const _budget = (session.profile.presupuesto || '').trim();
-    const _kbFiltrado = filterKBByZona(knowledgeBase, _zona);
     session.messages.push({ role: "user", content: userText });
-    if (_kbFiltrado) {
-      session.messages.push({ role: "system", content: `PROPIEDADES EN CARTERA PARA LA ZONA "${_zona}":\n${_kbFiltrado}\n\nINSTRUCCION ESTRICTA:\n- Lista 2-3 propiedades que coincidan con zona y presupuesto "${_budget}".\n- Por cada propiedad incluir: direccion, precio USD, m2, caracteristicas clave, y el ENLACE ficha.info de la ficha tecnica.\n- PROHIBIDO incluir propiedades de otras zonas o inventar datos.\n- Al final indica que German Manzur contacta en minutos al +54 342 4287842.\n- Sin emojis.` });
-    } else {
-      session.messages.push({ role: "system", content: `No hay propiedades en cartera para "${_zona || 'esa zona'}" con presupuesto "${_budget}". Respondele honestamente que en este momento no tenemos propiedades en esa zona dentro de su presupuesto en nuestra cartera, y que German Manzur lo contacta en minutos para buscar opciones actualizadas en ZonaProp y Tokko Broker. Sin emojis. No inventes propiedades ni enlaces.` });
-    }
-    const _sysP = buildSystemPrompt(session);
+    const _sysP = buildSystemPrompt(session) + "\n\nEl lead es CALIENTE: lista hasta 5 propiedades reales que coincidan con su zona y presupuesto (de a 5 si pide mas), con direccion, precio USD, m2 y link de ficha. Si no hay match en cartera ni inventario, decilo honestamente. Cerra avisando que German Manzur lo contacta en minutos al +54 342 4287842. Sin emojis.";
     const _aiR = await callOpenAI(session.messages, _sysP);
     session.messages.push({ role: "assistant", content: _aiR });
     session.pendingHandoff = summary + '\n\n--- PROPIEDADES MOSTRADAS AL CLIENTE ---\n' + _aiR;
@@ -453,7 +445,7 @@ REGLAS:
 - Respuestas cortas. Si el lead es caliente, derivar a Germán INMEDIATAMENTE.${leadContext}
 
 BASE DE CONOCIMIENTO (cartera directa + inventario MEGA segun lo que pida el lead):
-${(()=>{const kb=knowledgeBase;const a=kb.indexOf("PRIORIDAD 1"),b=kb.indexOf("PRIORIDAD 2");const cartera=(a>=0&&b>a)?kb.slice(a-3,b):kb.slice(0,3800);const um=(([...session.messages].reverse().find(m=>m.role==="user"))||{}).content||"";const t=um.toLowerCase();let pre=[];if(/departamento|depto|dpto|monoambiente|semipiso/.test(t))pre=["- Departamento","- Monoambiente","- Semipiso"];else if(/terreno|lote/.test(t))pre=["- Terreno","- Lote"];else if(/local|galpon|oficina/.test(t))pre=["- Local","- Galpon","- Oficina"];else if(/quinta/.test(t))pre=["- Quinta"];else if(/casa|ph|duplex|chalet/.test(t))pre=["- Casa","- PH","- Duplex"];const i=kb.indexOf("INVENTARIO COMPLETO");let inv="";if(i>=0){let L=kb.slice(i).split("\n").filter(l=>l.startsWith("- "));if(pre.length)L=L.filter(l=>pre.some(p=>l.startsWith(p)));inv=L.join("\n");if(inv.length>8000)inv=inv.slice(0,8000)+"\n...(hay mas; pedir zona o mas detalles)";}return "PRIORIDAD 1 - CARTERA DIRECTA DE GERMAN (ofrecer SIEMPRE primero):\n"+cartera+(inv?"\n\nPRIORIDAD 2 - INVENTARIO MEGA WEB (ofrecer si pide mas o no hay match; filtra por zona y presupuesto del lead):\n"+inv:"");})()}
+${(()=>{const kb=knowledgeBase;const a=kb.indexOf("PRIORIDAD 1"),b=kb.indexOf("PRIORIDAD 2");const cartera=(a>=0&&b>a)?kb.slice(a-3,b):kb.slice(0,3800);const um=(([...session.messages].reverse().find(m=>m.role==="user"))||{}).content||"";const t=um.toLowerCase();let pre=[];if(/departamento|depto|dpto|monoambiente|semipiso/.test(t))pre=["- Departamento","- Monoambiente","- Semipiso"];else if(/terreno|lote/.test(t))pre=["- Terreno","- Lote"];else if(/local|galpon|oficina/.test(t))pre=["- Local","- Galpon","- Oficina"];else if(/quinta/.test(t))pre=["- Quinta"];else if(/casa|ph|duplex|chalet/.test(t))pre=["- Casa","- PH","- Duplex"];const i=kb.indexOf("INVENTARIO COMPLETO");let inv="";if(i>=0){let L=kb.slice(i).split("\n").filter(l=>l.startsWith("- "));if(pre.length)L=L.filter(l=>pre.some(p=>l.startsWith(p)));inv=L.join("\n");if(inv.length>3500)inv=inv.slice(0,3500)+"\n...(hay mas; pedir zona o mas detalles)";}return "PRIORIDAD 1 - CARTERA DIRECTA DE GERMAN (ofrecer SIEMPRE primero):\n"+cartera+(inv?"\n\nPRIORIDAD 2 - INVENTARIO MEGA WEB (ofrecer si pide mas o no hay match; filtra por zona y presupuesto del lead):\n"+inv:"");})()}
 
 REGLAS CRITICAS:
 - NUNCA uses emojis. Solo texto plano.
