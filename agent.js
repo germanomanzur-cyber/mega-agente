@@ -334,20 +334,20 @@ export async function handleIncomingMessage(phoneNumber, userText) {
     session.tier = "caliente";
     const summary = buildLeadSummary(phoneNumber, session);
     saveLead({ phone: phoneNumber, ...session.profile, tier: "caliente", lastMessage: userText });
-    session.pendingHandoff = summary;
     session.handoffSent = true;
     const _zona = (session.profile.zone || '').trim();
     const _budget = (session.profile.budget || '').trim();
     const _kbFiltrado = filterKBByZona(knowledgeBase, _zona);
     session.messages.push({ role: "user", content: userText });
     if (_kbFiltrado) {
-      session.messages.push({ role: "system", content: `PROPIEDADES EN CARTERA PARA LA ZONA "${_zona}":\n${_kbFiltrado}\n\nINSTRUCCION ESTRICTA: Lista 2-3 de ESTAS propiedades con direccion, precio USD, m2 y caracteristicas. PROHIBIDO listar propiedades de otras zonas. Al final, indica que German Manzur contacta en minutos al +54 342 4287842 para coordinar visita. Sin emojis.` });
+      session.messages.push({ role: "system", content: `PROPIEDADES EN CARTERA PARA LA ZONA "${_zona}":\n${_kbFiltrado}\n\nINSTRUCCION ESTRICTA:\n- Lista 2-3 propiedades que coincidan con zona y presupuesto "${_budget}".\n- Por cada propiedad incluir: direccion, precio USD, m2, caracteristicas clave, y el ENLACE ficha.info de la ficha tecnica.\n- PROHIBIDO incluir propiedades de otras zonas o inventar datos.\n- Al final indica que German Manzur contacta en minutos al +54 342 4287842.\n- Sin emojis.` });
     } else {
-      session.messages.push({ role: "system", content: `No hay propiedades en cartera para "${_zona || 'esa zona'}" con presupuesto "${_budget}". Respondele: "Por el momento no tenemos propiedades en esa zona dentro de tu presupuesto en nuestra cartera. German Manzur te contacta en minutos y busca opciones en ZonaProp y Tokko Broker." Sin emojis. No inventes propiedades.` });
+      session.messages.push({ role: "system", content: `No hay propiedades en cartera para "${_zona || 'esa zona'}" con presupuesto "${_budget}". Respondele honestamente que en este momento no tenemos propiedades en esa zona dentro de su presupuesto en nuestra cartera, y que German Manzur lo contacta en minutos para buscar opciones actualizadas en ZonaProp y Tokko Broker. Sin emojis. No inventes propiedades ni enlaces.` });
     }
     const _sysP = buildSystemPrompt(session);
     const _aiR = await callOpenAI(session.messages, _sysP);
     session.messages.push({ role: "assistant", content: _aiR });
+    session.pendingHandoff = summary + '\n\n--- PROPIEDADES MOSTRADAS AL CLIENTE ---\n' + _aiR;
     return _aiR;
   }
 
