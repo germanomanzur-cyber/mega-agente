@@ -449,8 +449,8 @@ REGLAS:
 - Si no tenés la info, decí que Germán la tiene y derivá al WA.
 - Respuestas cortas. Si el lead es caliente, derivar a Germán INMEDIATAMENTE.${leadContext}
 
-BASE DE CONOCIMIENTO (solo propiedades relevantes a la zona del lead):
-${(()=>{const z=(session.profile.zona||"").trim();const f=z?filterKBByZona(knowledgeBase,z):"";return f||knowledgeBase.slice(0,2500)+"\n...[hay mas propiedades; pedi al lead su zona y presupuesto para darle opciones concretas]";})()}
+BASE DE CONOCIMIENTO (cartera directa SIEMPRE incluida + opciones de la zona):
+${(()=>{const kb=knowledgeBase;const a=kb.indexOf("PRIORIDAD 1");const b=kb.indexOf("PRIORIDAD 2");const cartera=(a>=0&&b>a)?kb.slice(a-3,b):kb.slice(0,3800);const z=(session.profile.zona||"").trim();const zk=z?filterKBByZona(kb,z):"";return "CARTERA DIRECTA DE GERMAN (ofrecer primero, precios exactos):\n"+cartera+(zk?"\n\nOTRAS OPCIONES EN "+z.toUpperCase()+":\n"+zk:"");})()}
 
 REGLAS CRITICAS:
 - NUNCA uses emojis. Solo texto plano.
