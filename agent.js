@@ -1,3 +1,4 @@
+// zona-filter+fichas v2
 import OpenAI from "openai";
 import { readFileSync, existsSync, writeFileSync } from "fs";
 import path from "path";
