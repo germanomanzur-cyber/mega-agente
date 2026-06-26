@@ -324,7 +324,12 @@ export async function handleIncomingMessage(phoneNumber, userText) {
     saveLead({ phone: phoneNumber, ...session.profile, tier: "caliente", lastMessage: userText });
     session.pendingHandoff = summary;
     session.handoffSent = true;
-    return `¡Perfecto${session.profile.name ? `, ${session.profile.name}` : ""}! ð¥ Tengo todo lo que necesitás. Germán te contacta en minutos al *+54 342 4287842* para darte la información completa y coordinar una visita.\n\nTambién podés escribirle directamente: https://wa.me/5493424287842`;
+    session.messages.push({ role: "user", content: userText });
+    session.messages.push({ role: "system", content: `INSTRUCCION CRITICA: Lead calificado (zona: ${session.profile.zone||"Santa Fe"}, presupuesto: ${session.profile.budget||"a definir"}). Lista 3 propiedades REALES del knowledge base que coincidan. Luego indica que German Manzur contacta en minutos al +54 342 4287842. Sin emojis.` });
+    const _sysP = buildSystemPrompt(session);
+    const _aiR = await callOpenAI(session.messages, _sysP);
+    session.messages.push({ role: "assistant", content: _aiR });
+    return _aiR;
   }
 
   if (session.isFirstMessage) {
