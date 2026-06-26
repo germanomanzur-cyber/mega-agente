@@ -449,8 +449,8 @@ REGLAS:
 - Si no tenés la info, decí que Germán la tiene y derivá al WA.
 - Respuestas cortas. Si el lead es caliente, derivar a Germán INMEDIATAMENTE.${leadContext}
 
-BASE DE CONOCIMIENTO:
-${knowledgeBase}
+BASE DE CONOCIMIENTO (solo propiedades relevantes a la zona del lead):
+${(()=>{const z=(session.profile.zona||"").trim();const f=z?filterKBByZona(knowledgeBase,z):"";return f||knowledgeBase.slice(0,2500)+"\n...[hay mas propiedades; pedi al lead su zona y presupuesto para darle opciones concretas]";})()}
 
 REGLAS CRITICAS:
 - NUNCA uses emojis. Solo texto plano.
