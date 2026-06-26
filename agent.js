@@ -462,7 +462,8 @@ async function callOpenAI(messages, systemPrompt) {
         { role: "system", content: systemPrompt },
         ...messages.slice(-12),
       ],
-      max_tokens: 500,
+      max_tokens: 1500,
+      reasoning_effort: "low",
       temperature: 0.4,
     });
     return response.choices[0].message.content.trim();
