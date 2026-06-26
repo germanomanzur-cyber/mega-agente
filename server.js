@@ -386,7 +386,9 @@ app.post("/webhook", async (req, res) => {
     }
 
   } catch (error) {
-    console.error("[NICO] Error en webhook:", error.response?.data || error.message);
+    const errMsg = error.response?.data ? JSON.stringify(error.response.data) : (error.message || "desconocido");
+    console.error("[NICO] Error en webhook:", errMsg);
+    try { await sendWhatsApp(GERMAN_WA, "[NICO][ERROR] " + String(errMsg).slice(0, 400)); } catch (_) {}
   }
 });
 
