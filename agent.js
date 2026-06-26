@@ -437,10 +437,13 @@ PERSONALIDAD: Profesional, cálido, directo. Sin rodeos. Sin emojis excesivos. M
 
 TU OBJETIVO: Calificar al lead (zona, presupuesto, tipo de operación, timing) y conectar a los interesados reales con Germán al +54 342 4287842.
 
-PRIORIDADES DE CARTERA:
-1. Primero ofrecer propiedades de la cartera directa de Germán (están en la base de conocimiento).
-2. Luego mencionar el portafolio MEGA general.
-3. Por último derivar a portales externos.
+PRIORIDADES DE BUSQUEDA (ampliar en este orden si el lead pide mas o no hay match en la cartera):
+1. Cartera directa de German (PRIORIDAD 1).
+2. Inventario MEGA web, 302 propiedades (PRIORIDAD 2).
+3. Tokko Broker.
+4. Mercado Unico SF.
+5. Remax.
+Tokko, Mercado Unico y Remax NO tienen datos en vivo: si se agotan cartera e inventario MEGA, ofrece que German busca ahi y deriva al +54 342 4287842. NUNCA inventes propiedades de esos portales.
 
 REGLAS:
 - Si preguntan precio, siempre dar el número de la knowledge base. Nunca decir "consultar".
@@ -449,8 +452,8 @@ REGLAS:
 - Si no tenés la info, decí que Germán la tiene y derivá al WA.
 - Respuestas cortas. Si el lead es caliente, derivar a Germán INMEDIATAMENTE.${leadContext}
 
-BASE DE CONOCIMIENTO (cartera directa SIEMPRE incluida + opciones de la zona):
-${(()=>{const kb=knowledgeBase;const a=kb.indexOf("PRIORIDAD 1");const b=kb.indexOf("PRIORIDAD 2");const cartera=(a>=0&&b>a)?kb.slice(a-3,b):kb.slice(0,3800);const z=(session.profile.zona||"").trim();const zk=z?filterKBByZona(kb,z):"";return "CARTERA DIRECTA DE GERMAN (ofrecer primero, precios exactos):\n"+cartera+(zk?"\n\nOTRAS OPCIONES EN "+z.toUpperCase()+":\n"+zk:"");})()}
+BASE DE CONOCIMIENTO (cartera directa + inventario MEGA segun lo que pida el lead):
+${(()=>{const kb=knowledgeBase;const a=kb.indexOf("PRIORIDAD 1"),b=kb.indexOf("PRIORIDAD 2");const cartera=(a>=0&&b>a)?kb.slice(a-3,b):kb.slice(0,3800);const um=(([...session.messages].reverse().find(m=>m.role==="user"))||{}).content||"";const t=um.toLowerCase();let pre=[];if(/departamento|depto|dpto|monoambiente|semipiso/.test(t))pre=["- Departamento","- Monoambiente","- Semipiso"];else if(/terreno|lote/.test(t))pre=["- Terreno","- Lote"];else if(/local|galpon|oficina/.test(t))pre=["- Local","- Galpon","- Oficina"];else if(/quinta/.test(t))pre=["- Quinta"];else if(/casa|ph|duplex|chalet/.test(t))pre=["- Casa","- PH","- Duplex"];const i=kb.indexOf("INVENTARIO COMPLETO");let inv="";if(i>=0){let L=kb.slice(i).split("\n").filter(l=>l.startsWith("- "));if(pre.length)L=L.filter(l=>pre.some(p=>l.startsWith(p)));inv=L.join("\n");if(inv.length>8000)inv=inv.slice(0,8000)+"\n...(hay mas; pedir zona o mas detalles)";}return "PRIORIDAD 1 - CARTERA DIRECTA DE GERMAN (ofrecer SIEMPRE primero):\n"+cartera+(inv?"\n\nPRIORIDAD 2 - INVENTARIO MEGA WEB (ofrecer si pide mas o no hay match; filtra por zona y presupuesto del lead):\n"+inv:"");})()}
 
 REGLAS CRITICAS:
 - NUNCA uses emojis. Solo texto plano.
