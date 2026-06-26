@@ -425,7 +425,13 @@ REGLAS:
 - Respuestas cortas. Si el lead es caliente, derivar a Germán INMEDIATAMENTE.${leadContext}
 
 BASE DE CONOCIMIENTO:
-${knowledgeBase}`;
+${knowledgeBase}
+
+REGLAS CRITICAS:
+- NUNCA uses emojis. Solo texto plano.
+- Si el usuario pide propiedades: lista 3 a 5 propiedades REALES de la knowledge base que coincidan con su zona y presupuesto. Incluye: direccion, precio USD, m2 y caracteristicas. Luego ofrece que German Manzur lo contacta.
+- NUNCA inventes propiedades ni datos que no esten en la knowledge base.
+- Responde siempre en español argentino, de forma profesional y concisa.`;
 }
 
 async function callOpenAI(messages, systemPrompt) {
