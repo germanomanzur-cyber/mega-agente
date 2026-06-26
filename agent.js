@@ -11,13 +11,13 @@ const openai = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
 });
 
-// ─── Knowledge base ───────────────────────────────────────────────────────────
+// âââ Knowledge base âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 const knowledgeBase = readFileSync(
   path.join(__dirname, "knowledge-base.md"),
   "utf-8"
 );
 
-// ─── Lead storage ─────────────────────────────────────────────────────────────
+// âââ Lead storage âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 const LEADS_FILE = path.join(__dirname, "leads.json");
 
 function loadLeads() {
@@ -62,7 +62,7 @@ export function searchLeadByName(nombre) {
   );
 }
 
-// ─── Agente storage ───────────────────────────────────────────────────────────
+// âââ Agente storage âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 const AGENTS_FILE = path.join(__dirname, "agentes.json");
 
 function loadAgentes() {
@@ -110,7 +110,7 @@ export function extractAgentesFromText(text) {
   return agents;
 }
 
-// ─── Sesiones en memoria ───────────────────────────────────────────────────────
+// âââ Sesiones en memoria âââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 const conversations = new Map();
 const SESSION_TIMEOUT_MS = 2 * 60 * 60 * 1000;
 
@@ -162,7 +162,7 @@ export function getAndClearPendingHandoff(phoneNumber) {
   return null;
 }
 
-// ─── Detección de intención ───────────────────────────────────────────────────
+// âââ DetecciÃ³n de intenciÃ³n âââââââââââââââââââââââââââââââââââââââââââââââââââ
 const ZONAS = [
   "candioti", "amarras", "center", "cabral", "constituyentes",
   "sauce viejo", "fraga", "aeropuerto", "barrio sur", "puerto",
@@ -172,19 +172,19 @@ const ZONAS = [
 
 const TIPOS_OPERACION = [
   "comprar", "compra", "vender", "venta", "alquilar", "alquiler",
-  "invertir", "inversión", "inversion", "flipping", "crédito", "credito",
+  "invertir", "inversiÃ³n", "inversion", "flipping", "crÃ©dito", "credito",
   "nido", "uva", "financiamiento",
 ];
 
 function esCaliente(texto) {
   const t = texto.toLowerCase();
   const tieneMonto =
-    /\b(usd|dolar|dólar|\$|mil|millón|millon|k\b|precio|presupuesto|cuánto cuesta|cuanto vale)/i.test(t);
+    /\b(usd|dolar|dÃ³lar|\$|mil|millÃ³n|millon|k\b|precio|presupuesto|cuÃ¡nto cuesta|cuanto vale)/i.test(t);
   const tieneZona = ZONAS.some((z) => t.includes(z));
   const tieneUrgencia =
     /\b(ya|hoy|urgente|cuanto antes|lo antes posible|esta semana|inmediato|necesito|quiero ver|puedo visitar|visita)/i.test(t);
   const tieneContacto =
-    /\b(teléfono|telefono|llamar|reunión|reunion|turno|visitar|agenda|cita|escribime|mandame|pasame)/i.test(t);
+    /\b(telÃ©fono|telefono|llamar|reuniÃ³n|reunion|turno|visitar|agenda|cita|escribime|mandame|pasame)/i.test(t);
   return tieneMonto && (tieneZona || tieneUrgencia || tieneContacto);
 }
 
@@ -193,7 +193,7 @@ function esTibio(texto) {
   const tieneZona = ZONAS.some((z) => t.includes(z));
   const tieneTipo = TIPOS_OPERACION.some((op) => t.includes(op));
   const tieneInteres =
-    /\b(busco|buscando|necesito|quiero|me interesa|interesado|mirando|consultando|averiguando|información|info)\b/i.test(t);
+    /\b(busco|buscando|necesito|quiero|me interesa|interesado|mirando|consultando|averiguando|informaciÃ³n|info)\b/i.test(t);
   return tieneZona || tieneTipo || tieneInteres;
 }
 
@@ -201,16 +201,16 @@ function esSpam(texto) {
   if (!texto || texto.trim().length < 3) return true;
   if (/^\d+$/.test(texto.trim())) return true;
   if (texto.trim().length < 5 && !/\b(ok|si|no|ya|dale|bien|gracias)\b/i.test(texto)) return true;
-  const letras = (texto.match(/[a-záéíóúñ]/gi) || []).length;
+  const letras = (texto.match(/[a-zÃ¡Ã©Ã­Ã³ÃºÃ±]/gi) || []).length;
   return letras < 2;
 }
 
-// ─── Extracción de datos del perfil ──────────────────────────────────────────
+// âââ ExtracciÃ³n de datos del perfil ââââââââââââââââââââââââââââââââââââââââââ
 function extractName(text) {
   const patterns = [
-    /(?:me llamo|soy|mi nombre es|mi nombre:?)\s+([A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,}(?:\s+[A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,})?)/i,
-    /hola[,!.]?\s+(?:soy\s+)?([A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,})/i,
-    /^([A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,})[\s,!.]/,
+    /(?:me llamo|soy|mi nombre es|mi nombre:?)\s+([A-ZÃÃÃÃÃÃ][a-zÃ¡Ã©Ã­Ã³ÃºÃ±]{2,}(?:\s+[A-ZÃÃÃÃÃÃ][a-zÃ¡Ã©Ã­Ã³ÃºÃ±]{2,})?)/i,
+    /hola[,!.]?\s+(?:soy\s+)?([A-ZÃÃÃÃÃÃ][a-zÃ¡Ã©Ã­Ã³ÃºÃ±]{2,})/i,
+    /^([A-ZÃÃÃÃÃÃ][a-zÃ¡Ã©Ã­Ã³ÃºÃ±]{2,})[\s,!.]/,
   ];
   for (const p of patterns) {
     const m = text.match(p);
@@ -226,7 +226,7 @@ function extractZona(text) {
 
 function extractPresupuesto(text) {
   const m = text.match(
-    /(?:usd|u\$s|dolar|dólar|\$)\s*[\d.,]+k?|[\d.,]+\s*(?:mil|k)\s*(?:dolar|dólar|usd|u\$s)?/i
+    /(?:usd|u\$s|dolar|dÃ³lar|\$)\s*[\d.,]+k?|[\d.,]+\s*(?:mil|k)\s*(?:dolar|dÃ³lar|usd|u\$s)?/i
   );
   return m ? m[0].trim() : null;
 }
@@ -236,15 +236,15 @@ function extractTipo(text) {
   if (/\b(comprar|compra|quiero comprar|busco para comprar)\b/.test(t)) return "compra";
   if (/\b(vender|venta|quiero vender|vendo)\b/.test(t)) return "venta";
   if (/\b(alquilar|alquiler|rent|arrendar)\b/.test(t)) return "alquiler";
-  if (/\b(invertir|inversión|inversion|flipping)\b/.test(t)) return "inversión";
-  if (/\b(crédito|credito|nido|uva|financiamiento)\b/.test(t)) return "crédito";
+  if (/\b(invertir|inversiÃ³n|inversion|flipping)\b/.test(t)) return "inversiÃ³n";
+  if (/\b(crÃ©dito|credito|nido|uva|financiamiento)\b/.test(t)) return "crÃ©dito";
   return null;
 }
 
 function extractTiming(text) {
   const t = text.toLowerCase();
   if (/\b(ya|hoy|ahora|urgente|esta semana|lo antes posible|inmediato)\b/.test(t)) return "inmediato";
-  if (/\b(mes|pronto|este año|a corto plazo|próximo|proximo)\b/.test(t)) return "corto plazo";
+  if (/\b(mes|pronto|este aÃ±o|a corto plazo|prÃ³ximo|proximo)\b/.test(t)) return "corto plazo";
   if (/\b(mirando|explorando|viendo|averiguando|a futuro|no hay apuro|sin urgencia)\b/.test(t)) return "explorando";
   return null;
 }
@@ -271,16 +271,16 @@ function updateProfile(session, userText) {
 function buildLeadSummary(phone, session) {
   const p = session.profile;
   const lines = [
-    `🔥 *LEAD ${session.tier.toUpperCase()} — NICO*`,
-    `📱 Teléfono: +${phone}`,
-    p.name ? `👤 Nombre: ${p.name}` : null,
-    p.tipo ? `🎯 Operación: ${p.tipo}` : null,
-    p.zona ? `📍 Zona: ${p.zona}` : null,
-    p.presupuesto ? `💰 Presupuesto: ${p.presupuesto}` : null,
-    p.timing ? `⏱ Timing: ${p.timing}` : null,
-    p.interesEn ? `🏠 Interés en: ${p.interesEn}` : null,
+    `ð¥ *LEAD ${session.tier.toUpperCase()} â NICO*`,
+    `ð± TelÃ©fono: +${phone}`,
+    p.name ? `ð¤ Nombre: ${p.name}` : null,
+    p.tipo ? `ð¯ OperaciÃ³n: ${p.tipo}` : null,
+    p.zona ? `ð Zona: ${p.zona}` : null,
+    p.presupuesto ? `ð° Presupuesto: ${p.presupuesto}` : null,
+    p.timing ? `â± Timing: ${p.timing}` : null,
+    p.interesEn ? `ð  InterÃ©s en: ${p.interesEn}` : null,
     ``,
-    `_Primer contacto: ${p.firstContact ? new Date(p.firstContact).toLocaleString("es-AR") : "—"}_`,
+    `_Primer contacto: ${p.firstContact ? new Date(p.firstContact).toLocaleString("es-AR") : "â"}_`,
   ];
   return lines.filter(Boolean).join("\n");
 }
@@ -288,10 +288,10 @@ function buildLeadSummary(phone, session) {
 function nextQualifyQuestion(session) {
   const p = session.profile;
   const step = session.qualifyStep;
-  if (step === 0 && !p.zona) return "¿En qué zona de Santa Fe estás buscando?";
-  if (step === 0 && p.zona && !p.tipo) return "¿Estás buscando para comprar, alquilar o invertir?";
-  if (!p.presupuesto) return "¿Tenés pensado un presupuesto o rango de precio?";
-  if (!p.timing) return "¿Estás buscando para ya o todavía explorando opciones?";
+  if (step === 0 && !p.zona) return "Â¿En quÃ© zona de Santa Fe estÃ¡s buscando?";
+  if (step === 0 && p.zona && !p.tipo) return "Â¿EstÃ¡s buscando para comprar, alquilar o invertir?";
+  if (!p.presupuesto) return "Â¿TenÃ©s pensado un presupuesto o rango de precio?";
+  if (!p.timing) return "Â¿EstÃ¡s buscando para ya o todavÃ­a explorando opciones?";
   return null;
 }
 
@@ -299,19 +299,19 @@ export async function handleIncomingMessage(phoneNumber, userText) {
   const session = getSession(phoneNumber);
 
   if (!userText || userText.trim() === "") {
-    return "Recibí tu mensaje 👍 Si querés enviarme texto puedo ayudarte mejor sobre propiedades en Santa Fe.";
+    return "RecibÃ­ tu mensaje ð Si querÃ©s enviarme texto puedo ayudarte mejor sobre propiedades en Santa Fe.";
   }
   if (userText === "__AUDIO__") {
-    return "Gracias por el audio 🎙️ Por el momento solo puedo responder mensajes de texto. ¿Me contás en qué puedo ayudarte?";
+    return "Gracias por el audio ðï¸ Por el momento solo puedo responder mensajes de texto. Â¿Me contÃ¡s en quÃ© puedo ayudarte?";
   }
   if (userText === "__IMAGE__") {
-    return "Recibí tu imagen 📸 Si tenés alguna consulta sobre propiedades, escribime y con gusto te ayudo.";
+    return "RecibÃ­ tu imagen ð¸ Si tenÃ©s alguna consulta sobre propiedades, escribime y con gusto te ayudo.";
   }
 
   if (esSpam(userText)) {
     if (!session.spamWarned) {
       session.spamWarned = true;
-      return "Hola, soy Nico, el asistente de Germán Manzur en MEGA Inmobiliaria 🏠 ¿En qué puedo ayudarte hoy?";
+      return "Hola, soy Nico, el asistente de GermÃ¡n Manzur en MEGA Inmobiliaria ð  Â¿En quÃ© puedo ayudarte hoy?";
     }
     return null;
   }
@@ -324,7 +324,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
     saveLead({ phone: phoneNumber, ...session.profile, tier: "caliente", lastMessage: userText });
     session.pendingHandoff = summary;
     session.handoffSent = true;
-    return `¡Perfecto${session.profile.name ? `, ${session.profile.name}` : ""}! 🔥 Tengo todo lo que necesitás. Germán te contacta en minutos al *+54 342 4287842* para darte la información completa y coordinar una visita.\n\nTambién podés escribirle directamente: https://wa.me/5493424287842`;
+    return `Â¡Perfecto${session.profile.name ? `, ${session.profile.name}` : ""}! ð¥ Tengo todo lo que necesitÃ¡s. GermÃ¡n te contacta en minutos al *+54 342 4287842* para darte la informaciÃ³n completa y coordinar una visita.\n\nTambiÃ©n podÃ©s escribirle directamente: https://wa.me/5493424287842`;
   }
 
   if (session.isFirstMessage) {
@@ -343,7 +343,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
       return aiResp;
     }
 
-    const greeting = `Hola, soy *Nico* 🤖, el asistente de *Germán Manzur* en MEGA Inmobiliaria.\nTrabajamos con las mejores propiedades de Santa Fe: Amarras Center, Candioti, Puerto SF y más.\n\n¿Con quién tengo el gusto?`;
+    const greeting = `Hola, soy *Nico* ð¤, el asistente de *GermÃ¡n Manzur* en MEGA Inmobiliaria.\nTrabajamos con las mejores propiedades de Santa Fe: Amarras Center, Candioti, Puerto SF y mÃ¡s.\n\nÂ¿Con quiÃ©n tengo el gusto?`;
     session.messages.push({ role: "assistant", content: greeting });
     return greeting;
   }
@@ -374,7 +374,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
       const summary = buildLeadSummary(phoneNumber, session);
       session.pendingHandoff = summary;
       saveLead({ phone: phoneNumber, ...session.profile, tier: "tibio", lastMessage: userText });
-      return `${aiResp}\n\nPara darte la atención que merecés, te voy a conectar directamente con Germán. Podés escribirle por WhatsApp: https://wa.me/5493424287842 📲`;
+      return `${aiResp}\n\nPara darte la atenciÃ³n que merecÃ©s, te voy a conectar directamente con GermÃ¡n. PodÃ©s escribirle por WhatsApp: https://wa.me/5493424287842 ð²`;
     }
     return aiResp;
   }
@@ -396,33 +396,33 @@ function buildSystemPrompt(session) {
   const p = session.profile;
   const contextLines = [];
   if (p.name) contextLines.push(`El lead se llama ${p.name}.`);
-  if (p.zona) contextLines.push(`Zona de interés: ${p.zona}.`);
-  if (p.tipo) contextLines.push(`Tipo de operación: ${p.tipo}.`);
+  if (p.zona) contextLines.push(`Zona de interÃ©s: ${p.zona}.`);
+  if (p.tipo) contextLines.push(`Tipo de operaciÃ³n: ${p.tipo}.`);
   if (p.presupuesto) contextLines.push(`Presupuesto aproximado: ${p.presupuesto}.`);
   if (p.timing) contextLines.push(`Timing: ${p.timing}.`);
-  if (p.interesEn) contextLines.push(`Propiedad de interés: ${p.interesEn}.`);
+  if (p.interesEn) contextLines.push(`Propiedad de interÃ©s: ${p.interesEn}.`);
 
   const leadContext = contextLines.length
     ? `\n\nCONTEXTO DEL LEAD ACTUAL:\n${contextLines.join("\n")}`
     : "";
 
-  return `Sos Nico, asistente de ventas inmobiliarias de Germán Manzur (MEGA Inmobiliaria, Santa Fe).
+  return `Sos Nico, asistente de ventas inmobiliarias de GermÃ¡n Manzur (MEGA Inmobiliaria, Santa Fe).
 
-PERSONALIDAD: Profesional, cálido, directo. Sin rodeos. Sin emojis excesivos. Máx 3 frases por respuesta.
+PERSONALIDAD: Profesional, cÃ¡lido, directo. Sin rodeos. Sin emojis excesivos. MÃ¡x 3 frases por respuesta.
 
-TU OBJETIVO: Calificar al lead (zona, presupuesto, tipo de operación, timing) y conectar a los interesados reales con Germán al +54 342 4287842.
+TU OBJETIVO: Calificar al lead (zona, presupuesto, tipo de operaciÃ³n, timing) y conectar a los interesados reales con GermÃ¡n al +54 342 4287842.
 
 PRIORIDADES DE CARTERA:
-1. Primero ofrecer propiedades de la cartera directa de Germán (están en la base de conocimiento).
+1. Primero ofrecer propiedades de la cartera directa de GermÃ¡n (estÃ¡n en la base de conocimiento).
 2. Luego mencionar el portafolio MEGA general.
-3. Por último derivar a portales externos.
+3. Por Ãºltimo derivar a portales externos.
 
 REGLAS:
-- Si preguntan precio, siempre dar el número de la knowledge base. Nunca decir "consultar".
-- Si preguntan por créditos Nido/UVA, dar la info de la knowledge base sobre bancos.
-- Nunca inventar propiedades que no están en la base de conocimiento.
-- Si no tenés la info, decí que Germán la tiene y derivá al WA.
-- Respuestas cortas. Si el lead es caliente, derivar a Germán INMEDIATAMENTE.${leadContext}
+- Si preguntan precio, siempre dar el nÃºmero de la knowledge base. Nunca decir "consultar".
+- Si preguntan por crÃ©ditos Nido/UVA, dar la info de la knowledge base sobre bancos.
+- Nunca inventar propiedades que no estÃ¡n en la base de conocimiento.
+- Si no tenÃ©s la info, decÃ­ que GermÃ¡n la tiene y derivÃ¡ al WA.
+- Respuestas cortas. Si el lead es caliente, derivar a GermÃ¡n INMEDIATAMENTE.${leadContext}
 
 BASE DE CONOCIMIENTO:
 ${knowledgeBase}`;
@@ -431,17 +431,17 @@ ${knowledgeBase}`;
 async function callOpenAI(messages, systemPrompt) {
   try {
     const response = await openai.chat.completions.create({
-      model: "openai/gpt-4o-mini",
+      model: "meta-llama/llama-4-maverick:free",
       messages: [
         { role: "system", content: systemPrompt },
         ...messages.slice(-12),
       ],
-      max_tokens: 160,
+      max_tokens: 500,
       temperature: 0.4,
     });
     return response.choices[0].message.content.trim();
   } catch (error) {
     console.error("OpenAI error:", error.message);
-    return "En este momento no puedo responder. Escribile directamente a Germán: https://wa.me/5493424287842";
+    return "En este momento no puedo responder. Escribile directamente a GermÃ¡n: https://wa.me/5493424287842";
   }
 }
