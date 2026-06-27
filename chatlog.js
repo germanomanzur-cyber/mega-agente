@@ -8,8 +8,14 @@ const CHATS_FILE = path.join(DATA_DIR, "chats.json");
 
 function load() {
   try {
-    if (existsSync(CHATS_FILE)) return JSON.parse(readFileSync(CHATS_FILE, "utf-8"));
-  } catch (_) {}
+    if (existsSync(CHATS_FILE)) {
+      const data = JSON.parse(readFileSync(CHATS_FILE, "utf-8"));
+      // Type-safety: el código asume un objeto (mapa por clave canal:userId).
+      if (data && typeof data === "object" && !Array.isArray(data)) return data;
+    }
+  } catch (e) {
+    console.error("chatlog: error leyendo chats.json:", e.message);
+  }
   return {};
 }
 

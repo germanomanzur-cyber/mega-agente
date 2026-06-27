@@ -5,9 +5,10 @@ import "dotenv/config";
 import readline from "readline";
 import { handleIncomingMessage, resetSession } from "./agent.js";
 
-// Validar que las claves estén cargadas
-if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY.startsWith("sk-xxx")) {
-  console.error("\n❌ Falta configurar OPENAI_API_KEY en el archivo .env\n");
+// Validar que las claves estén cargadas.
+// El agente usa Groq (GROQ_API_KEY), no OpenAI: validamos la variable correcta.
+if (!process.env.GROQ_API_KEY || process.env.GROQ_API_KEY.startsWith("gsk-xxx")) {
+  console.error("\n❌ Falta configurar GROQ_API_KEY en el archivo .env\n");
   process.exit(1);
 }
 
