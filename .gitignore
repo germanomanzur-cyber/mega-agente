@@ -9,6 +9,7 @@ leads.json
 agentes.json
 chats.json
 sessions.json
+radar-seen.json
 
 # Logs
 *.log

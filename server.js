@@ -1,9 +1,11 @@
 import express from "express";
 import axios from "axios";
 import dotenv from "dotenv";
+import fs from "fs";
 import { timingSafeEqual } from "crypto";
 import { handleIncomingMessage, getLeads, getAndClearPendingHandoff, saveLeadWaName, searchLeadByName, saveAgente, searchAgenteByName, getAgentes, extractAgentesFromText } from "./agent.js";
 import { logMessage, getChats } from "./chatlog.js";
+import { analizarMensajes, construirReporte } from "./radar-matcher.js";
 
 dotenv.config();
 
@@ -448,6 +450,75 @@ app.get("/leads", (req, res) => {
     },
     leads: leads.slice(-50)
   });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// /radar — Recibe mensajes CRUDOS scrapeados de grupos WA/FB y hace TODO el
+// análisis en código (filtrado, matching con cartera, clasificación, dedup).
+// CERO tokens de LLM. El scraper (Claude/Playwright/cron) solo manda texto.
+//
+// Body: { token, items: [{ texto, plataforma, grupo, contacto }], hora? }
+// Respuesta: { ok, calientes, tibios, enviado }
+// ─────────────────────────────────────────────────────────────────────────────
+const RADAR_SEEN_FILE = "radar-seen.json";
+const RADAR_SEEN_MAX = 2000; // máximo de hashes a recordar (evita archivo infinito)
+
+function cargarRadarSeen() {
+  try {
+    if (!fs.existsSync(RADAR_SEEN_FILE)) return [];
+    const data = JSON.parse(fs.readFileSync(RADAR_SEEN_FILE, "utf8"));
+    return Array.isArray(data) ? data : [];
+  } catch (e) {
+    console.error("[RADAR] Error cargando radar-seen.json:", e.message);
+    return [];
+  }
+}
+
+function guardarRadarSeen(hashes) {
+  try {
+    // Mantener solo los últimos RADAR_SEEN_MAX
+    const recorte = hashes.slice(-RADAR_SEEN_MAX);
+    fs.writeFileSync(RADAR_SEEN_FILE, JSON.stringify(recorte), "utf8");
+  } catch (e) {
+    console.error("[RADAR] Error guardando radar-seen.json:", e.message);
+  }
+}
+
+app.post("/radar", async (req, res) => {
+  const { token, items, hora } = req.body || {};
+  if (!tokenValido(token, REPORT_TOKEN)) return res.status(401).json({ error: "No autorizado" });
+  if (!Array.isArray(items)) return res.status(400).json({ error: "items (array) requerido" });
+
+  try {
+    const seenPrev = cargarRadarSeen();
+    const yaVistos = new Set(seenPrev);
+
+    // TODO el análisis acá, sin LLM
+    const resultado = analizarMensajes(items, yaVistos);
+    const { calientes, tibios, nuevosHashes } = resultado;
+
+    // Persistir nuevos hashes para no repetir mañana
+    if (nuevosHashes.length) {
+      guardarRadarSeen([...seenPrev, ...nuevosHashes]);
+    }
+
+    // Anti-spam: solo enviar si hay al menos 1 match nuevo
+    let enviado = false;
+    if (calientes.length || tibios.length) {
+      const reporte = construirReporte(resultado, hora);
+      if (reporte) {
+        await sendWhatsApp(GERMAN_WA, reporte);
+        logMessage("wa", GERMAN_WA, "nico", reporte);
+        enviado = true;
+      }
+    }
+
+    console.log(`[RADAR] Analizados ${items.length} | ${calientes.length} calientes, ${tibios.length} tibios | enviado: ${enviado}`);
+    res.json({ ok: true, analizados: items.length, calientes: calientes.length, tibios: tibios.length, enviado });
+  } catch (error) {
+    console.error("[RADAR] Error:", error.message);
+    res.status(500).json({ error: error.message });
+  }
 });
 
 app.post("/report", async (req, res) => {
