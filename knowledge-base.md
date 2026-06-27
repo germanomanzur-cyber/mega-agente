@@ -108,7 +108,6 @@
 - Ubicación: Sara Pinasco de Julierac, Puerto de Santa Fe
 - Precio: USD 150.000 (sin cochera)
 - Ficha: https://ficha.info/p/adb592acb56b4863962f540e8f1dd9f3
-- Ficha: https://ficha.info/p/adb592acb56b4863962f540e8f1dd9f3
 
 ---
 
