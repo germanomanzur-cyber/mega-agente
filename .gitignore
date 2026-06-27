@@ -12,3 +12,7 @@ sessions.json
 
 # Logs
 *.log
+
+# Archivos auto-generados (PDF/Word de documentación)
+*.pdf
+*.docx
