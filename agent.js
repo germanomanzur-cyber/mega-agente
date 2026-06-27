@@ -3,6 +3,7 @@ import OpenAI from "openai";
 import { readFileSync, existsSync, writeFileSync } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { matchFAQ } from "./faq.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -123,9 +124,55 @@ export function extractAgentesFromText(text) {
   return agents;
 }
 
-// ─── Sesiones en memoria ───────────────────────────────────────────────────────
+// ─── Sesiones en memoria (con respaldo en disco) ───────────────────────────────
 const conversations = new Map();
 const SESSION_TIMEOUT_MS = 2 * 60 * 60 * 1000;
+const SESSIONS_FILE = path.join(DATA_DIR, "sessions.json");
+
+// Persistencia de sesiones: Railway reinicia el proceso en cada redeploy y eso
+// borraba TODAS las conversaciones en curso (un lead perdía su contexto a mitad
+// de charla). Guardamos en disco para sobrevivir reinicios. No consume tokens.
+function persistSessions() {
+  try {
+    const obj = {};
+    for (const [k, v] of conversations.entries()) obj[k] = v;
+    writeFileSync(SESSIONS_FILE, JSON.stringify(obj), "utf-8");
+  } catch (e) {
+    console.error("Error guardando sesiones:", e.message);
+  }
+}
+
+function loadSessionsFromDisk() {
+  try {
+    if (!existsSync(SESSIONS_FILE)) return;
+    const data = JSON.parse(readFileSync(SESSIONS_FILE, "utf-8"));
+    if (!data || typeof data !== "object" || Array.isArray(data)) return;
+    const now = Date.now();
+    let restauradas = 0;
+    for (const [k, v] of Object.entries(data)) {
+      // Solo restauramos sesiones que no hayan expirado.
+      if (v && typeof v === "object" && v.lastActivity && now - v.lastActivity < SESSION_TIMEOUT_MS) {
+        conversations.set(k, v);
+        restauradas++;
+      }
+    }
+    if (restauradas) console.log(`[NICO] ${restauradas} sesiones restauradas desde disco`);
+  } catch (e) {
+    console.error("Error cargando sesiones:", e.message);
+  }
+}
+
+loadSessionsFromDisk();
+
+// Respaldo periódico + flush al apagar (Railway envía SIGTERM en cada redeploy).
+const _persistInterval = setInterval(persistSessions, 20000);
+if (_persistInterval.unref) _persistInterval.unref();
+for (const sig of ["SIGTERM", "SIGINT"]) {
+  process.once(sig, () => {
+    persistSessions();
+    process.exit(0);
+  });
+}
 
 function getSession(phoneNumber) {
   const now = Date.now();
@@ -308,6 +355,23 @@ function nextQualifyQuestion(session) {
   return null;
 }
 
+// Convierte un texto de presupuesto a número en USD aproximado.
+// Ej: "USD 150.000" -> 150000, "150 mil" -> 150000, "150k" -> 150000.
+// Se usa para filtrar el inventario por rango de precio y así reducir los
+// tokens que se inyectan al LLM (menos texto = menos costo).
+function parseUSD(str) {
+  if (!str) return null;
+  const s = String(str).toLowerCase();
+  const m = s.match(/([\d][\d.,]*)\s*(millones?|millón|millon|mill|mil|k)?/);
+  if (!m) return null;
+  let n = parseFloat(m[1].replace(/\./g, "").replace(/,/g, "."));
+  if (isNaN(n)) return null;
+  const unit = m[2] || "";
+  if (unit.startsWith("mill") || unit === "millón") n *= 1000000;
+  else if (unit === "k" || unit === "mil") n *= 1000;
+  return n > 0 ? n : null;
+}
+
 // Filtra KB por zona exacta del lead antes de enviarlo al LLM
 function filterKBByZona(kb, zona) {
   if (!zona || zona.trim().length < 3) return kb;
@@ -408,6 +472,21 @@ export async function handleIncomingMessage(phoneNumber, userText) {
     return aiResp;
   }
 
+  // Respuesta instantánea SIN LLM para consultas informativas frecuentes.
+  // Solo aplica a leads fríos (los tibios/calientes ya se manejaron arriba),
+  // por lo que no interfiere con la calificación. Ahorra una llamada a Groq.
+  if (session.tier === "frio") {
+    const faq = matchFAQ(userText);
+    if (faq) {
+      session.messages.push({ role: "user", content: userText });
+      session.messages.push({ role: "assistant", content: faq });
+      if (session.messages.length > 20) session.messages = session.messages.slice(-18);
+      saveLead({ phone: phoneNumber, ...session.profile, tier: "frio", lastMessage: userText });
+      persistSessions();
+      return faq;
+    }
+  }
+
   session.messages.push({ role: "user", content: userText });
   const systemPrompt = buildSystemPrompt(session);
   const aiResp = await callOpenAI(session.messages, systemPrompt);
@@ -418,6 +497,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
   }
 
   saveLead({ phone: phoneNumber, ...session.profile, tier: session.tier, lastMessage: userText });
+  persistSessions();
   return aiResp;
 }
 
@@ -457,7 +537,7 @@ REGLAS:
 - Respuestas cortas. Si el lead es caliente, derivar a Germán INMEDIATAMENTE.${leadContext}
 
 BASE DE CONOCIMIENTO (cartera directa + inventario MEGA segun lo que pida el lead):
-${(()=>{const kb=knowledgeBase;const a=kb.indexOf("PRIORIDAD 1"),b=kb.indexOf("PRIORIDAD 2");const cartera=(a>=0&&b>a)?kb.slice(a-3,b):kb.slice(0,3800);const um=(([...session.messages].reverse().find(m=>m.role==="user"))||{}).content||"";const t=um.toLowerCase();let pre=[];if(/departamento|depto|dpto|monoambiente|semipiso/.test(t))pre=["- Departamento","- Monoambiente","- Semipiso"];else if(/terreno|lote/.test(t))pre=["- Terreno","- Lote"];else if(/local|galpon|oficina/.test(t))pre=["- Local","- Galpon","- Oficina"];else if(/quinta/.test(t))pre=["- Quinta"];else if(/casa|ph|duplex|chalet/.test(t))pre=["- Casa","- PH","- Duplex"];const i=kb.indexOf("INVENTARIO COMPLETO");let inv="";if(i>=0){const LS=kb.slice(i).split("\n");let z="";const out=[];for(const l of LS){const h=l.match(/^###\s+(.+)/);if(h){z=h[1].trim();continue;}if(l.startsWith("- ")&&(!pre.length||pre.some(p=>l.startsWith(p))))out.push("["+z+"] "+l);}inv=out.join("\n");if(inv.length>4500)inv=inv.slice(0,4500)+"\n...(hay mas; pedir mas detalles)";}return "PRIORIDAD 1 - CARTERA DIRECTA DE GERMAN (ofrecer SIEMPRE primero):\n"+cartera+(inv?"\n\nPRIORIDAD 2 - INVENTARIO MEGA WEB (ofrecer si pide mas o no hay match; filtra por zona y presupuesto del lead):\n"+inv:"");})()}
+${(()=>{const kb=knowledgeBase;const a=kb.indexOf("PRIORIDAD 1"),b=kb.indexOf("PRIORIDAD 2");const cartera=(a>=0&&b>a)?kb.slice(a-3,b):kb.slice(0,3800);const um=(([...session.messages].reverse().find(m=>m.role==="user"))||{}).content||"";const t=um.toLowerCase();let pre=[];if(/departamento|depto|dpto|monoambiente|semipiso/.test(t))pre=["- Departamento","- Monoambiente","- Semipiso"];else if(/terreno|lote/.test(t))pre=["- Terreno","- Lote"];else if(/local|galpon|oficina/.test(t))pre=["- Local","- Galpon","- Oficina"];else if(/quinta/.test(t))pre=["- Quinta"];else if(/casa|ph|duplex|chalet/.test(t))pre=["- Casa","- PH","- Duplex"];const i=kb.indexOf("INVENTARIO COMPLETO");let inv="";if(i>=0){const LS=kb.slice(i).split("\n");let z="";const out=[];for(const l of LS){const h=l.match(/^###\s+(.+)/);if(h){z=h[1].trim();continue;}if(l.startsWith("- ")&&(!pre.length||pre.some(p=>l.startsWith(p))))out.push("["+z+"] "+l);}let _bud=parseUSD(session.profile&&session.profile.presupuesto);let _sel=out;if(_bud){const _f=out.filter(li=>{const _m=li.match(/USD\s*([\d.]+)/);if(!_m)return false;const _p=parseInt(_m[1].replace(/\./g,""),10);return _p>=_bud*0.6&&_p<=_bud*1.4;});if(_f.length>=3)_sel=_f;}inv=_sel.join("\n");if(inv.length>4500)inv=inv.slice(0,4500)+"\n...(hay mas; pedir mas detalles)";}return "PRIORIDAD 1 - CARTERA DIRECTA DE GERMAN (ofrecer SIEMPRE primero):\n"+cartera+(inv?"\n\nPRIORIDAD 2 - INVENTARIO MEGA WEB (ofrecer si pide mas o no hay match; filtra por zona y presupuesto del lead):\n"+inv:"");})()}
 
 REGLAS CRITICAS:
 - NUNCA uses emojis. Solo texto plano.\n- Si el lead especifica un TIPO (departamento, casa, terreno, lote, local, quinta, ph), ofrece UNICAMENTE propiedades de ese tipo. No mezcles otros tipos aunque esten en la cartera.\n- Si la cartera directa no alcanza para llegar a 5, COMPLETA hasta 5 con el inventario MEGA web (PRIORIDAD 2) que coincida en tipo, zona y presupuesto. Deriva a German SOLO si no hay NINGUNA opcion del tipo y zona pedidos ni en cartera ni en inventario.
@@ -472,7 +552,7 @@ async function callOpenAI(messages, systemPrompt) {
       model: "openai/gpt-oss-120b",
       messages: [
         { role: "system", content: systemPrompt },
-        ...messages.slice(-12),
+        ...messages.slice(-10),
       ],
       max_tokens: 1500,
       reasoning_effort: "low",
