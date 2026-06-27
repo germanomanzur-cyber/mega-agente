@@ -4,6 +4,7 @@ import { readFileSync, existsSync, writeFileSync } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { matchFAQ } from "./faq.js";
+import { getCachedResponse, setCachedResponse } from "./response-cache.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -485,12 +486,30 @@ export async function handleIncomingMessage(phoneNumber, userText) {
       persistSessions();
       return faq;
     }
+
+    // Caché de respuestas: si la consulta es muy similar a una reciente (ej: "Hola"
+    // vs "hola!" vs "holaa"), reutiliza la respuesta del LLM en vez de pagar otra
+    // llamada. Solo para leads fríos. Cache vence en 1h.
+    const cached = getCachedResponse(userText);
+    if (cached) {
+      session.messages.push({ role: "user", content: userText });
+      session.messages.push({ role: "assistant", content: cached });
+      if (session.messages.length > 20) session.messages = session.messages.slice(-18);
+      saveLead({ phone: phoneNumber, ...session.profile, tier: "frio", lastMessage: userText });
+      persistSessions();
+      return cached;
+    }
   }
 
   session.messages.push({ role: "user", content: userText });
   const systemPrompt = buildSystemPrompt(session);
   const aiResp = await callOpenAI(session.messages, systemPrompt);
   session.messages.push({ role: "assistant", content: aiResp });
+
+  // Guarda en cache solo para leads fríos (tibios/calientes necesitan contexto fresco)
+  if (session.tier === "frio") {
+    setCachedResponse(userText, aiResp);
+  }
 
   if (session.messages.length > 20) {
     session.messages = session.messages.slice(-18);
@@ -501,6 +520,10 @@ export async function handleIncomingMessage(phoneNumber, userText) {
   return aiResp;
 }
 
+// Construye el system prompt. Estructura optimizada para aprovechar el prompt
+// caching automático de Groq (50% descuento en tokens repetidos por 2h):
+// - Contenido ESTÁTICO primero (reglas, base de conocimiento) → se cachea
+// - Contenido DINÁMICO al final (contexto del lead actual) → varía por sesión
 function buildSystemPrompt(session) {
   const p = session.profile;
   const contextLines = [];
@@ -549,7 +572,7 @@ REGLAS CRITICAS:
 async function callOpenAI(messages, systemPrompt) {
   try {
     const response = await openai.chat.completions.create({
-      model: "openai/gpt-oss-120b",
+      model: "openai/gpt-oss-20b",
       messages: [
         { role: "system", content: systemPrompt },
         ...messages.slice(-10),
