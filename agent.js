@@ -273,16 +273,16 @@ function updateProfile(session, userText) {
 function buildLeadSummary(phone, session) {
   const p = session.profile;
   const lines = [
-    `ð¥ *LEAD ${session.tier.toUpperCase()} â NICO*`,
-    `ð± Teléfono: +${phone}`,
-    p.name ? `ð¤ Nombre: ${p.name}` : null,
-    p.tipo ? `ð¯ Operación: ${p.tipo}` : null,
-    p.zona ? `ð Zona: ${p.zona}` : null,
-    p.presupuesto ? `ð° Presupuesto: ${p.presupuesto}` : null,
-    p.timing ? `â± Timing: ${p.timing}` : null,
-    p.interesEn ? `ð  Interés en: ${p.interesEn}` : null,
+    `*LEAD ${session.tier.toUpperCase()} - NICO*`,
+    `Telefono: +${phone}`,
+    p.name ? `Nombre: ${p.name}` : null,
+    p.tipo ? `Operacion: ${p.tipo}` : null,
+    p.zona ? `Zona: ${p.zona}` : null,
+    p.presupuesto ? `Presupuesto: ${p.presupuesto}` : null,
+    p.timing ? `Timing: ${p.timing}` : null,
+    p.interesEn ? `Interes en: ${p.interesEn}` : null,
     ``,
-    `_Primer contacto: ${p.firstContact ? new Date(p.firstContact).toLocaleString("es-AR") : "â"}_`,
+    `_Primer contacto: ${p.firstContact ? new Date(p.firstContact).toLocaleString("es-AR") : "-"}_`,
   ];
   return lines.filter(Boolean).join("\n");
 }
