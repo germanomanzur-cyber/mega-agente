@@ -78,5 +78,22 @@ check("reporte contiene encabezado", rep && rep.includes("RADAR INMOBILIARIO"));
 check("reporte contiene calientes", rep && rep.includes("CALIENTES"));
 check("reporte sin matches => null", construirReporte({ calientes: [], tibios: [] }) === null);
 
+// ── cartera-parser (cruce con Tokko)
+import { getCartera, buscarCalce } from "./cartera-parser.js";
+const cartera = getCartera();
+check("cartera: parsea propiedades", cartera.length >= 5);
+check("cartera: todas tienen Tokko", cartera.every((p) => /^[A-Z0-9]+$/.test(p.tokko)));
+check("cartera: flipping precio total (no /m²)", cartera.some((p) => p.tokko === "MHO8010408" && p.precio === 35000));
+check("cartera: arroyo aguiar es casa (no terreno)", cartera.some((p) => p.titulo.includes("Arroyo Aguiar") && p.tipo === "casa"));
+
+const calceAmarras = buscarCalce({ zona: "Amarras Center / Puerto", tipo: "departamento", presupuesto: 160000 });
+check("calce: amarras => Tokko MAP8169699", calceAmarras && calceAmarras.tokko === "MAP8169699");
+
+const calceFlip = buscarCalce({ zona: "Flipping / A refaccionar (cualquier zona)", tipo: "casa", presupuesto: 40000 });
+check("calce: flipping => Tokko MHO8010408", calceFlip && calceFlip.tokko === "MHO8010408");
+
+const calceNada = buscarCalce({ zona: "Candioti Norte / Sur", tipo: "departamento", presupuesto: 90000 });
+check("calce: candioti sin producto => null (A CONSEGUIR)", calceNada === null);
+
 console.log(`\n── RESULTADO: ${pasados} pasados, ${fallados} fallados ──`);
 process.exit(fallados ? 1 : 0);
