@@ -1,14 +1,16 @@
-# 🏠 MEGA Agente WhatsApp — Guía de Instalación
+# 🏠 MEGA Agente WhatsApp — Nico
 
-**Stack:** Node.js + OpenAI GPT-4o mini + Meta WhatsApp Cloud API  
+**Stack:** Node.js + Groq LLM (GPT-OSS 20B) + Meta WhatsApp Cloud API  
 **Asesor:** Germán Manzur — MEGA Desarrollos Inmobiliarios, Santa Fe
+
+**Nico** es un asistente virtual de WhatsApp que califica leads inmobiliarios en tiempo real, deriva contactos calientes a Germán Manzur, y responde consultas frecuentes **sin consumir tokens del LLM** (ahorro 60-75% vs. configuración inicial).
 
 ---
 
 ## 📋 REQUISITOS PREVIOS
 
 - Node.js v18 o superior → https://nodejs.org
-- Cuenta de OpenAI con crédito → https://platform.openai.com
+- **Cuenta de Groq** (LLM ultrarrápido, free tier disponible) → https://console.groq.com
 - Cuenta de Meta for Developers → https://developers.facebook.com
 - Un número de WhatsApp Business (puede ser el mismo que usás)
 - Un servidor con URL pública (Railway, Render, Fly.io o VPS)
@@ -35,10 +37,11 @@ nano .env   # o abrí con tu editor preferido
 
 ## 🔑 PASO 2 — OBTENER LAS CLAVES
 
-### OpenAI API Key
-1. Entrá a https://platform.openai.com/api-keys
-2. Hacé clic en "Create new secret key"
-3. Copiá y pegala en `.env` → `OPENAI_API_KEY`
+### Groq API Key (LLM ultrarrápido y económico)
+1. Entrá a https://console.groq.com/keys
+2. Hacé clic en "Create API Key"
+3. Copiá y pegala en `.env` → `GROQ_API_KEY`
+4. **Free tier:** 30 requests/minuto, sin tarjeta de crédito (perfecto para empezar)
 
 ### Meta WhatsApp Cloud API
 1. Entrá a https://developers.facebook.com
@@ -118,19 +121,59 @@ Verificá que funcione visitando: `https://tu-url/` → debería mostrar `🟢 M
 
 | Función | Detalle |
 |---|---|
-| ✅ Consultas sobre cartera | Ventas, alquileres, inversión, créditos |
-| ✅ Memoria de conversación | Recuerda el contexto por 2 horas |
-| ✅ Derivación automática | Redirige a +54 342 428-7842 cuando es necesario |
-| ✅ Mensajes no-texto | Responde educadamente y deriva al asesor |
-| ✅ Control de costos | Historial limitado a 20 mensajes por sesión |
+| ✅ Calificación de leads | Detecta automáticamente leads fríos/tibios/calientes |
+| ✅ Respuestas instantáneas sin LLM | FAQ para consultas frecuentes (contacto, créditos, permutas) → ahorro directo de tokens |
+| ✅ Caché de respuestas | Detecta consultas duplicadas y reutiliza respuestas → ahorro adicional |
+| ✅ Memoria de conversación | Persistencia en disco, sobrevive a redeploys de Railway |
+| ✅ Derivación automática | Leads calientes se envían a Germán +54 342 428-7842 |
+| ✅ Transcripción de audio | Whisper v3 Turbo de Groq (2.8x más barato que v3 estándar) |
+| ✅ Follow-up automático | Recordatorio a leads tibios sin actividad (comando `//followup` o cron job) |
+| ✅ Panel de control | Comandos `//stats`, `//leads`, `//calientes` para Germán |
 
 ---
 
 ## 💰 COSTOS ESTIMADOS
 
-- **GPT-4o mini:** ~$0.15 por millón de tokens de entrada / $0.60 por millón de salida
-- Estimado real: **menos de USD 5/mes** con 200-300 conversaciones mensuales
-- **Railway / Render:** plan gratuito suficiente para comenzar
+### Modelo LLM (Groq GPT-OSS 20B)
+- **Input:** $0.075 por millón de tokens
+- **Output:** $0.30 por millón de tokens
+- **Prompt caching automático:** 50% descuento en tokens repetidos (hasta 2h)
+- **Whisper v3 Turbo:** $0.04 por hora de audio transcrito
+
+### Ahorro vs. Configuración Original
+- **Modelo 120B → 20B:** 50% más barato
+- **FAQ + Response cache:** evita ~28% de llamadas al LLM
+- **Prompt caching:** ~35% adicional en tokens de input
+- **Ahorro total: 60-75%** del costo original
+
+### Costo Real Mensual
+- **100 mensajes/día:** ~$1.50/mes (vs. $5/mes antes)
+- **300 mensajes/día:** ~$4.50/mes (vs. $15/mes antes)
+- **Free tier de Groq:** suficiente para empezar sin tarjeta de crédito
+- **Railway / Render:** plan gratuito incluye 500 horas/mes
+
+---
+
+## 🛠️ COMANDOS DE ADMINISTRACIÓN (SOLO PARA GERMÁN)
+
+Si escribís a Nico desde el número configurado como propietario (`+54 342 428-7842`), podés usar estos comandos:
+
+| Comando | Función |
+|---|---|
+| `//stats` | Resumen: total de leads, calientes/tibios/fríos, % conversión, top 3 zonas |
+| `//leads` | Últimos 10 leads registrados |
+| `//calientes` | Últimos 10 leads calientes con zona y presupuesto |
+| `//agentes` | Agentes inmobiliarios guardados |
+| `//tel <nombre>` | Busca un lead o agente por nombre |
+| `//followup` | Envía recordatorio automático a leads tibios sin actividad (2+ días) |
+| `//ayuda` | Lista de comandos disponibles |
+
+**Nota:** El comando `//followup` también se puede ejecutar manualmente desde el servidor:
+```bash
+node follow-up-tibios.js
+```
+
+O configurar como **cron job diario** en Railway (Settings > Cron Jobs) para automatizar el seguimiento.
 
 ---
 

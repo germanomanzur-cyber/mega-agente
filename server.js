@@ -44,7 +44,7 @@ function handleModoGerman(cmd, leads, searchFn) {
   const c = (cmd || "").trim().toLowerCase();
 
   if (c === "//ayuda") {
-    return "Comandos disponibles:\n//tel <nombre> - busca lead o agente\n//agentes - agentes guardados\n//leads - ultimos 10 leads\n//calientes - calientes\n//stats - resumen y conversion\n//ayuda - esta lista";
+    return "Comandos disponibles:\n//tel <nombre> - busca lead o agente\n//agentes - agentes guardados\n//leads - ultimos 10 leads\n//calientes - calientes\n//stats - resumen y conversion\n//followup - envia recordatorio a tibios sin actividad\n//ayuda - esta lista";
   }
   if (c === "//stats") {
     const total = leads.length;
@@ -88,6 +88,11 @@ function handleModoGerman(cmd, leads, searchFn) {
       " - wa.me/" + a.phone +
       (a.propiedades && a.propiedades.length ? " - " + a.propiedades.length + " prop." : "")
     ).join("\n");
+  }
+  if (c === "//followup") {
+    // Ejecuta follow-up asíncrono, retorna confirmación inmediata
+    import("./follow-up-tibios.js").then(mod => mod.ejecutarFollowUpTibios());
+    return "Ejecutando follow-up a leads tibios sin actividad. Revisa los logs en Railway para ver cuantos se enviaron.";
   }
   const m = cmd.match(/^\/\/(tele?|num|numero|n[Ãºu]mero|contacto|buscar)\s+(.+)/i);
   if (m) {
@@ -303,7 +308,7 @@ app.post("/webhook", async (req, res) => {
           });
           const fd = new FormData();
           fd.append("file", new Blob([audioRes.data], { type: "audio/ogg" }), "audio.ogg");
-          fd.append("model", "whisper-large-v3");
+          fd.append("model", "whisper-large-v3-turbo");
           fd.append("language", "es");
           const groqRes = await fetch("https://api.groq.com/openai/v1/audio/transcriptions", {
             method: "POST",
