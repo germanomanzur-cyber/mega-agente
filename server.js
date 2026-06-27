@@ -5,7 +5,8 @@ import fs from "fs";
 import { timingSafeEqual } from "crypto";
 import { handleIncomingMessage, getLeads, getAndClearPendingHandoff, saveLeadWaName, searchLeadByName, saveAgente, searchAgenteByName, getAgentes, extractAgentesFromText } from "./agent.js";
 import { logMessage, getChats } from "./chatlog.js";
-import { analizarMensajes, construirReporte } from "./radar-matcher.js";
+import { analizarMensajes, construirReporte, matchearConCartera, hashMensaje, normalizar } from "./radar-matcher.js";
+import { buscarCalce } from "./cartera-parser.js";
 
 dotenv.config();
 
@@ -517,6 +518,88 @@ app.post("/radar", async (req, res) => {
     res.json({ ok: true, analizados: items.length, calientes: calientes.length, tibios: tibios.length, enviado });
   } catch (error) {
     console.error("[RADAR] Error:", error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// /radar-web — Radar de señales públicas de PORTALES (ZonaProp, ArgenProp, etc.).
+// Recibe señales crudas que un scraper/Claude juntó por búsqueda web y hace TODO
+// el cruce con la cartera en código: clasifica, busca el código Tokko que CALZA
+// o marca "A CONSEGUIR", deduplica y arma el reporte. CERO tokens de LLM.
+//
+// Body: { token, fecha?, senales: [{ texto, tipo? ("demanda"|"oportunidad"),
+//          zona?, plataforma?, identificacion?, link? }] }
+// ─────────────────────────────────────────────────────────────────────────────
+app.post("/radar-web", async (req, res) => {
+  const { token, senales, fecha } = req.body || {};
+  if (!tokenValido(token, REPORT_TOKEN)) return res.status(401).json({ error: "No autorizado" });
+  if (!Array.isArray(senales)) return res.status(400).json({ error: "senales (array) requerido" });
+
+  try {
+    const seenPrev = cargarRadarSeen();
+    const yaVistos = new Set(seenPrev);
+    const nuevosHashes = [];
+    const items = [];
+
+    for (const s of senales) {
+      const texto = s && s.texto ? String(s.texto) : "";
+      if (!texto.trim()) continue;
+      // Dedup por link si existe, sino por texto
+      const claveDedup = s.link ? "web:" + normalizar(s.link) : texto;
+      const hash = hashMensaje(claveDedup);
+      if (yaVistos.has(hash)) continue;
+
+      const match = matchearConCartera(texto);
+      // Si no hay zona de cartera, igual lo consideramos si vino marcado como oportunidad
+      const esOportunidad = (s.tipo || "").toLowerCase() === "oportunidad" || /due[ñn]o (directo|vende)|sucesion|sucesión|permuta|baja de precio|remate/i.test(texto);
+      if (!match && !esOportunidad) continue;
+
+      yaVistos.add(hash);
+      nuevosHashes.push(hash);
+
+      // Cruce con cartera: buscar Tokko que CALZA
+      let calce = null;
+      if (match) {
+        calce = buscarCalce({ zona: match.zonaCartera, tipo: match.tipo, presupuesto: match.presupuesto });
+      }
+
+      items.push({
+        clasificacion: match ? (match.tier === "caliente" ? "DEMANDA" : "DEMANDA") : "OPORTUNIDAD",
+        texto: texto.slice(0, 240),
+        zona: (match && match.zonaCartera) || s.zona || "sin zona",
+        plataforma: s.plataforma || "Web",
+        identificacion: s.identificacion || "sin identificar",
+        link: s.link || null,
+        calce: calce ? `CALZA: ${calce.titulo} (Tokko ${calce.tokko})` : "A CONSEGUIR",
+      });
+    }
+
+    if (nuevosHashes.length) guardarRadarSeen([...seenPrev, ...nuevosHashes]);
+
+    const f = fecha || new Date().toLocaleDateString("es-AR");
+    let reporte;
+    if (!items.length) {
+      reporte = `🛰️ RADAR MEGA — ${f}: sin señales nuevas verificables hoy.`;
+    } else {
+      const lineas = [`🛰️ RADAR MEGA — ${f}`, ""];
+      for (const it of items) {
+        lineas.push(
+          `• [${it.clasificacion}] ${it.texto} — ${it.zona} — ${it.plataforma} — ${it.identificacion} — ${it.link || "sin link"} — ${it.calce}`
+        );
+      }
+      reporte = lineas.join("\n");
+      // Respetar límite de 3500 caracteres
+      if (reporte.length > 3500) reporte = reporte.slice(0, 3480) + "\n…(recortado)";
+    }
+
+    await sendWhatsApp(GERMAN_WA, reporte);
+    logMessage("wa", GERMAN_WA, "nico", reporte);
+
+    console.log(`[RADAR-WEB] ${senales.length} señales -> ${items.length} nuevas | enviado`);
+    res.json({ ok: true, recibidas: senales.length, nuevas: items.length, enviado: true });
+  } catch (error) {
+    console.error("[RADAR-WEB] Error:", error.message);
     res.status(500).json({ error: error.message });
   }
 });
