@@ -19,7 +19,8 @@ const knowledgeBase = readFileSync(
 );
 
 // âââ Lead storage âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-const LEADS_FILE = path.join(__dirname, "leads.json");
+const DATA_DIR = process.env.DATA_DIR || __dirname;
+const LEADS_FILE = path.join(DATA_DIR, "leads.json");
 
 function loadLeads() {
   try {
@@ -64,7 +65,7 @@ export function searchLeadByName(nombre) {
 }
 
 // âââ Agente storage âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-const AGENTS_FILE = path.join(__dirname, "agentes.json");
+const AGENTS_FILE = path.join(DATA_DIR, "agentes.json");
 
 function loadAgentes() {
   try {
