@@ -44,7 +44,27 @@ function handleModoGerman(cmd, leads, searchFn) {
   const c = (cmd || "").trim().toLowerCase();
 
   if (c === "//ayuda") {
-    return "Comandos disponibles:\n//tel <nombre> - busca lead o agente\n//agentes - agentes guardados\n//leads - ultimos 10 leads\n//calientes - calientes\n//ayuda - esta lista";
+    return "Comandos disponibles:\n//tel <nombre> - busca lead o agente\n//agentes - agentes guardados\n//leads - ultimos 10 leads\n//calientes - calientes\n//stats - resumen y conversion\n//ayuda - esta lista";
+  }
+  if (c === "//stats") {
+    const total = leads.length;
+    if (!total) return "Sin leads registrados aun.";
+    const cal = leads.filter(l => l.tier === "caliente").length;
+    const tib = leads.filter(l => l.tier === "tibio").length;
+    const fri = leads.filter(l => l.tier === "frio").length;
+    const conv = total ? Math.round((cal / total) * 100) : 0;
+    // Top 3 zonas mas consultadas
+    const zonas = {};
+    for (const l of leads) { if (l.zona) zonas[l.zona] = (zonas[l.zona] || 0) + 1; }
+    const topZonas = Object.entries(zonas).sort((a, b) => b[1] - a[1]).slice(0, 3)
+      .map(([z, n]) => z + " (" + n + ")").join(", ") || "-";
+    return [
+      "RESUMEN NICO",
+      "Total leads: " + total,
+      "Calientes: " + cal + " | Tibios: " + tib + " | Frios: " + fri,
+      "Conversion a caliente: " + conv + "%",
+      "Top zonas: " + topZonas,
+    ].join("\n");
   }
   if (c === "//leads") {
     const lista = leads.slice(-10).reverse();

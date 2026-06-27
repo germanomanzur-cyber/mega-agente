@@ -8,6 +8,7 @@ node_modules/
 leads.json
 agentes.json
 chats.json
+sessions.json
 
 # Logs
 *.log
