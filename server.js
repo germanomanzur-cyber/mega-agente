@@ -37,6 +37,14 @@ function tokenValido(recibido, esperado) {
   return timingSafeEqual(a, b);
 }
 
+// Token de LECTURA: los endpoints de solo-lectura (paneles y reportes) aceptan
+// tanto VERIFY_TOKEN como REPORT_TOKEN. Asi las tareas automaticas (monitor
+// diario, reporte de leads) usan un unico token (REPORT_TOKEN / 'mega-radar-2024')
+// para todo, en lugar de manejar dos secretos distintos.
+function tokenLecturaValido(recibido) {
+  return tokenValido(recibido, VERIFY_TOKEN) || tokenValido(recibido, REPORT_TOKEN);
+}
+
 // --- Modo Dueno --- prefijo // activa comandos exclusivos de German
 // Solo responde al numero 5493424287842. Comandos:
 // //tel <nombre> -> numero de un lead
@@ -440,7 +448,7 @@ app.post("/webhook", async (req, res) => {
 });
 
 app.get("/leads", (req, res) => {
-  if (!tokenValido(req.query.token, VERIFY_TOKEN)) return res.status(401).json({ error: "No autorizado" });
+  if (!tokenLecturaValido(req.query.token)) return res.status(401).json({ error: "No autorizado" });
   const leads = getLeads();
   res.json({
     stats: {
@@ -633,11 +641,11 @@ app.get("/privacy", (req, res) => {
 });
 
 app.get("/chats.json", (req, res) => {
-  if (!tokenValido(req.query.token, VERIFY_TOKEN)) return res.status(401).json({ error: "No autorizado" });
+  if (!tokenLecturaValido(req.query.token)) return res.status(401).json({ error: "No autorizado" });
   res.json(getChats());
 });
 
 app.get("/chats", (req, res) => {
-  if (!tokenValido(req.query.token, VERIFY_TOKEN)) return res.status(401).send("No autorizado");
+  if (!tokenLecturaValido(req.query.token)) return res.status(401).send("No autorizado");
   res.send(`<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nico - Conversaciones</title><style>*{box-sizing:border-box;margin:0}body{font-family:Arial,sans-serif;height:100vh;display:flex;flex-direction:column;background:#ece5dd}header{background:#075e54;color:#fff;padding:12px 18px;font-size:17px;font-weight:bold}#wrap{flex:1;display:flex;min-height:0}#side{width:320px;background:#fff;border-right:1px solid #ddd;overflow-y:auto}.conv{padding:12px 14px;border-bottom:1px solid #eee;cursor:pointer}.conv:hover{background:#f5f5f5}.conv.sel{background:#e8f5e9}.conv .who{font-weight:bold;font-size:14px}.conv .prev{color:#666;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.conv .meta{color:#999;font-size:11px;margin-top:2px}#main{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:6px}.msg{max-width:70%;padding:8px 12px;border-radius:8px;font-size:14px;line-height:1.4;white-space:pre-wrap;word-break:break-word}.msg .at{display:block;font-size:10px;color:#777;margin-top:4px;text-align:right}.user{background:#fff;align-self:flex-start}.nico{background:#dcf8c6;align-self:flex-end}#empty{color:#888;margin:auto}</style></head><body><header>Nico - Conversaciones</header><div id="wrap"><div id="side"></div><div id="main"><div id="empty">Cargando...</div></div></div><script>var DATA={},SEL=null;var TOKEN=new URLSearchParams(location.search).get("token");function fmt(s){var d=new Date(s);return d.toLocaleDateString("es-AR")+" "+d.toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit"});}function load(){fetch("/chats.json?token="+TOKEN).then(function(r){return r.json()}).then(function(d){DATA=d;render();});}function render(){var side=document.getElementById("side");side.innerHTML="";var keys=Object.keys(DATA).sort(function(a,b){var ma=DATA[a].messages,mb=DATA[b].messages;return new Date(mb[mb.length-1].at)-new Date(ma[ma.length-1].at);});keys.forEach(function(k){var c=DATA[k];var last=c.messages[c.messages.length-1];var div=document.createElement("div");div.className="conv"+(k===SEL?" sel":"");var who=document.createElement("div");who.className="who";who.textContent=(c.channel==="wa"?"WhatsApp ":"Messenger ")+c.userId;var prev=document.createElement("div");prev.className="prev";prev.textContent=last.text;var meta=document.createElement("div");meta.className="meta";meta.textContent=c.messages.length+" mensajes - "+fmt(last.at);div.appendChild(who);div.appendChild(prev);div.appendChild(meta);div.onclick=function(){SEL=k;render();};side.appendChild(div);});var main=document.getElementById("main");main.innerHTML="";if(!SEL||!DATA[SEL]){var e=document.createElement("div");e.id="empty";e.textContent=keys.length?"Selecciona una conversacion":"Sin conversaciones todavia";main.appendChild(e);return;}DATA[SEL].messages.forEach(function(m){var d=document.createElement("div");d.className="msg "+(m.role==="nico"?"nico":"user");d.textContent=m.text;var at=document.createElement("span");at.className="at";at.textContent=(m.role==="nico"?"Nico - ":"")+fmt(m.at);d.appendChild(at);main.appendChild(d);});main.scrollTop=main.scrollHeight;}load();setInterval(load,8000);</script></body></html>`);
 });
