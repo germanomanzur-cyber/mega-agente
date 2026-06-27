@@ -12,22 +12,27 @@ const openai = new OpenAI({
   baseURL: "https://api.groq.com/openai/v1",
 });
 
-// âââ Knowledge base âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ─── Knowledge base ───────────────────────────────────────────────────────────
 const knowledgeBase = readFileSync(
   path.join(__dirname, "knowledge-base.md"),
   "utf-8"
 );
 
-// âââ Lead storage âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ─── Lead storage ─────────────────────────────────────────────────────────────
 const DATA_DIR = process.env.DATA_DIR || __dirname;
 const LEADS_FILE = path.join(DATA_DIR, "leads.json");
 
 function loadLeads() {
   try {
     if (existsSync(LEADS_FILE)) {
-      return JSON.parse(readFileSync(LEADS_FILE, "utf-8"));
+      const data = JSON.parse(readFileSync(LEADS_FILE, "utf-8"));
+      // Type-safety: el resto del código asume un array. Si el archivo se
+      // corrompe o contiene otro tipo, devolvemos [] para no romper findIndex/filter.
+      return Array.isArray(data) ? data : [];
     }
-  } catch (_) {}
+  } catch (e) {
+    console.error("Error leyendo leads.json:", e.message);
+  }
   return [];
 }
 
@@ -56,7 +61,8 @@ export function saveLeadWaName(phone, waName) {
 
 export function searchLeadByName(nombre) {
   const leads = loadLeads();
-  const q = nombre.toLowerCase();
+  const q = (nombre || "").toLowerCase().trim();
+  if (!q) return [];
   return leads.filter(
     (l) =>
       (l.name && l.name.toLowerCase().includes(q)) ||
@@ -64,15 +70,19 @@ export function searchLeadByName(nombre) {
   );
 }
 
-// âââ Agente storage âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ─── Agente storage ───────────────────────────────────────────────────────────
 const AGENTS_FILE = path.join(DATA_DIR, "agentes.json");
 
 function loadAgentes() {
   try {
     if (existsSync(AGENTS_FILE)) {
-      return JSON.parse(readFileSync(AGENTS_FILE, "utf-8"));
+      const data = JSON.parse(readFileSync(AGENTS_FILE, "utf-8"));
+      // Type-safety: garantizamos siempre un array (ver loadLeads).
+      return Array.isArray(data) ? data : [];
     }
-  } catch (_) {}
+  } catch (e) {
+    console.error("Error leyendo agentes.json:", e.message);
+  }
   return [];
 }
 
@@ -97,7 +107,8 @@ export function getAgentes() {
 
 export function searchAgenteByName(nombre) {
   const agentes = loadAgentes();
-  const q = nombre.toLowerCase();
+  const q = (nombre || "").toLowerCase().trim();
+  if (!q) return [];
   return agentes.filter((a) => a.nombre && a.nombre.toLowerCase().includes(q));
 }
 
@@ -112,7 +123,7 @@ export function extractAgentesFromText(text) {
   return agents;
 }
 
-// âââ Sesiones en memoria âââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ─── Sesiones en memoria ───────────────────────────────────────────────────────
 const conversations = new Map();
 const SESSION_TIMEOUT_MS = 2 * 60 * 60 * 1000;
 
@@ -164,7 +175,7 @@ export function getAndClearPendingHandoff(phoneNumber) {
   return null;
 }
 
-// âââ Detección de intención âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ─── Detección de intención ───────────────────────────────────────────────────
 const ZONAS = [
   "candioti", "amarras", "center", "cabral", "constituyentes",
   "sauce viejo", "fraga", "aeropuerto", "barrio sur", "puerto",
@@ -207,12 +218,12 @@ function esSpam(texto) {
   return letras < 2;
 }
 
-// âââ Extracción de datos del perfil ââââââââââââââââââââââââââââââââââââââââââ
+// ─── Extracción de datos del perfil ──────────────────────────────────────────
 function extractName(text) {
   const patterns = [
-    /(?:me llamo|soy|mi nombre es|mi nombre:?)\s+([A-ZÃÃÃÃÃÃ][a-záéíóúñ]{2,}(?:\s+[A-ZÃÃÃÃÃÃ][a-záéíóúñ]{2,})?)/i,
-    /hola[,!.]?\s+(?:soy\s+)?([A-ZÃÃÃÃÃÃ][a-záéíóúñ]{2,})/i,
-    /^([A-ZÃÃÃÃÃÃ][a-záéíóúñ]{2,})[\s,!.]/,
+    /(?:me llamo|soy|mi nombre es|mi nombre:?)\s+([A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,}(?:\s+[A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,})?)/i,
+    /hola[,!.]?\s+(?:soy\s+)?([A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,})/i,
+    /^([A-ZÁÉÍÓÚÑ][a-záéíóúñ]{2,})[\s,!.]/,
   ];
   for (const p of patterns) {
     const m = text.match(p);
@@ -313,19 +324,19 @@ export async function handleIncomingMessage(phoneNumber, userText) {
   const session = getSession(phoneNumber);
 
   if (!userText || userText.trim() === "") {
-    return "Recibí tu mensaje ð Si querés enviarme texto puedo ayudarte mejor sobre propiedades en Santa Fe.";
+    return "Recibí tu mensaje. Si querés enviarme texto puedo ayudarte mejor sobre propiedades en Santa Fe.";
   }
   if (userText === "__AUDIO__") {
-    return "Gracias por el audio ðï¸ Por el momento solo puedo responder mensajes de texto. ¿Me contás en qué puedo ayudarte?";
+    return "Gracias por el audio. Por el momento solo puedo responder mensajes de texto. ¿Me contás en qué puedo ayudarte?";
   }
   if (userText === "__IMAGE__") {
-    return "Recibí tu imagen ð¸ Si tenés alguna consulta sobre propiedades, escribime y con gusto te ayudo.";
+    return "Recibí tu imagen. Si tenés alguna consulta sobre propiedades, escribime y con gusto te ayudo.";
   }
 
   if (esSpam(userText)) {
     if (!session.spamWarned) {
       session.spamWarned = true;
-      return "Hola, soy Nico, el asistente de Germán Manzur en MEGA Inmobiliaria ð  ¿En qué puedo ayudarte hoy?";
+      return "Hola, soy Nico, el asistente de Germán Manzur en MEGA Inmobiliaria. ¿En qué puedo ayudarte hoy?";
     }
     return null;
   }
@@ -361,7 +372,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
       return aiResp;
     }
 
-    const greeting = `Hola, soy *Nico* ð¤, el asistente de *Germán Manzur* en MEGA Inmobiliaria.\nTrabajamos con las mejores propiedades de Santa Fe: Amarras Center, Candioti, Puerto SF y más.\n\n¿Con quién tengo el gusto?`;
+    const greeting = `Hola, soy *Nico*, el asistente de *Germán Manzur* en MEGA Inmobiliaria.\nTrabajamos con las mejores propiedades de Santa Fe: Amarras Center, Candioti, Puerto SF y más.\n\n¿Con quién tengo el gusto?`;
     session.messages.push({ role: "assistant", content: greeting });
     return greeting;
   }
@@ -392,7 +403,7 @@ export async function handleIncomingMessage(phoneNumber, userText) {
       const summary = buildLeadSummary(phoneNumber, session);
       session.pendingHandoff = summary;
       saveLead({ phone: phoneNumber, ...session.profile, tier: "tibio", lastMessage: userText });
-      return `${aiResp}\n\nPara darte la atención que merecés, te voy a conectar directamente con Germán. Podés escribirle por WhatsApp: https://wa.me/5493424287842 ð²`;
+      return `${aiResp}\n\nPara darte la atención que merecés, te voy a conectar directamente con Germán. Podés escribirle por WhatsApp: https://wa.me/5493424287842`;
     }
     return aiResp;
   }
@@ -467,7 +478,12 @@ async function callOpenAI(messages, systemPrompt) {
       reasoning_effort: "low",
       temperature: 0.4,
     });
-    return response.choices[0].message.content.trim();
+    // Null-safety: si la API no devuelve choices/content válidos, usamos el fallback.
+    const content = response?.choices?.[0]?.message?.content;
+    if (!content || !content.trim()) {
+      throw new Error("Respuesta vacía del modelo");
+    }
+    return content.trim();
   } catch (error) {
     console.error("OpenAI error:", error.message);
     return "En este momento no puedo responder. Escribile directamente a Germán: https://wa.me/5493424287842";
