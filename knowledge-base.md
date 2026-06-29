@@ -260,7 +260,7 @@ Reglas: ubicar la propiedad del cliente en la banda P25-P75 según estado y ubic
 
 ---
 
-## INVENTARIO COMPLETO MEGA WEB — 302 PROPIEDADES (sincronizado 28/06/2026)
+## INVENTARIO COMPLETO MEGA WEB — 302 PROPIEDADES (sincronizado 29/06/2026)
 
 Instrucciones:
 - Cuando pregunten por zona, presupuesto o dormitorios, buscar acá y ofrecer máximo 3 opciones con precio y datos clave. Cerrar derivando a Germán: https://wa.me/5493424287842
@@ -468,8 +468,8 @@ MEGA_WEB_MANIFEST_END -->
 - Casa | Carlos Darwin 2703. Casa en Venta con pileta en Villa Elsa. | Venta USD 95.000 | 2D/1B | 250 m2 | https://inmobiliariamega.com.ar/propiedades/carlos-darwin-2703-casa-en-venta-con-pileta-en-villa-elsa/
 - Casa | Casa &#8211; Parana | Venta USD 150.000 | 3D/2B | 390 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana-9/
 - Casa | Casa &#8211; Parana | Venta USD 127.000 | 1D/1B | 1,020 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana-11/
-- Casa | Casa &#8211; Parana | Venta USD 250.000 | 5D/3B | 220 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana-8/
 - Casa | Casa &#8211; Parana | Venta USD 160.000 | 3D/2B | 230 m2 | https://inmobiliariamega.com.ar/propiedades/salta-279-casa-centrica-con-patio-apta-credito/
+- Casa | Casa &#8211; Parana | Venta USD 250.000 | 5D/3B | 220 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana-8/
 - Casa | Casa &#8211; Parana | Venta USD 150.000 | 3D/2B | 900 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana-6/
 - Casa | Casa &#8211; Parana | Venta USD 300.000 | 3D/2B | 202 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana-3/
 - Casa | Casa &#8211; Parana | Venta USD 150.000 | 2D/1B | 280 m2 | https://inmobiliariamega.com.ar/propiedades/casa-parana-2/
@@ -491,8 +491,8 @@ MEGA_WEB_MANIFEST_END -->
 - Departamento | Colon y corrientes. Departamento de 1 dormitorio en Venta! | Venta USD 75.000 | 1D/1B | 50 m2 | https://inmobiliariamega.com.ar/propiedades/colon-y-corrientes-departamento-de-1-dormitorio-en-venta/
 - Galpón/Cochera | Corrientes 265. Cocheras Cubo | Venta USD 15.000 | 0D/0B | 15 m2 | https://inmobiliariamega.com.ar/propiedades/corrientes-265-cocheras-cubo/
 - Terreno | Del loro y Del boyero Piedras Blancas . Terreno. Venta | Venta USD 17.000 | 0D/0B | 440 m2 | https://inmobiliariamega.com.ar/propiedades/del-loro-y-del-boyero-piedras-blancas-terreno-venta/
-- Departamento | Departamento &#8211; Parana | Venta USD 100.000 | 1D/1B | 51 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana-9/
 - Departamento | Departamento &#8211; Parana | Venta USD 75.000 | 3D/1B | 100 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana-2/
+- Departamento | Departamento &#8211; Parana | Venta USD 100.000 | 1D/1B | 51 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana-9/
 - Departamento | Departamento &#8211; Parana | Venta USD 120.000 | 3D/2B | 65 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana-3/
 - Departamento | Departamento &#8211; Parana | Venta USD 430.000 | 3D/2B | 170 m2 | https://inmobiliariamega.com.ar/propiedades/departamento-parana/
 - Departamento | Departamento Dos Dormitorios Con Amenities en Complejo Cerrado. Av Uranga 580 | Venta USD 65.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/departamento-dos-dormitorios-con-amenities-en-complejo-cerrado-av-uranga-580/
@@ -574,12 +574,12 @@ MEGA_WEB_MANIFEST_END -->
 - Departamento | Se vende hermoso Departamento reciclado a nuevo! Zona centro | Venta USD 90.000 | 2D/1B | - | https://inmobiliariamega.com.ar/propiedades/se-vende-hermoso-departamento-reciclado-a-nuevo-zona-centro/
 - Departamento | SEMIPISO CON VISTA AL RIO | Venta USD 180.000 | 2D/2B | - | https://inmobiliariamega.com.ar/propiedades/semipiso-con-vista-al-rio/
 - Terreno | Terreno &#8211; Parana | Venta USD 15.000 | 0D/0B | 983 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-10/
-- Terreno | Terreno &#8211; Parana | Venta USD 175.500 | 0D/0B | 1,351 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-8/
 - Terreno | Terreno &#8211; Parana | Venta USD 50.000 | 0D/0B | 750 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-9/
+- Terreno | Terreno &#8211; Parana | Venta USD 175.500 | 0D/0B | 1,351 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-8/
 - Terreno | Terreno &#8211; Parana | Venta USD 120.000 | 0D/0B | 700 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-7/
 - Terreno | Terreno &#8211; Parana | Venta USD 2.000 | 0D/0B | 400 m2 | https://inmobiliariamega.com.ar/propiedades/lotes-en-strobel-diamante-opcion-financiado/
-- Terreno | Terreno &#8211; Parana | Venta USD 18.000 | 0D/0B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-5/
 - Terreno | Terreno &#8211; Parana | Venta USD 15.500 | 0D/0B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-4/
+- Terreno | Terreno &#8211; Parana | Venta USD 18.000 | 0D/0B | 300 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-5/
 - Terreno | Terreno &#8211; Parana | Venta USD 157.500 | 0D/0B | 4,500 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-3/
 - Terreno | Terreno &#8211; Parana | Venta USD 33.000 | 0D/0B | 500 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana-2/
 - Terreno | Terreno &#8211; Parana | Venta USD 3.000 | 0D/0B | 400 m2 | https://inmobiliariamega.com.ar/propiedades/terreno-parana/
